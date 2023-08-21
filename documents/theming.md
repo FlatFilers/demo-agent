@@ -4,62 +4,50 @@
 
 All Spaces are customizable via theming options enabling you to blend Flatfile seamlessly into your application.
 
-This Space has been configured to theme new spaces under the given 'theming-demo' namespace with styling appropriate to a customer company.
+## Making this space
 
-```jxs
-import api from "@flatfile/api"
-import { Client, FlatfileEvent } from "@flatfile/listener"
+This Space has been configured to leverage the visual overrides available to help you theme a Space. We've customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours. Even better? Create co-branded experiences in all of your Spaces for every one of your customers.
+
+Here's a look at the code that was used to create it:
+
+```jsx
+import api from "@flatfile/api";
+import { Client, FlatfileEvent } from "@flatfile/listener";
 
 export default function flatfileEventListener(listener: Client) {
-      listener.on(
-        "space:created",
+  listener.on(
+    "space:created",
     async ({ context: { spaceId, environmentId } }: FlatfileEvent) => {
-          await api.spaces.update(spaceId, {
-            environmentId,
-            metadata: {
-              theme: {
-                root: {
-                  primaryColor: "#74a4a8",
-              fontFamily: "Georgia",
-              buttonBorderRadius: "5px",
-              dangerColor: "#ee7c78",
-              warningColor: "#f7bd1d",
-              successColor: "#74a4a8",
-            },
-            sidebar: {
-                  logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRHD-t5vClnQN7-yiojM4GUl0vT1gK7mnOSw&usqp=CAU",
-              textColor: "#ee7c78",
-              titleColor: "#202456",
-              focusBgColor: "#fbfcfb",
-              focusTextColor: "#74a4a8",
-              backgroundColor: "white",
-              footerTextColor: "#202456",
-              borderColor: "#202456",
+      await api.spaces.update(spaceId, {
+        environmentId,
+        metadata: {
+          theme: {
+            root: {
+              primaryColor: "#090B2B",
+              dangerColor: "#F44336",
+              warningColor: "#FF9800",
             },
             document: {
-                  borderColor: "#ee7c78",
+              borderColor: "#CAD0DC",
             },
-            table: {
-                  fontFamily: "Georgia",
-              column: {
-                    header: {
-                      color: "#ee7c78",
-                  backgroundColor: "#fbfcfb",
-                },
-              },
-              indexColumn: {
-                    backgroundColor: "#fbfcfb",
-                color: "#ee7c78",
-                selected: {
-                      backgroundColor: "#fef8e8",
-                },
-              },
-              inputs: {
-                    checkbox: {
-                      color: "#f7bd1d",
-                },
-              },
+            sidebar: {
+              logo: "path/to/logo/file",
+              textColor: "#ECEEFF",
+              titleColor: "#C4C9FF",
+              focusBgColor: "#6673FF",
+              focusTextColor: "#FFF",
+              backgroundColor: "#090B2B",
+              footerTextColor: "#C4C9FF",
+              textUltralightColor: "#B9DDFF",
+              borderColor: "#2E3168",
+              activeTextColor: "#FFF",
             },
+            table: {},
+          },
+          sidebarConfig: {
+            showGuestInvite: true,
+            showDataChecklist: true,
+            showSidebar: true,
           },
         },
       });
@@ -68,6 +56,13 @@ export default function flatfileEventListener(listener: Client) {
 }
 ```
 
-## Further Documentation
+## Further documentation
 
 Read more about the possible configurations for theming [here](https://flatfile.com/docs/guides/theming).
+
+## Additional examples
+
+- [Documents Example](https://platform.flatfile.com/examples)
+- [Dynamic Example](https://platform.flatfile.com/examples)
+- [Extractors Example](https://platform.flatfile.com/examples)
+- [Theming Example](https://platform.flatfile.com/examples)

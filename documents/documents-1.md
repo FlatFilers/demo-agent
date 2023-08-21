@@ -3,7 +3,12 @@
 ---
 
 Documents are ways of storing information right inside your Space. Provide guidance or reference for your customers without leaving Flatfile.
+
+## Making this space
+
 This Space has been configured with multiple documents upon creation.
+
+Here's a look at the code that was used to create it:
 
 ```jsx
 import api from "@flatfile/api";
@@ -15,7 +20,7 @@ export default function flatfileEventListener(listener: Client) {
       async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
         try {
           await api.jobs.ack(jobId, {
-            info: "Starting Job.",
+            info: "Job started.",
             progress: 10,
           });
           await api.documents.create(spaceId, {
@@ -32,7 +37,6 @@ export default function flatfileEventListener(listener: Client) {
             },
           });
         } catch (error) {
-          console.error("Error: ", error.stack);
           await api.jobs.fail(jobId, {
             outcome: {
               message: "Job encountered an error.",
