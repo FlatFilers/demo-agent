@@ -1,9 +1,9 @@
-"use strict";
-
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import { FlatfileRecord, recordHook } from "@flatfile/plugin-record-hook";
 import axios from "axios";
+
+import { readDocument, workbookConfig } from "../helpers";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -18,7 +18,14 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.documents.create(spaceId, {
             title: "Simple Demo",
-            body: `# About this Simple Demo\n---\nWelcome, to an empty Space.\n\nThis Space has been configured with only this Document on creation. There are no Workbooks, there is no Theming, and there are no advanced customizations.\n\n It's is a blank slate.\n## Adding Customizations\n\n You may add a Workbook or additional configurations via API, a Workbook Create cURL can be found in our [Beginner Tutorial](https://flatfile.com/docs/quickstart/meet-the-workbook), or see our other Demos for advanced configuration options.\n\n## Further Demos\n\n Please see our other demo Spaces for examples of: \n\n- Theming\n- Extractors\n- Dynamic Configurations`,
+            body: readDocument("../examples-agent/documents/simple.md"),
+          });
+
+          // @ts-ignore
+          await api.workbooks.create({
+            spaceId,
+            environmentId,
+            ...workbookConfig,
           });
 
           await api.jobs.complete(jobId, {

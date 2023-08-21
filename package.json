@@ -8,5 +8,8 @@
     "@flatfile/plugin-xlsx-extractor": "^1.5.0",
     "@flatfile/plugin-xml-extractor": "^0.3.0",
     "@flatfile/plugin-zip-extractor": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.1"
   }
 }
