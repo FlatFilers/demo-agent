@@ -9,9 +9,9 @@ import theming from "./demos/theming";
 import { Client } from "@flatfile/listener";
 
 export default function (listener: Client) {
-  listener.namespace(["space:simple"], simple);
-  listener.namespace(["space:theming"], theming);
-  listener.namespace(["space:extractor"], extractor);
-  listener.namespace(["space:dynamic"], dynamic);
-  listener.namespace(["space:documents"], documents);
+  listener.namespace(["space:simple-demo"], simple);
+  listener.namespace(["space:theming-demo"], theming);
+  listener.namespace(["space:extractor-demo"], extractor);
+  listener.namespace(["space:dynamic-demo"], dynamic);
+  listener.namespace(["space:documents-demo"], documents);
 }
