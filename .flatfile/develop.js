@@ -76749,11 +76749,11 @@ function theming_flatfileEventListener(listener) {
 
 
 /* harmony default export */ function index(listener) {
-    listener.namespace(["space:simple"], simple_flatfileEventListener);
-    listener.namespace(["space:theming"], theming_flatfileEventListener);
-    listener.namespace(["space:extractor"], extractor_flatfileEventListener);
-    listener.namespace(["space:dynamic"], dynamic_flatfileEventListener);
-    listener.namespace(["space:documents"], flatfileEventListener);
+    listener.namespace(["space:simple-demo"], simple_flatfileEventListener);
+    listener.namespace(["space:theming-demo"], theming_flatfileEventListener);
+    listener.namespace(["space:extractor-demo"], extractor_flatfileEventListener);
+    listener.namespace(["space:dynamic-demo"], dynamic_flatfileEventListener);
+    listener.namespace(["space:documents-demo"], flatfileEventListener);
 }
 
 })();
