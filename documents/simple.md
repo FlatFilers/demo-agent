@@ -1,10 +1,10 @@
-# About this Simple Demo
+# Try Flatfile
 
 ---
 
 Welcome, to Flatfile.
 
-This is Basic Space, configured to as an interactive tour to show you around.
+This is Basic Space, configured as an interactive tour to show you around.
 
 Let's begin by first getting acquainted with what you're seeing here in the sidebar.
 
@@ -26,7 +26,7 @@ The Simple Workbook contains two Sheets: **Contacts**, and **Countries**.
 
 #### Things you can do here:
 
-1. You can upload/download CSV files files into and from each Sheet.
+1. You can upload/download CSV files into and from each Sheet.
 2. You can manually add records to each Sheet directly in the UI.
 3. You can also manually adjust cells & records individually, or in bulk.
 
@@ -38,7 +38,7 @@ The **Contacts** Sheet is a very simple Sheet with one reference field, **Countr
 
 The **Countries** Sheet is where you’ll add all of the countries you want to display in the dropdown menu in the first Sheet.
 
-## Additional Examples
+## Additional examples
 
 - [Documents Example](https://platform.flatfile.com/examples)
 - [Dynamic Example](https://platform.flatfile.com/examples)

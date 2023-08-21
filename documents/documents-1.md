@@ -1,10 +1,10 @@
-# About this Documents Demo
+# Try Documents
 
 ---
 
 Documents are ways of storing information right inside your Space. Provide guidance or reference for your customers without leaving Flatfile.
 
-## Making this space
+## Making this Space
 
 This Space has been configured with multiple documents upon creation.
 
