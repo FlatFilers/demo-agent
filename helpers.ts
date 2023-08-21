@@ -1,11 +1,4 @@
-import * as fs from "fs";
-import * as path from "path";
-
-export { readDocument, workbookConfig, themeConfig };
-
-const readDocument = function (filePath: string): string {
-  return fs.readFileSync(path.join(filePath), "utf-8");
-};
+export { workbookConfig, themeConfig };
 
 const themeConfig = {
   metadata: {
