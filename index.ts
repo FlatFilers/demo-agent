@@ -1,17 +1,17 @@
 "use strict";
 
-import documentsDemo from "./demos/documents-demo";
-import dynamicDemo from "./demos/dynamic-demo";
-import extractorDemo from "./demos/extractor-demo";
-import simpleDemo from "./demos/simple-demo";
-import themingDemo from "./demos/theming-demo";
+import documents from "./demos/documents";
+import dynamic from "./demos/dynamic";
+import extractor from "./demos/extractor";
+import simple from "./demos/simple";
+import theming from "./demos/theming";
 
 import { Client } from "@flatfile/listener";
 
 export default function (listener: Client) {
-  listener.namespace(["space:simple-demo"], simpleDemo);
-  listener.namespace(["space:theming-demo"], themingDemo);
-  listener.namespace(["space:extractor-demo"], extractorDemo);
-  listener.namespace(["space:dynamic-demo"], dynamicDemo);
-  listener.namespace(["space:documents-demo"], documentsDemo);
+  listener.namespace(["space:simple"], simple);
+  listener.namespace(["space:theming"], theming);
+  listener.namespace(["space:extractor"], extractor);
+  listener.namespace(["space:dynamic"], dynamic);
+  listener.namespace(["space:documents"], documents);
 }
