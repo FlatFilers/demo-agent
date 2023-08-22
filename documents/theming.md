@@ -4,7 +4,7 @@
 
 All Spaces are customizable via theming options enabling you to blend Flatfile seamlessly into your application.
 
-## Making this space
+## Making this Space
 
 This Space has been configured to leverage the visual overrides available to help you theme a Space. We've customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours. Even better? Create co-branded experiences in all of your Spaces for every one of your customers.
 

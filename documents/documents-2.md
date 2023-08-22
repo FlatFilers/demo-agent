@@ -1,4 +1,4 @@
-# Configure multiple Document
+# Configure multiple Documents
 
 ---
 

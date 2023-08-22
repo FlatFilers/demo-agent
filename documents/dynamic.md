@@ -4,11 +4,11 @@
 
 To work with data in Flatfile, you'll first need to create and then configure a Space.
 
-Your business needs will determine how many Spaces you'll need, but it's likely you'll need more one.
+Your business needs will determine how many Spaces you'll need, you'll likely need more than one.
 
-Dynamic configurations make it easy create new Spaces that are ready to go with your pre-configured specifications.
+Dynamic configurations make it easy to create new Spaces that are ready to go with your pre-configured specifications.
 
-## Making this space
+## Making this Space
 
 This very Space was configured Dynamically.
 
@@ -100,9 +100,9 @@ Notice that there are two listener configurations here:
 
 The `workbook:submitAction` has been configured to respond to the submit action on our Workbook. But the Workbook itself is configured dynamically via the `space:configure` listener.
 
-## Create a space
+## Initializing your dynamic configuration
 
-With the above code running on our Agent, we simply create a new space taking care to include the `autoConfigure: true` parameter. This parameter triggers the publication of the `space:configure` event that we're listening for. But you can do far more that simply creating a Workbook. See our other examples for further possibilities.
+With the above code running on our Agent, we simply create a new space taking care to include the `autoConfigure: true` parameter. This parameter triggers the publication of the `space:configure` event that we're listening for. But you can do far more than adding a Workbook. See our other examples for further possibilities.
 
 ## Further documentation
 

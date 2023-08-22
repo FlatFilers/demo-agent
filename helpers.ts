@@ -1,4 +1,12 @@
-export { workbookConfig, themeConfig };
+import * as fs from "fs";
+import * as path from "path";
+
+export { readDocument, workbookConfig, themeConfig };
+
+// TODO: Enable this functionality
+const readDocument = function (filePath: string): string {
+  return fs.readFileSync(path.join(filePath), "utf-8");
+};
 
 const themeConfig = {
   metadata: {
