@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.5.1"
+  },
+  "scripts": {
+    "markdown": "node ./scripts/markdown.js"
   }
 }

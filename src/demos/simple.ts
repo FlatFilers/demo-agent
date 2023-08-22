@@ -3,7 +3,8 @@ import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import { FlatfileRecord, recordHook } from "@flatfile/plugin-record-hook";
 import axios from "axios";
 
-import { workbookConfig } from "../helpers";
+import workbookConfig from "../constants/workbook.json";
+import { simple } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -18,7 +19,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.documents.create(spaceId, {
             title: "Simple Demo",
-            body: `# Try Flatfile\n\n---\n\nWelcome, to Flatfile.\n\nThis is Basic Space, configured as an interactive tour to show you around.\n\nLet's begin by first getting acquainted with what you're seeing here in the sidebar.\n\n## Data Checklist\n\nUse the Data Checklist to learn the data that will be expected in the Simple Workbook.\n\n## Files\n\nUse the Files screen to upload files. You can also upload them directly into Sheets.\n\n## Collaborators\n\nInvite a Guest to this Space. Their view will look a little different than yours. Try an alias email to see.\n\n## Simple Workbook\n\nThe Simple Workbook contains two Sheets: **Contacts**, and **Countries**.\n\n#### Things you can do here:\n\n1. You can upload/download CSV files into and from each Sheet.\n2. You can manually add records to each Sheet directly in the UI.\n3. You can also manually adjust cells & records individually, or in bulk.\n\n#### 1. Contacts (Sheet)\n\nThe **Contacts** Sheet is a very simple Sheet with one reference field, **Country**. It also has a few data validations.\n\n#### 2. Countries (Sheet)\n\nThe **Countries** Sheet is where you’ll add all of the countries you want to display in the dropdown menu in the first Sheet.\n\n## Additional examples\n\n- [Documents Example](https://platform.flatfile.com/examples)\n- [Dynamic Example](https://platform.flatfile.com/examples)\n- [Extractors Example](https://platform.flatfile.com/examples)\n- [Theming Example](https://platform.flatfile.com/examples)\n`,
+            body: simple,
           });
 
           // @ts-ignore
