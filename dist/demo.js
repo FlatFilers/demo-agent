@@ -72055,10 +72055,21 @@ function flatfileEventListener(listener) {
                     info: `Starting Job: ${jobId}`,
                     progress: 10,
                 });
-                await api_default().documents.create(spaceId, {
+                const { data } = await api_default().documents.create(spaceId, {
                     title: "About this Documents Demo",
                     body: documents_namespaceObject.CE,
                 });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
                 await api_default().documents.create(spaceId, {
                     title: "Configure multiple Documents",
                     body: documents_namespaceObject.US,
@@ -72099,10 +72110,21 @@ function dynamic_flatfileEventListener(listener) {
                     info: `Starting Job: ${jobId}`,
                     progress: 10,
                 });
-                await api_default().documents.create(spaceId, {
+                const { data } = await api_default().documents.create(spaceId, {
                     title: "About this Dynamic Demo",
                     body: documents_namespaceObject.D8,
                 });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
                 // @ts-ignore
                 await api_default().workbooks.create({
                     spaceId,
@@ -72179,10 +72201,21 @@ function extractor_flatfileEventListener(listener) {
                     info: `Starting Job: ${jobId}`,
                     progress: 10,
                 });
-                await api_default().documents.create(spaceId, {
+                const { data } = await api_default().documents.create(spaceId, {
                     title: "About this Extractor Demo",
                     body: documents_namespaceObject.A8,
                 });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
                 // @ts-ignore
                 await api_default().workbooks.create({
                     spaceId,
@@ -76768,10 +76801,21 @@ function simple_flatfileEventListener(listener) {
                     info: `Starting Job: ${jobId}`,
                     progress: 10,
                 });
-                await api_default().documents.create(spaceId, {
+                const { data } = await api_default().documents.create(spaceId, {
                     title: "Simple Demo",
                     body: documents_namespaceObject.lC,
                 });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
                 // @ts-ignore
                 await api_default().workbooks.create({
                     spaceId,
@@ -76869,10 +76913,21 @@ function theming_flatfileEventListener(listener) {
                     info: `Starting Job: ${jobId}`,
                     progress: 10,
                 });
-                await api_default().documents.create(spaceId, {
+                const { data } = await api_default().documents.create(spaceId, {
                     title: "About this Theming Demo",
                     body: documents_namespaceObject.MX,
                 });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
                 // @ts-ignore
                 await api_default().workbooks.create({
                     spaceId,

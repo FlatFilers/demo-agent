@@ -1,4 +1,16 @@
 {
+  "name": "demo-agent",
+  "description": "Source code for agent-backed demos.",
+  "author": "Flatfile, Inc.",
+  "license": "MIT",
+  "homepage": "https://github.com/FlatFilers/demo-agent#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlatFilers/demo-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FlatFilers/demo-agent/issues"
+  },
   "dependencies": {
     "@flatfile/api": "^1.5.20",
     "@flatfile/listener": "^0.3.14",
@@ -15,7 +27,8 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "markdown": "node ./scripts/markdown.js",
-    "bundle": "node ./scripts/bundle.js"
+    "documents": "node ./scripts/documents.js",
+    "bundle": "node ./scripts/bundle.js",
+    "build": "npm run documents && npm run bundle"
   }
 }
