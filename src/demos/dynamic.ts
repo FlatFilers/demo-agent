@@ -14,10 +14,23 @@ export default function flatfileEventListener(listener: Client) {
             progress: 10,
           });
 
-          await api.documents.create(spaceId, {
+          const { data } = await api.documents.create(spaceId, {
             title: "About this Dynamic Demo",
             body: dynamic,
           });
+
+          const documentId = data.id;
+          const spaceUpdateParams = {
+            metadata: {
+              sidebarConfig: {
+                defaultPage: {
+                  documentId,
+                },
+              },
+            },
+          };
+
+          await api.spaces.update(spaceId, spaceUpdateParams);
 
           // @ts-ignore
           await api.workbooks.create({
