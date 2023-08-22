@@ -10,9 +10,12 @@
     "@flatfile/plugin-zip-extractor": "^0.3.1"
   },
   "devDependencies": {
-    "@types/node": "^20.5.1"
+    "@types/node": "^20.5.1",
+    "@vercel/ncc": "^0.36.1",
+    "typescript": "^5.1.6"
   },
   "scripts": {
-    "markdown": "node ./scripts/markdown.js"
+    "markdown": "node ./scripts/markdown.js",
+    "bundle": "node ./scripts/bundle.js"
   }
 }
