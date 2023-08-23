@@ -1,6 +1,5 @@
 {
   "name": "All Contacts",
-  "labels": ["Primary"],
   "sheets": [
     {
       "name": "Contacts",
