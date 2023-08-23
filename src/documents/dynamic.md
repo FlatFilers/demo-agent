@@ -110,7 +110,7 @@ Read more about dynamic configuration [here](https://flatfile.com/docs/guides/dy
 
 ## Additional examples
 
-- [Documents Example](https://platform.flatfile.com/examples)
-- [Extractors Example](https://platform.flatfile.com/examples)
-- [Simple Example](https://platform.flatfile.com/examples)
-- [Theming Example](https://platform.flatfile.com/examples)
+- [Documents Example](https://platform.flatfile.com/getting-started)
+- [Extractors Example](https://platform.flatfile.com/getting-started)
+- [Simple Example](https://platform.flatfile.com/getting-started)
+- [Theming Example](https://platform.flatfile.com/getting-started)

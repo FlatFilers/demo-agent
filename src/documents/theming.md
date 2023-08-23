@@ -62,7 +62,7 @@ Read more about the possible configurations for theming [here](https://flatfile.
 
 ## Additional examples
 
-- [Documents Example](https://platform.flatfile.com/examples)
-- [Dynamic Example](https://platform.flatfile.com/examples)
-- [Extractors Example](https://platform.flatfile.com/examples)
-- [Theming Example](https://platform.flatfile.com/examples)
+- [Documents Example](https://platform.flatfile.com/getting-started)
+- [Dynamic Example](https://platform.flatfile.com/getting-started)
+- [Extractors Example](https://platform.flatfile.com/getting-started)
+- [Theming Example](https://platform.flatfile.com/getting-started)
