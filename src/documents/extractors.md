@@ -40,7 +40,7 @@ Read more about the possible configurations for each plugin [here](https://flatf
 
 ## Additional examples
 
-- [Documents Example](https://platform.flatfile.com/examples)
-- [Dynamic Example](https://platform.flatfile.com/examples)
-- [Simple Example](https://platform.flatfile.com/examples)
-- [Theming Example](https://platform.flatfile.com/examples)
+- [Documents Example](https://platform.flatfile.com/getting-started)
+- [Dynamic Example](https://platform.flatfile.com/getting-started)
+- [Simple Example](https://platform.flatfile.com/getting-started)
+- [Theming Example](https://platform.flatfile.com/getting-started)
