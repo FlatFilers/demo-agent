@@ -39,11 +39,16 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.spaces.update(spaceId, spaceUpdateParams);
 
+          const extractorWorkbook = {
+            ...{ Labels: ["Primary", "Extractor-Demo"] },
+            ...workbookConfig,
+          };
+
           // @ts-ignore
           await api.workbooks.create({
             spaceId,
             environmentId,
-            ...workbookConfig,
+            ...extractorWorkbook,
           });
 
           await api.jobs.complete(jobId, {

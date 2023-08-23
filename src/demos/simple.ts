@@ -35,11 +35,16 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.spaces.update(spaceId, spaceUpdateParams);
 
+          const simpleWorkbook = {
+            ...{ Labels: ["Primary", "Simple-Demo"] },
+            ...workbookConfig,
+          };
+
           // @ts-ignore
           await api.workbooks.create({
             spaceId,
             environmentId,
-            ...workbookConfig,
+            ...simpleWorkbook,
           });
 
           await api.jobs.complete(jobId, {

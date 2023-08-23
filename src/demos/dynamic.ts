@@ -32,11 +32,16 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.spaces.update(spaceId, spaceUpdateParams);
 
+          const dynamicWorkbook = {
+            ...{ Labels: ["Primary", "Dynamic-Demo"] },
+            ...workbookConfig,
+          };
+
           // @ts-ignore
           await api.workbooks.create({
             spaceId,
             environmentId,
-            ...workbookConfig,
+            ...dynamicWorkbook,
           });
 
           await api.jobs.complete(jobId, {
