@@ -5,7 +5,7 @@
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const { Client, FlatfileVirtualMachine } = __nccwpck_require__(81003);
-const mount = __nccwpck_require__(31300);
+const mount = __nccwpck_require__(87318);
 const client = Client.create(mount.default);
 
 client.mount(new FlatfileVirtualMachine());
@@ -37,9 +37,10 @@ const Client_10 = __nccwpck_require__(38246);
 const Client_11 = __nccwpck_require__(11678);
 const Client_12 = __nccwpck_require__(21065);
 const Client_13 = __nccwpck_require__(13667);
-const Client_14 = __nccwpck_require__(3385);
-const Client_15 = __nccwpck_require__(98858);
-const Client_16 = __nccwpck_require__(74141);
+const Client_14 = __nccwpck_require__(77726);
+const Client_15 = __nccwpck_require__(3385);
+const Client_16 = __nccwpck_require__(98858);
+const Client_17 = __nccwpck_require__(74141);
 class FlatfileClient {
     constructor(_options) {
         this._options = _options;
@@ -96,17 +97,21 @@ class FlatfileClient {
         var _a;
         return ((_a = this._sheets) !== null && _a !== void 0 ? _a : (this._sheets = new Client_13.Sheets(this._options)));
     }
+    get snapshots() {
+        var _a;
+        return ((_a = this._snapshots) !== null && _a !== void 0 ? _a : (this._snapshots = new Client_14.Snapshots(this._options)));
+    }
     get users() {
         var _a;
-        return ((_a = this._users) !== null && _a !== void 0 ? _a : (this._users = new Client_14.Users(this._options)));
+        return ((_a = this._users) !== null && _a !== void 0 ? _a : (this._users = new Client_15.Users(this._options)));
     }
     get versions() {
         var _a;
-        return ((_a = this._versions) !== null && _a !== void 0 ? _a : (this._versions = new Client_15.Versions(this._options)));
+        return ((_a = this._versions) !== null && _a !== void 0 ? _a : (this._versions = new Client_16.Versions(this._options)));
     }
     get workbooks() {
         var _a;
-        return ((_a = this._workbooks) !== null && _a !== void 0 ? _a : (this._workbooks = new Client_16.Workbooks(this._options)));
+        return ((_a = this._workbooks) !== null && _a !== void 0 ? _a : (this._workbooks = new Client_17.Workbooks(this._options)));
     }
 }
 exports.FlatfileClient = FlatfileClient;
@@ -209,7 +214,7 @@ class Agents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -262,7 +267,7 @@ class Agents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -328,7 +333,7 @@ class Agents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -401,7 +406,7 @@ class Agents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -480,7 +485,7 @@ class Agents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -551,7 +556,7 @@ class Agents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -877,7 +882,7 @@ class Auth {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -951,7 +956,7 @@ class Auth {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -1025,7 +1030,7 @@ class Auth {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -1336,7 +1341,7 @@ class Cells {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -1949,6 +1954,19 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
+/***/ 20785:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
 /***/ 79551:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -2101,6 +2119,7 @@ __exportStar(__nccwpck_require__(95257), exports);
 __exportStar(__nccwpck_require__(44576), exports);
 __exportStar(__nccwpck_require__(84268), exports);
 __exportStar(__nccwpck_require__(32737), exports);
+__exportStar(__nccwpck_require__(20785), exports);
 __exportStar(__nccwpck_require__(46257), exports);
 __exportStar(__nccwpck_require__(50981), exports);
 __exportStar(__nccwpck_require__(25969), exports);
@@ -2196,7 +2215,7 @@ class Documents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -2266,7 +2285,7 @@ class Documents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.DocumentConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -2337,7 +2356,7 @@ class Documents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -2407,7 +2426,7 @@ class Documents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.DocumentConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -2478,7 +2497,7 @@ class Documents {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -2737,7 +2756,7 @@ class Environments {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -2787,7 +2806,7 @@ class Environments {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.EnvironmentConfigCreate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -2842,7 +2861,7 @@ class Environments {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -2913,7 +2932,7 @@ class Environments {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -2981,7 +3000,7 @@ class Environments {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.EnvironmentConfigUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -3033,7 +3052,7 @@ class Environments {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -3366,7 +3385,7 @@ class Events {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -3417,7 +3436,7 @@ class Events {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.Event.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -3483,7 +3502,7 @@ class Events {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -3529,7 +3548,7 @@ class Events {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -3588,7 +3607,7 @@ class Events {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -4463,7 +4482,7 @@ class Files {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -4520,7 +4539,7 @@ class Files {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                     "Content-Length": (yield core.getFormDataContentLength(_request)).toString(),
                 },
                 contentType: "multipart/form-data; boundary=" + _request.getBoundary(),
@@ -4583,7 +4602,7 @@ class Files {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -4652,7 +4671,7 @@ class Files {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -4722,7 +4741,7 @@ class Files {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.UpdateFileRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -4788,7 +4807,7 @@ class Files {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
                 onError: (error) => {
@@ -5054,7 +5073,7 @@ class Guests {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -5104,7 +5123,7 @@ class Guests {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.guests.create.Request.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -5154,7 +5173,7 @@ class Guests {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -5203,7 +5222,7 @@ class Guests {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -5252,7 +5271,7 @@ class Guests {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.GuestConfigUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -5302,7 +5321,7 @@ class Guests {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.guests.invite.Request.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -5578,7 +5597,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.workbooks = exports.versions = exports.users = exports.sheets = exports.secrets = exports.records = exports.property = exports.jobs = exports.guests = exports.files = exports.events = exports.environments = exports.documents = exports.commons = exports.cells = exports.auth = exports.agents = exports.spaces = void 0;
+exports.snapshots = exports.workbooks = exports.versions = exports.users = exports.sheets = exports.secrets = exports.records = exports.property = exports.jobs = exports.guests = exports.files = exports.events = exports.environments = exports.documents = exports.commons = exports.cells = exports.auth = exports.agents = exports.spaces = void 0;
 exports.spaces = __importStar(__nccwpck_require__(11165));
 exports.agents = __importStar(__nccwpck_require__(41446));
 __exportStar(__nccwpck_require__(49532), exports);
@@ -5615,6 +5634,7 @@ __exportStar(__nccwpck_require__(66483), exports);
 exports.workbooks = __importStar(__nccwpck_require__(14716));
 __exportStar(__nccwpck_require__(23763), exports);
 __exportStar(__nccwpck_require__(92062), exports);
+exports.snapshots = __importStar(__nccwpck_require__(72787));
 __exportStar(__nccwpck_require__(709), exports);
 __exportStar(__nccwpck_require__(95407), exports);
 __exportStar(__nccwpck_require__(32361), exports);
@@ -5722,7 +5742,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -5769,7 +5789,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.JobConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -5816,7 +5836,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -5862,7 +5882,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.JobUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -5909,7 +5929,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -5958,7 +5978,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -6007,7 +6027,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -6056,7 +6076,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.JobExecutionPlanRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -6106,7 +6126,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.JobExecutionPlanConfigRequest.jsonOrThrow(request, {
@@ -6158,7 +6178,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: request != null
@@ -6210,7 +6230,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -6259,7 +6279,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: request != null
@@ -6311,7 +6331,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: request != null
@@ -6363,7 +6383,7 @@ class Jobs {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: request != null
@@ -7573,7 +7593,7 @@ class Records {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -7644,7 +7664,7 @@ class Records {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.Records.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -7715,7 +7735,7 @@ class Records {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.records.insert.Request.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -7798,7 +7818,7 @@ class Records {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -7880,7 +7900,7 @@ class Records {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -7957,7 +7977,7 @@ class Records {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -8421,7 +8441,7 @@ class Secrets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -8492,7 +8512,7 @@ class Secrets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.WriteSecret.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -8563,7 +8583,7 @@ class Secrets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -8856,7 +8876,7 @@ class Sheets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -8906,7 +8926,7 @@ class Sheets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -8957,7 +8977,7 @@ class Sheets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -9027,7 +9047,7 @@ class Sheets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -9131,7 +9151,7 @@ class Sheets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 queryParameters: _queryParams,
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -9184,7 +9204,7 @@ class Sheets {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -9204,6 +9224,147 @@ class Sheets {
                     statusCode: _response.error.statusCode,
                     body: _response.error.body,
                 });
+            }
+            switch (_response.error.reason) {
+                case "non-json":
+                    throw new errors.FlatfileError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.rawBody,
+                    });
+                case "timeout":
+                    throw new errors.FlatfileTimeoutError();
+                case "unknown":
+                    throw new errors.FlatfileError({
+                        message: _response.error.errorMessage,
+                    });
+            }
+        });
+    }
+    /**
+     * Creates a snapshot of a sheet
+     * @throws {@link Flatfile.BadRequestError}
+     * @throws {@link Flatfile.NotFoundError}
+     */
+    createSnapshot(sheetId, request = {}, requestOptions) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const _response = yield ((_a = this._options.fetcher) !== null && _a !== void 0 ? _a : core.fetcher)({
+                url: (0, url_join_1.default)((_b = (yield core.Supplier.get(this._options.environment))) !== null && _b !== void 0 ? _b : environments.FlatfileEnvironment.Production, `/sheets/${yield serializers.SheetId.jsonOrThrow(sheetId)}/snapshots`),
+                method: "POST",
+                headers: {
+                    Authorization: yield this._getAuthorizationHeader(),
+                    "X-Disable-Hooks": "true",
+                    "X-Fern-Language": "JavaScript",
+                    "X-Fern-SDK-Name": "@flatfile/api",
+                    "X-Fern-SDK-Version": "1.5.22",
+                },
+                contentType: "application/json",
+                body: yield serializers.CreateSnapshotRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+                timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            });
+            if (_response.ok) {
+                return yield serializers.SnapshotResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                });
+            }
+            if (_response.error.reason === "status-code") {
+                switch (_response.error.statusCode) {
+                    case 400:
+                        throw new Flatfile.BadRequestError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    case 404:
+                        throw new Flatfile.NotFoundError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    default:
+                        throw new errors.FlatfileError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.body,
+                        });
+                }
+            }
+            switch (_response.error.reason) {
+                case "non-json":
+                    throw new errors.FlatfileError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.rawBody,
+                    });
+                case "timeout":
+                    throw new errors.FlatfileTimeoutError();
+                case "unknown":
+                    throw new errors.FlatfileError({
+                        message: _response.error.errorMessage,
+                    });
+            }
+        });
+    }
+    /**
+     * List all snapshots of a sheet
+     * @throws {@link Flatfile.BadRequestError}
+     * @throws {@link Flatfile.NotFoundError}
+     */
+    listSnapshots(sheetId, requestOptions) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const _response = yield ((_a = this._options.fetcher) !== null && _a !== void 0 ? _a : core.fetcher)({
+                url: (0, url_join_1.default)((_b = (yield core.Supplier.get(this._options.environment))) !== null && _b !== void 0 ? _b : environments.FlatfileEnvironment.Production, `/sheets/${yield serializers.SheetId.jsonOrThrow(sheetId)}/snapshots`),
+                method: "GET",
+                headers: {
+                    Authorization: yield this._getAuthorizationHeader(),
+                    "X-Disable-Hooks": "true",
+                    "X-Fern-Language": "JavaScript",
+                    "X-Fern-SDK-Name": "@flatfile/api",
+                    "X-Fern-SDK-Version": "1.5.22",
+                },
+                contentType: "application/json",
+                timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            });
+            if (_response.ok) {
+                return yield serializers.SnapshotsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                });
+            }
+            if (_response.error.reason === "status-code") {
+                switch (_response.error.statusCode) {
+                    case 400:
+                        throw new Flatfile.BadRequestError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    case 404:
+                        throw new Flatfile.NotFoundError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    default:
+                        throw new errors.FlatfileError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.body,
+                        });
+                }
             }
             switch (_response.error.reason) {
                 case "non-json":
@@ -9391,6 +9552,45 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
+/***/ 10420:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 76947:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 64390:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
 /***/ 2531:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -9417,7 +9617,251 @@ __exportStar(__nccwpck_require__(8509), exports);
 __exportStar(__nccwpck_require__(10854), exports);
 __exportStar(__nccwpck_require__(43312), exports);
 __exportStar(__nccwpck_require__(23623), exports);
+__exportStar(__nccwpck_require__(76947), exports);
+__exportStar(__nccwpck_require__(64390), exports);
+__exportStar(__nccwpck_require__(10420), exports);
 __exportStar(__nccwpck_require__(57606), exports);
+
+
+/***/ }),
+
+/***/ 77726:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Snapshots = void 0;
+const environments = __importStar(__nccwpck_require__(66402));
+const core = __importStar(__nccwpck_require__(7156));
+const Flatfile = __importStar(__nccwpck_require__(55625));
+const serializers = __importStar(__nccwpck_require__(58615));
+const url_join_1 = __importDefault(__nccwpck_require__(12821));
+const errors = __importStar(__nccwpck_require__(9411));
+class Snapshots {
+    constructor(_options) {
+        this._options = _options;
+    }
+    /**
+     * Restores a snapshot of a sheet
+     * @throws {@link Flatfile.BadRequestError}
+     * @throws {@link Flatfile.NotFoundError}
+     */
+    restoreSnapshot(snapshotId, requestOptions) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const _response = yield ((_a = this._options.fetcher) !== null && _a !== void 0 ? _a : core.fetcher)({
+                url: (0, url_join_1.default)((_b = (yield core.Supplier.get(this._options.environment))) !== null && _b !== void 0 ? _b : environments.FlatfileEnvironment.Production, `/snapshots/${yield serializers.SnapshotId.jsonOrThrow(snapshotId)}`),
+                method: "PUT",
+                headers: {
+                    Authorization: yield this._getAuthorizationHeader(),
+                    "X-Disable-Hooks": "true",
+                    "X-Fern-Language": "JavaScript",
+                    "X-Fern-SDK-Name": "@flatfile/api",
+                    "X-Fern-SDK-Version": "1.5.22",
+                },
+                contentType: "application/json",
+                timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            });
+            if (_response.ok) {
+                return yield serializers.SnapshotResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                });
+            }
+            if (_response.error.reason === "status-code") {
+                switch (_response.error.statusCode) {
+                    case 400:
+                        throw new Flatfile.BadRequestError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    case 404:
+                        throw new Flatfile.NotFoundError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    default:
+                        throw new errors.FlatfileError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.body,
+                        });
+                }
+            }
+            switch (_response.error.reason) {
+                case "non-json":
+                    throw new errors.FlatfileError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.rawBody,
+                    });
+                case "timeout":
+                    throw new errors.FlatfileTimeoutError();
+                case "unknown":
+                    throw new errors.FlatfileError({
+                        message: _response.error.errorMessage,
+                    });
+            }
+        });
+    }
+    /**
+     * Deletes a snapshot of a sheet
+     * @throws {@link Flatfile.BadRequestError}
+     * @throws {@link Flatfile.NotFoundError}
+     */
+    deleteSnapshot(snapshotId, requestOptions) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const _response = yield ((_a = this._options.fetcher) !== null && _a !== void 0 ? _a : core.fetcher)({
+                url: (0, url_join_1.default)((_b = (yield core.Supplier.get(this._options.environment))) !== null && _b !== void 0 ? _b : environments.FlatfileEnvironment.Production, `/snapshots/${yield serializers.SnapshotId.jsonOrThrow(snapshotId)}`),
+                method: "DELETE",
+                headers: {
+                    Authorization: yield this._getAuthorizationHeader(),
+                    "X-Disable-Hooks": "true",
+                    "X-Fern-Language": "JavaScript",
+                    "X-Fern-SDK-Name": "@flatfile/api",
+                    "X-Fern-SDK-Version": "1.5.22",
+                },
+                contentType: "application/json",
+                timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            });
+            if (_response.ok) {
+                return yield serializers.Success.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                });
+            }
+            if (_response.error.reason === "status-code") {
+                switch (_response.error.statusCode) {
+                    case 400:
+                        throw new Flatfile.BadRequestError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    case 404:
+                        throw new Flatfile.NotFoundError(yield serializers.Errors.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }));
+                    default:
+                        throw new errors.FlatfileError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.body,
+                        });
+                }
+            }
+            switch (_response.error.reason) {
+                case "non-json":
+                    throw new errors.FlatfileError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.rawBody,
+                    });
+                case "timeout":
+                    throw new errors.FlatfileTimeoutError();
+                case "unknown":
+                    throw new errors.FlatfileError({
+                        message: _response.error.errorMessage,
+                    });
+            }
+        });
+    }
+    _getAuthorizationHeader() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return `Bearer ${yield core.Supplier.get(this._options.token)}`;
+        });
+    }
+}
+exports.Snapshots = Snapshots;
+
+
+/***/ }),
+
+/***/ 70070:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 72787:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(70070), exports);
 
 
 /***/ }),
@@ -9519,7 +9963,7 @@ class Spaces {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -9582,7 +10026,7 @@ class Spaces {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.spaces.SpaceConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -9653,7 +10097,7 @@ class Spaces {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -9723,7 +10167,7 @@ class Spaces {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -9793,7 +10237,7 @@ class Spaces {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.spaces.SpaceConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -9864,7 +10308,7 @@ class Spaces {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -10242,7 +10686,7 @@ class Users {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -10292,7 +10736,7 @@ class Users {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.UserConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -10342,7 +10786,7 @@ class Users {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -10400,7 +10844,7 @@ class Users {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -10453,7 +10897,7 @@ class Users {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -10497,7 +10941,7 @@ class Users {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.ExchangeTokenRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -10809,7 +11253,7 @@ class Versions {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.VersionsPostRequestBody.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -11048,7 +11492,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -11110,7 +11554,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.CreateWorkbookConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -11173,7 +11617,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -11243,7 +11687,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -11313,7 +11757,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.UpdateWorkbookConfig.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -11384,7 +11828,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -11454,7 +11898,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -11524,7 +11968,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -11638,7 +12082,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -11709,7 +12153,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.Records.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -11780,7 +12224,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 body: yield serializers.workbooks.addRecordsDeprecated.Request.jsonOrThrow(request, {
@@ -11865,7 +12309,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 queryParameters: _queryParams,
@@ -11936,7 +12380,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -12006,7 +12450,7 @@ class Workbooks {
                     "X-Disable-Hooks": "true",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@flatfile/api",
-                    "X-Fern-SDK-Version": "1.5.21",
+                    "X-Fern-SDK-Version": "1.5.22",
                 },
                 contentType: "application/json",
                 timeoutMs: (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -18426,6 +18870,7 @@ exports.Action = core.serialization.object({
     primary: core.serialization.boolean().optional(),
     confirm: core.serialization.boolean().optional(),
     icon: core.serialization.string().optional(),
+    requireSelection: core.serialization.boolean().optional(),
 });
 
 
@@ -19195,6 +19640,45 @@ exports.SheetId = core.serialization.string();
 
 /***/ }),
 
+/***/ 31310:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SnapshotId = void 0;
+const core = __importStar(__nccwpck_require__(7156));
+exports.SnapshotId = core.serialization.string();
+
+
+/***/ }),
+
 /***/ 81213:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -19589,6 +20073,7 @@ __exportStar(__nccwpck_require__(95906), exports);
 __exportStar(__nccwpck_require__(23065), exports);
 __exportStar(__nccwpck_require__(54869), exports);
 __exportStar(__nccwpck_require__(16823), exports);
+__exportStar(__nccwpck_require__(31310), exports);
 __exportStar(__nccwpck_require__(95114), exports);
 __exportStar(__nccwpck_require__(78841), exports);
 __exportStar(__nccwpck_require__(21602), exports);
@@ -19937,6 +20422,7 @@ exports.Environment = core.serialization.object({
     isProd: core.serialization.boolean(),
     guestAuthentication: core.serialization.list(core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).GuestAuthenticationEnum; }))),
     features: core.serialization.record(core.serialization.string(), core.serialization.any()),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.any()),
 });
 
 
@@ -19991,6 +20477,7 @@ exports.EnvironmentConfigCreate = core.serialization.object({
     guestAuthentication: core.serialization
         .list(core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).GuestAuthenticationEnum; })))
         .optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.any()).optional(),
 });
 
 
@@ -20045,6 +20532,7 @@ exports.EnvironmentConfigUpdate = core.serialization.object({
     guestAuthentication: core.serialization
         .list(core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).GuestAuthenticationEnum; })))
         .optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.any()).optional(),
 });
 
 
@@ -23545,6 +24033,7 @@ exports.workbooks = __importStar(__nccwpck_require__(92100));
 __exportStar(__nccwpck_require__(50947), exports);
 __exportStar(__nccwpck_require__(51941), exports);
 __exportStar(__nccwpck_require__(23312), exports);
+__exportStar(__nccwpck_require__(15326), exports);
 __exportStar(__nccwpck_require__(90873), exports);
 __exportStar(__nccwpck_require__(60025), exports);
 
@@ -28292,6 +28781,85 @@ __exportStar(__nccwpck_require__(29093), exports);
 
 /***/ }),
 
+/***/ 4245:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(15326), exports);
+
+
+/***/ }),
+
+/***/ 87505:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateSnapshotRequest = void 0;
+const core = __importStar(__nccwpck_require__(7156));
+exports.CreateSnapshotRequest = core.serialization.object({
+    label: core.serialization.string().optional(),
+});
+
+
+/***/ }),
+
+/***/ 15326:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateSnapshotRequest = void 0;
+var CreateSnapshotRequest_1 = __nccwpck_require__(87505);
+Object.defineProperty(exports, "CreateSnapshotRequest", ({ enumerable: true, get: function () { return CreateSnapshotRequest_1.CreateSnapshotRequest; } }));
+
+
+/***/ }),
+
 /***/ 79915:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -28313,6 +28881,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__nccwpck_require__(29851), exports);
+__exportStar(__nccwpck_require__(4245), exports);
 
 
 /***/ }),
@@ -28519,6 +29088,8 @@ exports.Sheet = core.serialization.object({
     config: core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).SheetConfig; })),
     countRecords: core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).RecordCounts; })).optional(),
     namespace: core.serialization.string().optional(),
+    updatedAt: core.serialization.date(),
+    createdAt: core.serialization.date(),
 });
 
 
@@ -28673,6 +29244,159 @@ exports.SheetResponse = core.serialization.object({
 
 /***/ }),
 
+/***/ 44611:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Snapshot = void 0;
+const core = __importStar(__nccwpck_require__(7156));
+exports.Snapshot = core.serialization.object({
+    id: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).SnapshotId; })),
+    sheetId: core.serialization.lazy(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).SheetId; })),
+    label: core.serialization.string().optional(),
+    createdAt: core.serialization.date(),
+});
+
+
+/***/ }),
+
+/***/ 25305:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SnapshotResponse = void 0;
+const core = __importStar(__nccwpck_require__(7156));
+exports.SnapshotResponse = core.serialization.object({
+    data: core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).Snapshot; })),
+});
+
+
+/***/ }),
+
+/***/ 65885:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+/**
+ * This file was auto-generated by Fern from our API Definition.
+ */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SnapshotsResponse = void 0;
+const core = __importStar(__nccwpck_require__(7156));
+exports.SnapshotsResponse = core.serialization.object({
+    data: core.serialization.list(core.serialization.lazyObject(() => __awaiter(void 0, void 0, void 0, function* () { return (yield Promise.resolve().then(() => __importStar(__nccwpck_require__(58615)))).Snapshot; }))),
+});
+
+
+/***/ }),
+
 /***/ 29851:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -28699,6 +29423,9 @@ __exportStar(__nccwpck_require__(44743), exports);
 __exportStar(__nccwpck_require__(91089), exports);
 __exportStar(__nccwpck_require__(12403), exports);
 __exportStar(__nccwpck_require__(64323), exports);
+__exportStar(__nccwpck_require__(25305), exports);
+__exportStar(__nccwpck_require__(65885), exports);
+__exportStar(__nccwpck_require__(44611), exports);
 __exportStar(__nccwpck_require__(40610), exports);
 
 
@@ -32535,6 +33262,7 @@ const $8bff48cd584029e8$export$7fb5cacf63ee4378 = (matchFile, callback)=>{
     return (listener)=>{
         listener.on("file:created", async (event)=>{
             const { data: file } = await (0, ($parcel$interopDefault($2DtWy$flatfileapi))).files.get(event.context.fileId);
+            if (file.mode === "export") return false;
             if (typeof matchFile === "string" && !file.name.endsWith(matchFile)) return false;
             if (matchFile instanceof RegExp && !matchFile.test(file.name)) return false;
             return $8bff48cd584029e8$var$getFileBuffer(event).then((buffer)=>{
@@ -40075,6 +40803,33 @@ exports.getProxyForUrl = getProxyForUrl;
 
 /***/ }),
 
+/***/ 1656:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports._binarySearchCutoffIndex = void 0;
+function _binarySearchCutoffIndex(array, predicate) {
+    var lowIndex = 0;
+    var highIndex = array.length;
+    while (lowIndex < highIndex) {
+        var pivotIndex = (lowIndex + highIndex) >>> 1;
+        var pivot = array[pivotIndex];
+        if (predicate(pivot, pivotIndex)) {
+            lowIndex = pivotIndex + 1;
+        }
+        else {
+            highIndex = pivotIndex;
+        }
+    }
+    return highIndex;
+}
+exports._binarySearchCutoffIndex = _binarySearchCutoffIndex;
+
+
+/***/ }),
+
 /***/ 57114:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -41322,6 +42077,11 @@ __exportStar(__nccwpck_require__(62402), exports);
 __exportStar(__nccwpck_require__(42901), exports);
 __exportStar(__nccwpck_require__(68038), exports);
 __exportStar(__nccwpck_require__(28404), exports);
+__exportStar(__nccwpck_require__(61346), exports);
+__exportStar(__nccwpck_require__(15590), exports);
+__exportStar(__nccwpck_require__(46056), exports);
+__exportStar(__nccwpck_require__(46770), exports);
+__exportStar(__nccwpck_require__(91851), exports);
 __exportStar(__nccwpck_require__(60741), exports);
 __exportStar(__nccwpck_require__(98891), exports);
 __exportStar(__nccwpck_require__(70107), exports);
@@ -42902,6 +43662,121 @@ function comparer(primaryRule, secondaryRule) {
 (function (sortBy) {
     sortBy.strict = sortBy;
 })(sortBy = exports.sortBy || (exports.sortBy = {}));
+
+
+/***/ }),
+
+/***/ 61346:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sortedIndex = void 0;
+var purry_1 = __nccwpck_require__(37030);
+var _binarySearchCutoffIndex_1 = __nccwpck_require__(1656);
+function sortedIndex() {
+    return (0, purry_1.purry)(sortedIndexImplementation, arguments);
+}
+exports.sortedIndex = sortedIndex;
+var sortedIndexImplementation = function (array, item) { return (0, _binarySearchCutoffIndex_1._binarySearchCutoffIndex)(array, function (pivot) { return pivot < item; }); };
+
+
+/***/ }),
+
+/***/ 15590:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sortedIndexBy = void 0;
+var purry_1 = __nccwpck_require__(37030);
+var _binarySearchCutoffIndex_1 = __nccwpck_require__(1656);
+function sortedIndexBy() {
+    return (0, purry_1.purry)(sortedIndexByImplementation, arguments);
+}
+exports.sortedIndexBy = sortedIndexBy;
+(function (sortedIndexBy) {
+    function indexed() {
+        return (0, purry_1.purry)(sortedIndexByImplementation, arguments);
+    }
+    sortedIndexBy.indexed = indexed;
+})(sortedIndexBy = exports.sortedIndexBy || (exports.sortedIndexBy = {}));
+function sortedIndexByImplementation(array, item, valueFunction) {
+    var value = valueFunction(item);
+    return (0, _binarySearchCutoffIndex_1._binarySearchCutoffIndex)(array, function (pivot, index) { return valueFunction(pivot, index) < value; });
+}
+
+
+/***/ }),
+
+/***/ 46056:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sortedIndexWith = void 0;
+var purry_1 = __nccwpck_require__(37030);
+var _binarySearchCutoffIndex_1 = __nccwpck_require__(1656);
+function sortedIndexWith() {
+    return (0, purry_1.purry)(_binarySearchCutoffIndex_1._binarySearchCutoffIndex, arguments);
+}
+exports.sortedIndexWith = sortedIndexWith;
+(function (sortedIndexWith) {
+    function indexed() {
+        return (0, purry_1.purry)(_binarySearchCutoffIndex_1._binarySearchCutoffIndex, arguments);
+    }
+    sortedIndexWith.indexed = indexed;
+})(sortedIndexWith = exports.sortedIndexWith || (exports.sortedIndexWith = {}));
+
+
+/***/ }),
+
+/***/ 46770:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sortedLastIndex = void 0;
+var purry_1 = __nccwpck_require__(37030);
+var _binarySearchCutoffIndex_1 = __nccwpck_require__(1656);
+function sortedLastIndex() {
+    return (0, purry_1.purry)(sortedLastIndexImplementation, arguments);
+}
+exports.sortedLastIndex = sortedLastIndex;
+var sortedLastIndexImplementation = function (array, item) {
+    return (0, _binarySearchCutoffIndex_1._binarySearchCutoffIndex)(array, function (pivot) { return pivot <= item; });
+};
+
+
+/***/ }),
+
+/***/ 91851:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sortedLastIndexBy = void 0;
+var purry_1 = __nccwpck_require__(37030);
+var _binarySearchCutoffIndex_1 = __nccwpck_require__(1656);
+function sortedLastIndexBy() {
+    return (0, purry_1.purry)(sortedLastIndexByImplementation, arguments);
+}
+exports.sortedLastIndexBy = sortedLastIndexBy;
+(function (sortedLastIndexBy) {
+    function indexed() {
+        return (0, purry_1.purry)(sortedLastIndexByImplementation, arguments);
+    }
+    sortedLastIndexBy.indexed = indexed;
+})(sortedLastIndexBy = exports.sortedLastIndexBy || (exports.sortedLastIndexBy = {}));
+function sortedLastIndexByImplementation(array, item, valueFunction) {
+    var value = valueFunction(item);
+    return (0, _binarySearchCutoffIndex_1._binarySearchCutoffIndex)(array, function (pivot, index) { return valueFunction(pivot, index) <= value; });
+}
 
 
 /***/ }),
@@ -72024,7 +72899,7 @@ exports["default"] = toJSON;
 
 /***/ }),
 
-/***/ 31300:
+/***/ 87318:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
@@ -72042,7 +72917,7 @@ var api_default = /*#__PURE__*/__nccwpck_require__.n(api);
 ;// CONCATENATED MODULE: ./src/constants/workbook.json
 const workbook_namespaceObject = JSON.parse('{"name":"All Contacts","sheets":[{"name":"Contacts","slug":"contacts","fields":[{"key":"first_name","type":"string","label":"First Name","description":"The first name","constraints":[{"type":"required"}]},{"key":"last_name","type":"string","label":"Last Name","description":"The last name"},{"key":"email","type":"string","label":"Email","description":"The person\'s email","constraints":[{"type":"unique"}]},{"key":"phone","type":"string","label":"Phone Number","description":"The person\'s phone number"},{"key":"dateOfBirth","type":"date","label":"Date of Birth","description":"The person\'s birth date"},{"key":"age","type":"number","label":"Age","description":"The number of years since the person\'s birth date","constraints":[{"type":"computed"}]},{"key":"country","label":"Country","description":"The formatted country code","type":"reference","config":{"ref":"countries","key":"code","relationship":"has-one"}},{"key":"postalCode","type":"string","label":"Postal Code","description":"Zip or Postal Code"},{"key":"subscriber","type":"boolean","label":"Subscriber?","description":"Whether the person is already a subscriber"},{"key":"type","type":"enum","label":"Deal Status","description":"The deal status","config":{"options":[{"value":"new","label":"New","description":"This deal is pretty new so not clear where it will go"},{"value":"interested","label":"Interested","description":"The other party is interested! Promising"},{"value":"meeting","label":"Meeting","description":"An initial meeting has been set up, very exciting."},{"value":"opportunity","label":"Opportunity","description":"Looks like this is a legit opportunity!"},{"value":"unqualified","label":"Not a fit","description":"It didn\'t work out. Too bad."}]}}],"actions":[{"operation":"contacts:create-json","label":"Create JSON","description":"Would you like to create a JSON file?","icon":"ThreeRectangles","mode":"foreground","primary":false,"requireSelection":true}]},{"name":"Countries","slug":"countries","fields":[{"key":"code","type":"string","label":"Country Code","description":"The standardized country code","constraints":[{"type":"required"},{"type":"unique"}]},{"key":"name","type":"string","label":"Full name","description":"The full name of the country"},{"key":"currency","type":"string","label":"Currency","description":"The currency predominantly used in the country"}]}],"actions":[{"operation":"submitActionFg","mode":"foreground","label":"Submit","type":"string","description":"Submit Data","primary":true}]}');
 ;// CONCATENATED MODULE: ./src/constants/documents.json
-const documents_namespaceObject = JSON.parse('{"CE":"# Try Documents\\n\\n---\\n\\nDocuments are ways of storing information right inside your Space. Provide guidance or reference for your customers without leaving Flatfile.\\n\\n## Making this Space\\n\\nThis Space has been configured with multiple documents upon creation.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n          await api.documents.create(spaceId, {\\n            title: \\"About this Documents Demo\\",\\n            body: \\"Document text here.\\",\\n          });\\n          await api.documents.create(spaceId, {\\n            title: \\"Configure multiple Documents\\",\\n            body: \\"Document text here.\\",\\n          });\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job encountered an error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n```\\n","US":"# Configure multiple Documents\\n\\n---\\n\\nAs this example demonstrates, you many create as many Documents are you need.\\n\\n## Further documentation\\n\\nRead more about Documents [here](https://flatfile.com/docs/guides/documents).\\n\\n## Additional examples\\n\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","D8":"# Try Dynamic Configuration\\n\\n---\\n\\nTo work with data in Flatfile, you\'ll first need to create and then configure a Space.\\n\\nYour business needs will determine how many Spaces you\'ll need, you\'ll likely need more than one.\\n\\nDynamic configurations make it easy to create new Spaces that are ready to go with your pre-configured specifications.\\n\\n## Making this Space\\n\\nThis very Space was configured Dynamically.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n          await api.workbooks.create({\\n            spaceId,\\n            environmentId,\\n            name: \\"All Data\\",\\n            sheets: [\\n              ...\\n            ],\\n            actions: [\\n              {\\n                operation: \\"submitAction\\",\\n                mode: \\"foreground\\",\\n                label: \\"Submit\\",\\n                type: \\"string\\",\\n                primary: true,\\n              },\\n            ],\\n          });\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n  listener.filter(\\n    { job: \\"workbook:submitAction\\" },\\n    (configure: FlatfileListener) => {\\n      configure.on(\\n        \\"job:ready\\",\\n        async ({ context: { jobId } }: FlatfileEvent) => {\\n          try {\\n            await api.jobs.ack(jobId, {\\n              info: \\"Starting Job.\\",\\n              progress: 10,\\n            });\\n\\n          // Custom Code Here\\n\\n            await api.jobs.complete(jobId, {\\n              outcome: {\\n                message: \\"Job completed.\\",\\n              },\\n            });\\n          } catch (error) {\\n            await api.jobs.fail(jobId, {\\n              outcome: {\\n                message: \\"Job encountered an error.\\",\\n              },\\n            });\\n          }\\n        }\\n      );\\n    }\\n  );\\n}\\n```\\n\\nNotice that there are two listener configurations here:\\n\\n- `space:configure`\\n- `workbook:submitAction`\\n\\nThe `workbook:submitAction` has been configured to respond to the submit action on our Workbook. But the Workbook itself is configured dynamically via the `space:configure` listener.\\n\\n## Initializing your dynamic configuration\\n\\nWith the above code running on our Agent, we simply create a new space taking care to include the `autoConfigure: true` parameter. This parameter triggers the publication of the `space:configure` event that we\'re listening for. But you can do far more than adding a Workbook. See our other examples for further possibilities.\\n\\n## Further documentation\\n\\nRead more about dynamic configuration [here](https://flatfile.com/docs/guides/dynamic-configurations).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","A8":"# Try Extractors\\n\\n---\\n\\nThe Flatfile Platform is a powerful tool for working with your Data. But first, your data has to be available to work with. Making existing data available in Flatfile is simple: upload, extract, map.\\n\\nExtraction is the process of extracting data from its original format to the Flatfile Platform. Whether your incoming data is `.json`, `.xlsx`, `.zip`, or a multitude of others extraction can be automated via the use of Plugins. Simply configure your Listener to use one or more extractor plugins and extraction will be handled automatically upon file upload.\\n\\n## Making this Space\\n\\nThis Space has been configured to use several extractor plugins.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport { Client, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nimport { DelimiterExtractor } from \\"@flatfile/plugin-delimiter-extractor\\";\\nimport { JSONExtractor } from \\"@flatfile/plugin-json-extractor\\";\\nimport { ExcelExtractor } from \\"@flatfile/plugin-xlsx-extractor\\";\\nimport { XMLExtractor } from \\"@flatfile/plugin-xml-extractor\\";\\nimport { ZipExtractor } from \\"@flatfile/plugin-zip-extractor\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.use(JSONExtractor());\\n  listener.use(ExcelExtractor());\\n  listener.use(XMLExtractor());\\n  listener.use(DelimiterExtractor(\\"txt\\", { delimiter: \\"~\\" }));\\n  listener.use(ZipExtractor());\\n}\\n```\\n\\nTo see these work, simply upload a supported file.\\n\\nThe appropriate plugin will extract data automatically. Once extraction is complete, you can import and map your data into a workbook and it\'s ready for use.\\n\\n## Further documentation\\n\\nRead more about the possible configurations for each plugin [here](https://flatfile.com/docs/plugins/extractors/).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","lC":"# Try Flatfile\\n\\n---\\n\\nWelcome, to Flatfile.\\n\\nThis is Basic Space, configured as an interactive tour to show you around.\\n\\nLet\'s begin by first getting acquainted with what you\'re seeing here in the sidebar.\\n\\n## Data Checklist\\n\\nUse the Data Checklist to learn the data that will be expected in the Simple Workbook.\\n\\n## Files\\n\\nUse the Files screen to upload files. You can also upload them directly into Sheets.\\n\\n## Collaborators\\n\\nInvite a Guest to this Space. Their view will look a little different than yours. Try an alias email to see.\\n\\n## Simple Workbook\\n\\nThe Simple Workbook contains two Sheets: **Contacts**, and **Countries**.\\n\\n#### Things you can do here:\\n\\n1. You can upload/download CSV files into and from each Sheet.\\n2. You can manually add records to each Sheet directly in the UI.\\n3. You can also manually adjust cells & records individually, or in bulk.\\n\\n#### 1. Contacts (Sheet)\\n\\nThe **Contacts** Sheet is a very simple Sheet with one reference field, **Country**. It also has a few data validations.\\n\\n#### 2. Countries (Sheet)\\n\\nThe **Countries** Sheet is where you’ll add all of the countries you want to display in the dropdown menu in the first Sheet.\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","MX":"# Try Theming\\n\\n---\\n\\nAll Spaces are customizable via theming options enabling you to blend Flatfile seamlessly into your application.\\n\\n## Making this Space\\n\\nThis Space has been configured to leverage the visual overrides available to help you theme a Space. We\'ve customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours. Even better? Create co-branded experiences in all of your Spaces for every one of your customers.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.on(\\n    \\"space:created\\",\\n    async ({ context: { spaceId, environmentId } }: FlatfileEvent) => {\\n      await api.spaces.update(spaceId, {\\n        environmentId,\\n        metadata: {\\n          theme: {\\n            root: {\\n              primaryColor: \\"#090B2B\\",\\n              dangerColor: \\"#F44336\\",\\n              warningColor: \\"#FF9800\\",\\n            },\\n            document: {\\n              borderColor: \\"#CAD0DC\\",\\n            },\\n            sidebar: {\\n              logo: \\"path/to/logo/file\\",\\n              textColor: \\"#ECEEFF\\",\\n              titleColor: \\"#C4C9FF\\",\\n              focusBgColor: \\"#6673FF\\",\\n              focusTextColor: \\"#FFF\\",\\n              backgroundColor: \\"#090B2B\\",\\n              footerTextColor: \\"#C4C9FF\\",\\n              textUltralightColor: \\"#B9DDFF\\",\\n              borderColor: \\"#2E3168\\",\\n              activeTextColor: \\"#FFF\\",\\n            },\\n            table: {},\\n          },\\n          sidebarConfig: {\\n            showGuestInvite: true,\\n            showDataChecklist: true,\\n            showSidebar: true,\\n          },\\n        },\\n      });\\n    }\\n  );\\n}\\n```\\n\\n## Further documentation\\n\\nRead more about the possible configurations for theming [here](https://flatfile.com/docs/guides/theming).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n"}');
+const documents_namespaceObject = JSON.parse('{"PC":"# Try Actions\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","sk":"# Try Data Handling\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","Bx":"# Try Documents\\n\\n---\\n\\nDocuments are ways of storing information right inside your Space. Provide guidance or reference for your customers without leaving Flatfile.\\n\\n## Making this Space\\n\\nThis Space has been configured with multiple documents upon creation.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n          await api.documents.create(spaceId, {\\n            title: \\"About this Documents Demo\\",\\n            body: \\"Document text here.\\",\\n          });\\n          await api.documents.create(spaceId, {\\n            title: \\"Configure multiple Documents\\",\\n            body: \\"Document text here.\\",\\n          });\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job encountered an error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n```\\n","vO":"# Configure multiple Documents\\n\\n---\\n\\nAs this example demonstrates, you many create as many Documents are you need.\\n\\n## Further documentation\\n\\nRead more about Documents [here](https://flatfile.com/docs/guides/documents).\\n\\n## Additional examples\\n\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","RQ":"# Try Dynamic Configuration\\n\\n---\\n\\nTo work with data in Flatfile, you\'ll first need to create and then configure a Space.\\n\\nYour business needs will determine how many Spaces you\'ll need, you\'ll likely need more than one.\\n\\nDynamic configurations make it easy to create new Spaces that are ready to go with your pre-configured specifications.\\n\\n## Making this Space\\n\\nThis very Space was configured Dynamically.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n          await api.workbooks.create({\\n            spaceId,\\n            environmentId,\\n            name: \\"All Data\\",\\n            sheets: [\\n              ...\\n            ],\\n            actions: [\\n              {\\n                operation: \\"submitAction\\",\\n                mode: \\"foreground\\",\\n                label: \\"Submit\\",\\n                type: \\"string\\",\\n                primary: true,\\n              },\\n            ],\\n          });\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n  listener.filter(\\n    { job: \\"workbook:submitAction\\" },\\n    (configure: FlatfileListener) => {\\n      configure.on(\\n        \\"job:ready\\",\\n        async ({ context: { jobId } }: FlatfileEvent) => {\\n          try {\\n            await api.jobs.ack(jobId, {\\n              info: \\"Starting Job.\\",\\n              progress: 10,\\n            });\\n\\n          // Custom Code Here\\n\\n            await api.jobs.complete(jobId, {\\n              outcome: {\\n                message: \\"Job completed.\\",\\n              },\\n            });\\n          } catch (error) {\\n            await api.jobs.fail(jobId, {\\n              outcome: {\\n                message: \\"Job encountered an error.\\",\\n              },\\n            });\\n          }\\n        }\\n      );\\n    }\\n  );\\n}\\n```\\n\\nNotice that there are two listener configurations here:\\n\\n- `space:configure`\\n- `workbook:submitAction`\\n\\nThe `workbook:submitAction` has been configured to respond to the submit action on our Workbook. But the Workbook itself is configured dynamically via the `space:configure` listener.\\n\\n## Initializing your dynamic configuration\\n\\nWith the above code running on our Agent, we simply create a new space taking care to include the `autoConfigure: true` parameter. This parameter triggers the publication of the `space:configure` event that we\'re listening for. But you can do far more than adding a Workbook. See our other examples for further possibilities.\\n\\n## Further documentation\\n\\nRead more about dynamic configuration [here](https://flatfile.com/docs/guides/dynamic-configurations).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","qJ":"# Try Egress\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","Y_":"# Try Extractors\\n\\n---\\n\\nThe Flatfile Platform is a powerful tool for working with your Data. But first, your data has to be available to work with. Making existing data available in Flatfile is simple: upload, extract, map.\\n\\nExtraction is the process of extracting data from its original format to the Flatfile Platform. Whether your incoming data is `.json`, `.xlsx`, `.zip`, or a multitude of others extraction can be automated via the use of Plugins. Simply configure your Listener to use one or more extractor plugins and extraction will be handled automatically upon file upload.\\n\\n## Making this Space\\n\\nThis Space has been configured to use several extractor plugins.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport { Client, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nimport { DelimiterExtractor } from \\"@flatfile/plugin-delimiter-extractor\\";\\nimport { JSONExtractor } from \\"@flatfile/plugin-json-extractor\\";\\nimport { ExcelExtractor } from \\"@flatfile/plugin-xlsx-extractor\\";\\nimport { XMLExtractor } from \\"@flatfile/plugin-xml-extractor\\";\\nimport { ZipExtractor } from \\"@flatfile/plugin-zip-extractor\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.use(JSONExtractor());\\n  listener.use(ExcelExtractor());\\n  listener.use(XMLExtractor());\\n  listener.use(DelimiterExtractor(\\"txt\\", { delimiter: \\"~\\" }));\\n  listener.use(ZipExtractor());\\n}\\n```\\n\\nTo see these work, simply upload a supported file.\\n\\nThe appropriate plugin will extract data automatically. Once extraction is complete, you can import and map your data into a workbook and it\'s ready for use.\\n\\n## Further documentation\\n\\nRead more about the possible configurations for each plugin [here](https://flatfile.com/docs/plugins/extractors/).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","nh":"# Try Headless\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","Lf":"# Try Metadata\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","T8":"# Try Namespaces\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","xb":"# Try Secrets\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","oe":"# Try Sidebar\\n\\n---\\n\\n## Making this Space\\n\\nThis Space has been configured\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n// CODE HERE\\n```\\n\\nMore Text\\n\\n## Further documentation\\n\\nRead more about MORE INFO [here](LINK).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Simple Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","H7":"# Try Flatfile\\n\\n---\\n\\nWelcome, to Flatfile.\\n\\nThis is Basic Space, configured as an interactive tour to show you around.\\n\\nLet\'s begin by first getting acquainted with what you\'re seeing here in the sidebar.\\n\\n## Data Checklist\\n\\nUse the Data Checklist to learn the data that will be expected in the Simple Workbook.\\n\\n## Files\\n\\nUse the Files screen to upload files. You can also upload them directly into Sheets.\\n\\n## Collaborators\\n\\nInvite a Guest to this Space. Their view will look a little different than yours. Try an alias email to see.\\n\\n## Simple Workbook\\n\\nThe Simple Workbook contains two Sheets: **Contacts**, and **Countries**.\\n\\n#### Things you can do here:\\n\\n1. You can upload/download CSV files into and from each Sheet.\\n2. You can manually add records to each Sheet directly in the UI.\\n3. You can also manually adjust cells & records individually, or in bulk.\\n\\n#### 1. Contacts (Sheet)\\n\\nThe **Contacts** Sheet is a very simple Sheet with one reference field, **Country**. It also has a few data validations.\\n\\n#### 2. Countries (Sheet)\\n\\nThe **Countries** Sheet is where you’ll add all of the countries you want to display in the dropdown menu in the first Sheet.\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n","Ox":"# Try Theming\\n\\n---\\n\\nAll Spaces are customizable via theming options enabling you to blend Flatfile seamlessly into your application.\\n\\n## Making this Space\\n\\nThis Space has been configured to leverage the visual overrides available to help you theme a Space. We\'ve customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours. Even better? Create co-branded experiences in all of your Spaces for every one of your customers.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.on(\\n    \\"space:created\\",\\n    async ({ context: { spaceId, environmentId } }: FlatfileEvent) => {\\n      await api.spaces.update(spaceId, {\\n        environmentId,\\n        metadata: {\\n          theme: {\\n            root: {\\n              primaryColor: \\"#090B2B\\",\\n              dangerColor: \\"#F44336\\",\\n              warningColor: \\"#FF9800\\",\\n            },\\n            document: {\\n              borderColor: \\"#CAD0DC\\",\\n            },\\n            sidebar: {\\n              logo: \\"path/to/logo/file\\",\\n              textColor: \\"#ECEEFF\\",\\n              titleColor: \\"#C4C9FF\\",\\n              focusBgColor: \\"#6673FF\\",\\n              focusTextColor: \\"#FFF\\",\\n              backgroundColor: \\"#090B2B\\",\\n              footerTextColor: \\"#C4C9FF\\",\\n              textUltralightColor: \\"#B9DDFF\\",\\n              borderColor: \\"#2E3168\\",\\n              activeTextColor: \\"#FFF\\",\\n            },\\n            table: {},\\n          },\\n          sidebarConfig: {\\n            showGuestInvite: true,\\n            showDataChecklist: true,\\n            showSidebar: true,\\n          },\\n        },\\n      });\\n    }\\n  );\\n}\\n```\\n\\n## Further documentation\\n\\nRead more about the possible configurations for theming [here](https://flatfile.com/docs/guides/theming).\\n\\n## Additional examples\\n\\n- [Documents Example](https://platform.flatfile.com/getting-started)\\n- [Dynamic Example](https://platform.flatfile.com/getting-started)\\n- [Extractors Example](https://platform.flatfile.com/getting-started)\\n- [Theming Example](https://platform.flatfile.com/getting-started)\\n"}');
 ;// CONCATENATED MODULE: ./src/demos/documents.ts
 
 
@@ -72056,8 +72931,8 @@ function flatfileEventListener(listener) {
                     progress: 10,
                 });
                 const { data } = await api_default().documents.create(spaceId, {
-                    title: "About this Documents Demo",
-                    body: documents_namespaceObject.CE,
+                    title: "About this documents demo",
+                    body: documents_namespaceObject.Bx,
                 });
                 const documentId = data.id;
                 const spaceUpdateParams = {
@@ -72072,7 +72947,7 @@ function flatfileEventListener(listener) {
                 await api_default().spaces.update(spaceId, spaceUpdateParams);
                 await api_default().documents.create(spaceId, {
                     title: "Configure multiple Documents",
-                    body: documents_namespaceObject.US,
+                    body: documents_namespaceObject.vO,
                 });
                 const documentsWorkbook = {
                     ...{ Labels: ["Primary", "Documents-Demo"] },
@@ -72115,8 +72990,8 @@ function dynamic_flatfileEventListener(listener) {
                     progress: 10,
                 });
                 const { data } = await api_default().documents.create(spaceId, {
-                    title: "About this Dynamic Demo",
-                    body: documents_namespaceObject.D8,
+                    title: "About this dynamic configuration demo",
+                    body: documents_namespaceObject.RQ,
                 });
                 const documentId = data.id;
                 const spaceUpdateParams = {
@@ -72210,8 +73085,8 @@ function extractor_flatfileEventListener(listener) {
                     progress: 10,
                 });
                 const { data } = await api_default().documents.create(spaceId, {
-                    title: "About this Extractor Demo",
-                    body: documents_namespaceObject.A8,
+                    title: "About this extractor demo",
+                    body: documents_namespaceObject.Y_,
                 });
                 const documentId = data.id;
                 const spaceUpdateParams = {
@@ -76814,8 +77689,8 @@ function simple_flatfileEventListener(listener) {
                     progress: 10,
                 });
                 const { data } = await api_default().documents.create(spaceId, {
-                    title: "Simple Demo",
-                    body: documents_namespaceObject.lC,
+                    title: "About this demo",
+                    body: documents_namespaceObject.H7,
                 });
                 const documentId = data.id;
                 const spaceUpdateParams = {
@@ -76930,10 +77805,11 @@ function theming_flatfileEventListener(listener) {
                     progress: 10,
                 });
                 const { data } = await api_default().documents.create(spaceId, {
-                    title: "About this Theming Demo",
-                    body: documents_namespaceObject.MX,
+                    title: "About this theming demo",
+                    body: documents_namespaceObject.Ox,
                 });
                 const documentId = data.id;
+                console.log("documentId: ", documentId);
                 const spaceUpdateParams = {
                     metadata: {
                         sidebarConfig: {
@@ -76976,7 +77852,455 @@ function theming_flatfileEventListener(listener) {
     });
 }
 
+;// CONCATENATED MODULE: ./src/demos/headless.ts
+
+
+
+function headless_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this headless demo",
+                    body: documents_namespaceObject.nh,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Headless-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/secrets.ts
+
+
+
+function secrets_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this secrets demo",
+                    body: documents_namespaceObject.xb,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Secrets-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/sidebar.ts
+
+
+
+function sidebar_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this sidebar demo",
+                    body: documents_namespaceObject.oe,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Sidebar-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/data.ts
+
+
+
+function data_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this data handling demo",
+                    body: documents_namespaceObject.sk,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Data-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/namespace.ts
+
+
+
+function namespace_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this namespace demo",
+                    body: documents_namespaceObject.T8,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Namespace-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/metadata.ts
+
+
+
+function metadata_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this metadata demo",
+                    body: documents_namespaceObject.Lf,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Metadata-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/egress.ts
+
+
+
+function egress_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this egress demo",
+                    body: documents_namespaceObject.qJ,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Egress-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/actions.ts
+
+
+
+function actions_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: `Starting Job: ${jobId}`,
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this actions demo ",
+                    body: documents_namespaceObject.PC,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const documentsWorkbook = {
+                    ...{ Labels: ["Primary", "Actions-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...documentsWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} completed.`,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: `Job ${jobId} encountered an error.`,
+                    },
+                });
+            }
+        });
+    });
+}
+
 ;// CONCATENATED MODULE: ./src/index.ts
+
+
+
+
+
+
+
+
 
 
 
@@ -76989,6 +78313,14 @@ function theming_flatfileEventListener(listener) {
     listener.namespace(["space:extractor-demo"], extractor_flatfileEventListener);
     listener.namespace(["space:dynamic-demo"], dynamic_flatfileEventListener);
     listener.namespace(["space:documents-demo"], flatfileEventListener);
+    listener.namespace(["space:headless-demo"], headless_flatfileEventListener);
+    listener.namespace(["space:secrets-demo"], secrets_flatfileEventListener);
+    listener.namespace(["space:sidebar-demo"], sidebar_flatfileEventListener);
+    listener.namespace(["space:data-demo"], data_flatfileEventListener);
+    listener.namespace(["space:namespace-demo"], namespace_flatfileEventListener);
+    listener.namespace(["space:metadata-demo"], metadata_flatfileEventListener);
+    listener.namespace(["space:egress-demo"], egress_flatfileEventListener);
+    listener.namespace(["space:actions-demo"], actions_flatfileEventListener);
 }
 
 

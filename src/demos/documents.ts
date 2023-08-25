@@ -1,7 +1,10 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import workbookConfig from "../constants/workbook.json";
-import { documents1, documents2 } from "../constants/documents.json";
+import {
+  documentsDocument1,
+  documentsDocument2,
+} from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -15,8 +18,8 @@ export default function flatfileEventListener(listener: Client) {
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "About this Documents Demo",
-            body: documents1,
+            title: "About this documents demo",
+            body: documentsDocument1,
           });
 
           const documentId = data.id;
@@ -34,7 +37,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.documents.create(spaceId, {
             title: "Configure multiple Documents",
-            body: documents2,
+            body: documentsDocument2,
           });
 
           const documentsWorkbook = {

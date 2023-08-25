@@ -1,7 +1,7 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import workbookConfig from "../constants/workbook.json";
-import { dynamic } from "../constants/documents.json";
+import { dynamicDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -15,8 +15,8 @@ export default function flatfileEventListener(listener: Client) {
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "About this Dynamic Demo",
-            body: dynamic,
+            title: "About this dynamic configuration demo",
+            body: dynamicDocument,
           });
 
           const documentId = data.id;

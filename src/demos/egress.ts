@@ -1,8 +1,7 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import workbookConfig from "../constants/workbook.json";
-import themeConfig from "../constants/theme.json";
-import { themingDocument } from "../constants/documents.json";
+import { egressDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -16,12 +15,11 @@ export default function flatfileEventListener(listener: Client) {
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "About this theming demo",
-            body: themingDocument,
+            title: "About this egress demo",
+            body: egressDocument,
           });
 
           const documentId = data.id;
-          console.log("documentId: ", documentId);
           const spaceUpdateParams = {
             metadata: {
               sidebarConfig: {
@@ -34,8 +32,8 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.spaces.update(spaceId, spaceUpdateParams);
 
-          const themingWorkbook = {
-            ...{ Labels: ["Primary", "Theming-Demo"] },
+          const documentsWorkbook = {
+            ...{ Labels: ["Primary", "Egress-Demo"] },
             ...workbookConfig,
           };
 
@@ -43,12 +41,7 @@ export default function flatfileEventListener(listener: Client) {
           await api.workbooks.create({
             spaceId,
             environmentId,
-            ...themingWorkbook,
-          });
-
-          await api.spaces.update(spaceId, {
-            environmentId,
-            ...themeConfig,
+            ...documentsWorkbook,
           });
 
           await api.jobs.complete(jobId, {

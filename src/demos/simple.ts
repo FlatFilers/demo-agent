@@ -4,7 +4,7 @@ import { FlatfileRecord, recordHook } from "@flatfile/plugin-record-hook";
 import axios from "axios";
 
 import workbookConfig from "../constants/workbook.json";
-import { simple } from "../constants/documents.json";
+import { simpleDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -18,8 +18,8 @@ export default function flatfileEventListener(listener: Client) {
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "Simple Demo",
-            body: simple,
+            title: "About this demo",
+            body: simpleDocument,
           });
 
           const documentId = data.id;

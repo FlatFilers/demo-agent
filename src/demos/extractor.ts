@@ -8,7 +8,7 @@ import { XMLExtractor } from "@flatfile/plugin-xml-extractor";
 import { ZipExtractor } from "@flatfile/plugin-zip-extractor";
 
 import workbookConfig from "../constants/workbook.json";
-import { extractors } from "../constants/documents.json";
+import { extractorDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -22,8 +22,8 @@ export default function flatfileEventListener(listener: Client) {
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "About this Extractor Demo",
-            body: extractors,
+            title: "About this extractor demo",
+            body: extractorDocument,
           });
 
           const documentId = data.id;
