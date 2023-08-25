@@ -1,0 +1,86 @@
+[
+  {
+    "themeName": { "value": "Base" },
+    "textColor": { "value": "#ECEEFF" },
+    "titleColor": { "value": "#C4C9FF" },
+    "focusBgColor": { "value": "#6673FF" },
+    "focusTextColor": { "value": "#FFF" },
+    "backgroundColor": { "value": "#090B2B" },
+    "footerTextColor": { "value": "#C4C9FF" },
+    "textUltralightColor": { "value": "#B9DDFF" },
+    "borderColor": { "value": "#2E3168" },
+    "activeTextColor": { "value": "#FFF" }
+  },
+  {
+    "themeName": { "value": "Cotton Candy" },
+    "textColor": { "value": "#FFCBF2" },
+    "titleColor": { "value": "#ECBCFD" },
+    "focusBgColor": { "value": "#E2AFFF" },
+    "focusTextColor": { "value": "#DEAAFF" },
+    "backgroundColor": { "value": "#D8BBFF" },
+    "footerTextColor": { "value": "#D0D1FF" },
+    "textUltralightColor": { "value": "#C8E7FF" },
+    "borderColor": { "value": "#C0FDFF" },
+    "activeTextColor": { "value": "#F3C4FB" }
+  },
+  {
+    "themeName": { "value": "Picnic Blanket" },
+    "textColor": { "value": "#005F73" },
+    "titleColor": { "value": "#0A9396" },
+    "focusBgColor": { "value": "#94D2BD" },
+    "focusTextColor": { "value": "#E9D8A6" },
+    "backgroundColor": { "value": "#EE9B00" },
+    "footerTextColor": { "value": "#CA6702" },
+    "textUltralightColor": { "value": "#BB3E03" },
+    "borderColor": { "value": "#AE2012" },
+    "activeTextColor": { "value": "#9B2226" }
+  },
+  {
+    "themeName": { "value": "Roller Derby" },
+    "textColor": { "value": "#F72585" },
+    "titleColor": { "value": "#B5179E" },
+    "focusBgColor": { "value": "#7209B7" },
+    "focusTextColor": { "value": "#560BAD" },
+    "backgroundColor": { "value": "#3A0CA3" },
+    "footerTextColor": { "value": "#3F37C9" },
+    "textUltralightColor": { "value": "#4361EE" },
+    "borderColor": { "value": "#4895EF" },
+    "activeTextColor": { "value": "#4CC9F0" }
+  },
+  {
+    "themeName": { "value": "Mono Green" },
+    "textColor": { "value": "#D8F3DC" },
+    "titleColor": { "value": "#B7E4C7" },
+    "focusBgColor": { "value": "#95D5B2" },
+    "focusTextColor": { "value": "#74C69D" },
+    "backgroundColor": { "value": "#52B788" },
+    "footerTextColor": { "value": "#40916C" },
+    "textUltralightColor": { "value": "#2D6A4F" },
+    "borderColor": { "value": "#1B4332" },
+    "activeTextColor": { "value": "#081C15" }
+  },
+  {
+    "themeName": { "value": "This Is Fine" },
+    "textColor": { "value": "#370617" },
+    "titleColor": { "value": "#6A040F" },
+    "focusBgColor": { "value": "#9D0208" },
+    "focusTextColor": { "value": "#D00000" },
+    "backgroundColor": { "value": "#DC2F02" },
+    "footerTextColor": { "value": "#E85D04" },
+    "textUltralightColor": { "value": "#F48C06" },
+    "borderColor": { "value": "#F48C06" },
+    "activeTextColor": { "value": "#FAA307" }
+  },
+  {
+    "themeName": { "value": "Mono Ocean" },
+    "textColor": { "value": "#03045E" },
+    "titleColor": { "value": "#023E8A" },
+    "focusBgColor": { "value": "#0077B6" },
+    "focusTextColor": { "value": "#0096C7" },
+    "backgroundColor": { "value": "#00B4D8" },
+    "footerTextColor": { "value": "#48CAE4" },
+    "textUltralightColor": { "value": "#90E0EF" },
+    "borderColor": { "value": "#ADE8F4" },
+    "activeTextColor": { "value": "#CAF0F8" }
+  }
+]

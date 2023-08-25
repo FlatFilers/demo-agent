@@ -1,0 +1,88 @@
+{
+  "name": "Movies",
+  "slug": "movies",
+  "sheets": [
+    {
+      "name": "Bechdel Data",
+      "slug": "bechdel",
+      "fields": [
+        {
+          "key": "year",
+          "label": "year",
+          "type": "number"
+        },
+        {
+          "key": "imdb",
+          "label": "imdb",
+          "type": "string"
+        },
+        {
+          "key": "title",
+          "label": "title",
+          "type": "string"
+        },
+        {
+          "key": "test",
+          "label": "test",
+          "type": "string"
+        },
+        {
+          "key": "clean_test",
+          "label": "clean_test",
+          "type": "string"
+        },
+        {
+          "key": "binary",
+          "label": "binary",
+          "type": "string"
+        },
+        {
+          "key": "budget",
+          "label": "budget",
+          "type": "number"
+        },
+        {
+          "key": "domgross",
+          "label": "domgross",
+          "type": "number"
+        },
+        {
+          "key": "intgross",
+          "label": "intgross",
+          "type": "number"
+        },
+        {
+          "key": "code",
+          "label": "code",
+          "type": "string"
+        },
+        {
+          "key": "budget_2013",
+          "label": "budget_2013$",
+          "type": "number"
+        },
+        {
+          "key": "domgross_2013",
+          "label": "domgross_2013$",
+          "type": "number"
+        },
+        {
+          "key": "intgross_2013",
+          "label": "intgross_2013$",
+          "type": "number"
+        },
+        {
+          "key": "period_code",
+          "label": "period code",
+          "type": "number"
+        },
+        {
+          "key": "decade_code",
+          "label": "decade code",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "actions": []
+}

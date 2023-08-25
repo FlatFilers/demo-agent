@@ -6,11 +6,10 @@ As this example demonstrates, you many create as many Documents are you need.
 
 ## Further documentation
 
-Read more about Documents [here](https://flatfile.com/docs/guides/documents).
+Read more about building pages in your sidebar [here](https://flatfile.com/docs/guides/documents).
 
-## Additional examples
+## Learn more about Flatfile by trying our other demos
 
-- [Dynamic Example](https://platform.flatfile.com/getting-started)
-- [Extractors Example](https://platform.flatfile.com/getting-started)
-- [Simple Example](https://platform.flatfile.com/getting-started)
-- [Theming Example](https://platform.flatfile.com/getting-started)
+- [Dynamic Configurations](https://platform.flatfile.com/getting-started)
+- [Extractors](https://platform.flatfile.com/getting-started)
+- [Theming](https://platform.flatfile.com/getting-started)

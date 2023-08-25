@@ -1,7 +1,7 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
-import workbookConfig from "../constants/workbook.json";
 import { sidebarDocument } from "../constants/documents.json";
+import simpleWorkbook from "../constants/workbook.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -10,12 +10,12 @@ export default function flatfileEventListener(listener: Client) {
       async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
         try {
           await api.jobs.ack(jobId, {
-            info: `Starting Job: ${jobId}`,
+            info: "Job started.",
             progress: 10,
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "About this sidebar demo",
+            title: "About this Sidebar Demo",
             body: sidebarDocument,
           });
 
@@ -32,21 +32,21 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.spaces.update(spaceId, spaceUpdateParams);
 
-          const documentsWorkbook = {
+          const sidebarWorkbook = {
             ...{ Labels: ["Primary", "Sidebar-Demo"] },
-            ...workbookConfig,
+            ...simpleWorkbook,
           };
 
           // @ts-ignore
           await api.workbooks.create({
             spaceId,
             environmentId,
-            ...documentsWorkbook,
+            ...sidebarWorkbook,
           });
 
           await api.jobs.complete(jobId, {
             outcome: {
-              message: `Job ${jobId} completed.`,
+              message: "Job completed.",
             },
           });
         } catch (error: any) {
@@ -54,7 +54,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.jobs.fail(jobId, {
             outcome: {
-              message: `Job ${jobId} encountered an error.`,
+              message: "Job error.",
             },
           });
         }

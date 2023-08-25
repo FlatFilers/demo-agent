@@ -1,6 +1,6 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
-import workbookConfig from "../constants/workbook.json";
+import simpleWorkbook from "../constants/workbook.json";
 import { dynamicDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
@@ -10,12 +10,12 @@ export default function flatfileEventListener(listener: Client) {
       async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
         try {
           await api.jobs.ack(jobId, {
-            info: `Starting Job: ${jobId}`,
+            info: "Job started.",
             progress: 10,
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "About this dynamic configuration demo",
+            title: "About this Dynamic Demo",
             body: dynamicDocument,
           });
 
@@ -34,7 +34,7 @@ export default function flatfileEventListener(listener: Client) {
 
           const dynamicWorkbook = {
             ...{ Labels: ["Primary", "Dynamic-Demo"] },
-            ...workbookConfig,
+            ...simpleWorkbook,
           };
 
           // @ts-ignore
@@ -46,7 +46,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.jobs.complete(jobId, {
             outcome: {
-              message: `Job ${jobId} completed.`,
+              message: "Job completed.",
             },
           });
         } catch (error: any) {
@@ -54,7 +54,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.jobs.fail(jobId, {
             outcome: {
-              message: `Job ${jobId} encountered an error.`,
+              message: "Job error.",
             },
           });
         }
@@ -71,7 +71,7 @@ export default function flatfileEventListener(listener: Client) {
           console.log("My job is running", jobId);
           try {
             await api.jobs.ack(jobId, {
-              info: `Starting Job: ${jobId}`,
+              info: "Job started.",
               progress: 10,
             });
 
@@ -79,7 +79,7 @@ export default function flatfileEventListener(listener: Client) {
 
             await api.jobs.complete(jobId, {
               outcome: {
-                message: `Job ${jobId} completed.`,
+                message: "Job completed.",
               },
             });
           } catch (error: any) {
@@ -87,7 +87,7 @@ export default function flatfileEventListener(listener: Client) {
 
             await api.jobs.fail(jobId, {
               outcome: {
-                message: `Job ${jobId} encountered an error.`,
+                message: "Job error.",
               },
             });
           }
