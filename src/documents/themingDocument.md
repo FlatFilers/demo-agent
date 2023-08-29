@@ -1,4 +1,4 @@
-# Try Theming
+# Customize the look and feel of Flatfile to match your brand
 
 ---
 
@@ -6,7 +6,9 @@ All Spaces are customizable via theming options enabling you to blend Flatfile s
 
 ## Making this Space
 
-This Space has been configured to leverage the visual overrides available to help you theme a Space. We've customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours. Even better? Create co-branded experiences in all of your Spaces for every one of your customers.
+This Space has been configured to leverage the visual overrides available to help you theme a Space.\
+We've customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours.\
+Even better? Create co-branded experiences in all of your Spaces for every one of your customers.
 
 Here's a look at the code that was used to create it:
 
@@ -56,13 +58,17 @@ export default function flatfileEventListener(listener: Client) {
 }
 ```
 
+## Things you can do here
+
+Set the sidebar theme straight from the configurations worksheet! Simply select a theme, then select "More Actions", "Update Theme".\
+The listener configured behind this space will get information about your selection and make a call to update your sidebar theme.
+
 ## Further documentation
 
-Read more about the possible configurations for theming [here](https://flatfile.com/docs/guides/theming).
+Read more about how to customize the look and feel of Flatfile to match your brand [here](https://flatfile.com/docs/guides/theming).
 
-## Additional examples
+## Learn more about Flatfile by trying our other demos
 
-- [Documents Example](https://platform.flatfile.com/getting-started)
-- [Dynamic Example](https://platform.flatfile.com/getting-started)
-- [Extractors Example](https://platform.flatfile.com/getting-started)
-- [Theming Example](https://platform.flatfile.com/getting-started)
+- [Documents](https://platform.flatfile.com/getting-started)
+- [Dynamic Configurations](https://platform.flatfile.com/getting-started)
+- [Extractors](https://platform.flatfile.com/getting-started)

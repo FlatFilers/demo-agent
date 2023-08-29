@@ -3,8 +3,8 @@ import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import { FlatfileRecord, recordHook } from "@flatfile/plugin-record-hook";
 import axios from "axios";
 
-import workbookConfig from "../constants/workbook.json";
-import { simple } from "../constants/documents.json";
+import simpleWorkbook from "../constants/workbook.json";
+import { simpleDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -13,13 +13,13 @@ export default function flatfileEventListener(listener: Client) {
       async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
         try {
           await api.jobs.ack(jobId, {
-            info: `Starting Job: ${jobId}`,
+            info: "Job started.",
             progress: 10,
           });
 
           const { data } = await api.documents.create(spaceId, {
-            title: "Simple Demo",
-            body: simple,
+            title: "About this Demo",
+            body: simpleDocument,
           });
 
           const documentId = data.id;
@@ -35,21 +35,21 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.spaces.update(spaceId, spaceUpdateParams);
 
-          const simpleWorkbook = {
+          const workbook = {
             ...{ Labels: ["Primary", "Simple-Demo"] },
-            ...workbookConfig,
+            ...simpleWorkbook,
           };
 
           // @ts-ignore
           await api.workbooks.create({
             spaceId,
             environmentId,
-            ...simpleWorkbook,
+            ...workbook,
           });
 
           await api.jobs.complete(jobId, {
             outcome: {
-              message: `Job ${jobId} completed.`,
+              message: "Job completed.",
             },
           });
         } catch (error: any) {
@@ -57,7 +57,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.jobs.fail(jobId, {
             outcome: {
-              message: `Job ${jobId} encountered an error.`,
+              message: "Job error.",
             },
           });
         }

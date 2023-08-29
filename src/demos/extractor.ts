@@ -1,14 +1,12 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 
-import { DelimiterExtractor } from "@flatfile/plugin-delimiter-extractor";
 import { JSONExtractor } from "@flatfile/plugin-json-extractor";
 import { ExcelExtractor } from "@flatfile/plugin-xlsx-extractor";
 import { XMLExtractor } from "@flatfile/plugin-xml-extractor";
 import { ZipExtractor } from "@flatfile/plugin-zip-extractor";
-
-import workbookConfig from "../constants/workbook.json";
-import { extractors } from "../constants/documents.json";
+import movies from "../constants/movies.json";
+import { extractorDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -17,13 +15,13 @@ export default function flatfileEventListener(listener: Client) {
       async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
         try {
           await api.jobs.ack(jobId, {
-            info: `Starting Job: ${jobId}`,
+            info: "Job started.",
             progress: 10,
           });
 
           const { data } = await api.documents.create(spaceId, {
             title: "About this Extractor Demo",
-            body: extractors,
+            body: extractorDocument,
           });
 
           const documentId = data.id;
@@ -39,21 +37,21 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.spaces.update(spaceId, spaceUpdateParams);
 
-          const extractorWorkbook = {
+          const movieWorkbook = {
             ...{ Labels: ["Primary", "Extractor-Demo"] },
-            ...workbookConfig,
+            ...movies,
           };
 
           // @ts-ignore
           await api.workbooks.create({
             spaceId,
             environmentId,
-            ...extractorWorkbook,
+            ...movieWorkbook,
           });
 
           await api.jobs.complete(jobId, {
             outcome: {
-              message: `Job ${jobId} completed.`,
+              message: "Job completed.",
             },
           });
         } catch (error: any) {
@@ -61,7 +59,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.jobs.fail(jobId, {
             outcome: {
-              message: `Job ${jobId} encountered an error.`,
+              message: "Job error.",
             },
           });
         }
@@ -72,6 +70,5 @@ export default function flatfileEventListener(listener: Client) {
   listener.use(JSONExtractor());
   listener.use(ExcelExtractor());
   listener.use(XMLExtractor());
-  listener.use(DelimiterExtractor("txt", { delimiter: "~" }));
   listener.use(ZipExtractor());
 }

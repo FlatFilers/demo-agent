@@ -1,4 +1,4 @@
-# Try Documents
+# Build pages in your sidebar with Documents
 
 ---
 
@@ -19,18 +19,25 @@ export default function flatfileEventListener(listener: Client) {
       "job:ready",
       async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
         try {
+          // Acknowledge the space:configure job:ready event was received
           await api.jobs.ack(jobId, {
             info: "Job started.",
             progress: 10,
           });
+
+          // Add first document
           await api.documents.create(spaceId, {
             title: "About this Documents Demo",
             body: "Document text here.",
           });
+
+          // Add another document
           await api.documents.create(spaceId, {
             title: "Configure multiple Documents",
             body: "Document text here.",
           });
+
+          // Notify the space:configure job has been completed
           await api.jobs.complete(jobId, {
             outcome: {
               message: "Job completed.",

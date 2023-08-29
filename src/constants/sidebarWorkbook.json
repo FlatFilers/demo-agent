@@ -1,0 +1,81 @@
+{
+  "name": "Configurations",
+  "sheets": [
+    {
+      "name": "Themes",
+      "slug": "themes",
+      "fields": [
+        {
+          "key": "themeName",
+          "type": "string",
+          "label": "Theme"
+        },
+        {
+          "key": "textColor",
+          "type": "string",
+          "label": "Text Color"
+        },
+        {
+          "key": "titleColor",
+          "type": "string",
+          "label": "Title Color"
+        },
+        {
+          "key": "focusBgColor",
+          "type": "string",
+          "label": "Focus Background Color"
+        },
+        {
+          "key": "focusTextColor",
+          "type": "string",
+          "label": "Focus Text Color"
+        },
+        {
+          "key": "backgroundColor",
+          "type": "string",
+          "label": "Background Color"
+        },
+        {
+          "key": "footerTextColor",
+          "type": "string",
+          "label": "Footer Text Color"
+        },
+        {
+          "key": "textUltralightColor",
+          "type": "string",
+          "label": "Text Ultralight Color"
+        },
+        {
+          "key": "borderColor",
+          "type": "string",
+          "label": "Border Color"
+        },
+        {
+          "key": "activeTextColor",
+          "type": "string",
+          "label": "Active Text Color"
+        }
+      ],
+      "actions": [
+        {
+          "operation": "update-theme",
+          "label": "Update Theme",
+          "description": "Change your sidebar theme?",
+          "mode": "foreground",
+          "primary": false,
+          "requireSelection": true
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "operation": "submitActionFg",
+      "mode": "foreground",
+      "label": "Submit",
+      "type": "string",
+      "description": "Submit Data",
+      "primary": true
+    }
+  ]
+}
