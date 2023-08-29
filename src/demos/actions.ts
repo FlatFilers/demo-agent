@@ -61,4 +61,30 @@ export default function flatfileEventListener(listener: Client) {
       }
     );
   });
+
+  listener.filter({ job: "workbook:submitActionFg" }, (configure) => {
+    configure.on("job:ready", async (event: FlatfileEvent) => {
+      const { jobId } = event.context;
+      try {
+        await api.jobs.ack(jobId, {
+          info: "Job started.",
+          progress: 10,
+        });
+
+        await api.jobs.complete(jobId, {
+          outcome: {
+            message: `Job "Custom Action" completed.`,
+          },
+        });
+      } catch (error: any) {
+        console.error("Error:", error.stack);
+
+        await api.jobs.fail(jobId, {
+          outcome: {
+            message: "Job encountered an error.",
+          },
+        });
+      }
+    });
+  });
 }

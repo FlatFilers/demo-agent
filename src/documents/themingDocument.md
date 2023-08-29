@@ -69,6 +69,8 @@ Read more about how to customize the look and feel of Flatfile to match your bra
 
 ## Learn more about Flatfile by trying our other demos
 
+- [Actions](https://platform.flatfile.com/getting-started)
+- [Data Handling](https://platform.flatfile.com/getting-started)
 - [Documents](https://platform.flatfile.com/getting-started)
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
