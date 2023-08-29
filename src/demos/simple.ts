@@ -134,7 +134,8 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.jobs.fail(jobId, {
             outcome: {
-              message: `Job ${jobId} encountered an error. It likely could not find the webhook.site URL.`,
+              message:
+                "Job encountered an error. It likely could not find the webhook.site URL.",
             },
           });
         }

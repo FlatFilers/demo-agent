@@ -2,6 +2,7 @@ import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import simpleWorkbook from "../constants/workbook.json";
 import { dataDocument } from "../constants/documents.json";
+import { recordHook, FlatfileRecord } from "@flatfile/plugin-record-hook";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -61,4 +62,31 @@ export default function flatfileEventListener(listener: Client) {
       }
     );
   });
+
+  listener.use(
+    recordHook("contacts", (record: FlatfileRecord) => {
+      record.compute(
+        "email",
+        (email, record) =>
+          `${record.get("first_name")?.toString().toLowerCase()}${record
+            .get("last_name")
+            ?.toString()
+            .toLowerCase()}@gmail.com`,
+        "Email was generated from first and last name."
+      );
+
+      record.computeIfPresent(
+        "email",
+        (email) => email?.toString() || "".toLowerCase(),
+        "Email was converted to lowercase."
+      );
+
+      record.validate(
+        "last_name",
+        (value) => typeof value === "string" && !/\d/.test(value),
+        "Last name cannot contain numbers."
+      );
+      return record;
+    })
+  );
 }

@@ -45,6 +45,8 @@ Read more about extractor plugins [here](https://flatfile.com/docs/plugins/extra
 
 ## Learn more about Flatfile by trying our other demos
 
+- [Actions](https://platform.flatfile.com/getting-started)
+- [Data Handling](https://platform.flatfile.com/getting-started)
 - [Documents](https://platform.flatfile.com/getting-started)
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)

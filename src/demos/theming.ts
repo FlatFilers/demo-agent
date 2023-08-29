@@ -135,11 +135,7 @@ export default function flatfileEventListener(listener: Client) {
 
         await api.jobs.fail(jobId, {
           outcome: {
-            message: `Job ${jobId} encountered an error: ${JSON.stringify(
-              error.message,
-              null,
-              2
-            )}`,
+            message: "Job encountered an error.",
           },
         });
       }

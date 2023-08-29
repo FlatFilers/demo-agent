@@ -1,7 +1,7 @@
 "use strict";
 
-// import actions from "./demos/actions";
-// import data from "./demos/data";
+import actions from "./demos/actions";
+import data from "./demos/data";
 import documents from "./demos/documents";
 import dynamic from "./demos/dynamic";
 // import egress from "./demos/egress";
@@ -17,8 +17,8 @@ import theming from "./demos/theming";
 import { Client } from "@flatfile/listener";
 
 export default function (listener: Client) {
-  // listener.namespace(["space:actions-demo"], actions);
-  // listener.namespace(["space:data-demo"], data);
+  listener.namespace(["space:actions-demo"], actions);
+  listener.namespace(["space:data-demo"], data);
   listener.namespace(["space:documents-demo"], documents);
   listener.namespace(["space:dynamic-demo"], dynamic);
   // listener.namespace(["space:egress-demo"], egress);
