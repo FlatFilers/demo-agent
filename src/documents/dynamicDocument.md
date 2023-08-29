@@ -121,4 +121,6 @@ Read more about dynamically building your Spaces [here](https://flatfile.com/doc
 - [Data Handling](https://platform.flatfile.com/getting-started)
 - [Documents](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
+- [Metadata](https://platform.flatfile.com/getting-started)
+- [Namespaces](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)

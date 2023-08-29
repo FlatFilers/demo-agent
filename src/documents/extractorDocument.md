@@ -49,4 +49,6 @@ Read more about extractor plugins [here](https://flatfile.com/docs/plugins/extra
 - [Data Handling](https://platform.flatfile.com/getting-started)
 - [Documents](https://platform.flatfile.com/getting-started)
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
+- [Metadata](https://platform.flatfile.com/getting-started)
+- [Namespaces](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)
