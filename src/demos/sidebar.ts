@@ -26,6 +26,7 @@ export default function flatfileEventListener(listener: Client) {
                 defaultPage: {
                   documentId,
                 },
+                showSidebar: false,
               },
             },
           };
