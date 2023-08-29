@@ -74,3 +74,5 @@ Read more about how to customize the look and feel of Flatfile to match your bra
 - [Documents](https://platform.flatfile.com/getting-started)
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
+- [Metadata](https://platform.flatfile.com/getting-started)
+- [Namespaces](https://platform.flatfile.com/getting-started)
