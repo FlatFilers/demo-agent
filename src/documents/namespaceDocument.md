@@ -43,6 +43,8 @@ Read more about narrowing the scope of Spaces, Workbooks, and Sheets [here](LINK
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
 - [Egress](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
+- [Headless](https://platform.flatfile.com/getting-started)
 - [Metadata](https://platform.flatfile.com/getting-started)
+- [Secrets](https://platform.flatfile.com/getting-started)
 - [Sidebar](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)

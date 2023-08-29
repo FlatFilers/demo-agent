@@ -5,7 +5,7 @@
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const { Client, FlatfileVirtualMachine } = __nccwpck_require__(81003);
-const mount = __nccwpck_require__(76122);
+const mount = __nccwpck_require__(91828);
 const client = Client.create(mount.default);
 
 client.mount(new FlatfileVirtualMachine());
@@ -31270,6 +31270,71 @@ const tokenSupplier = () => {
 
 /***/ }),
 
+/***/ 64564:
+/***/ ((module) => {
+
+function $parcel$exportWildcard(dest, source) {
+  Object.keys(source).forEach(function(key) {
+    if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function get() {
+        return source[key];
+      }
+    });
+  });
+
+  return dest;
+}
+function $parcel$export(e, n, v, s) {
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
+}
+var $eed08c2fbf12498d$exports = {};
+
+$parcel$export($eed08c2fbf12498d$exports, "asyncMap", function () { return $eed08c2fbf12498d$export$707ee4c4c95d39e3; });
+/**
+ * Configuration for asyncMap function
+ *
+ * @property {boolean} parallel - Flag to control parallel or sequential (default) execution.
+ * @property {number} timeout - Timeout duration (in milliseconds) for each callback.
+ */ async function $eed08c2fbf12498d$export$707ee4c4c95d39e3(items, callback, config = {
+    parallel: false,
+    timeout: 30000
+}) {
+    const { parallel: parallel , timeout: timeout  } = config;
+    const wrapper = (item)=>new Promise((resolve, reject)=>{
+            const timer = setTimeout(()=>reject(new Error("Operation timed out.")), timeout);
+            callback(item).then((res)=>{
+                clearTimeout(timer);
+                resolve(res);
+            }).catch((err)=>{
+                clearTimeout(timer);
+                reject(err);
+            });
+        });
+    if (parallel) return Promise.all(items.map(wrapper));
+    const results = [];
+    for (const item of items)try {
+        const result = await wrapper(item);
+        results.push(result);
+    } catch (error) {
+        throw new Error(`Error processing item. ${error}`);
+    }
+    return results;
+}
+
+
+$parcel$exportWildcard(module.exports, $eed08c2fbf12498d$exports);
+
+
+//# sourceMappingURL=main.js.map
+
+
+/***/ }),
+
 /***/ 717:
 /***/ ((module) => {
 
@@ -32417,6 +32482,295 @@ var Client = class extends FlatfileListener {
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (0);
+
+
+/***/ }),
+
+/***/ 14787:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+var $aU4iK$flatfileapi = __nccwpck_require__(45055);
+var $aU4iK$flatfilecommonpluginutils = __nccwpck_require__(64564);
+var $aU4iK$remeda = __nccwpck_require__(18886);
+
+function $parcel$exportWildcard(dest, source) {
+  Object.keys(source).forEach(function(key) {
+    if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function get() {
+        return source[key];
+      }
+    });
+  });
+
+  return dest;
+}
+function $parcel$export(e, n, v, s) {
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
+}
+function $parcel$interopDefault(a) {
+  return a && a.__esModule ? a.default : a;
+}
+var $ba3bed9455ac85e4$exports = {};
+
+$parcel$export($ba3bed9455ac85e4$exports, "automap", () => $ba3bed9455ac85e4$export$72b751986165d902);
+
+
+
+class $211a069233d52f10$export$cdd109dd77d50031 {
+    constructor(options){
+        this.options = options;
+    }
+    /**
+   * Create listeners for Flatfile to respond to for auto mapping.
+   *
+   * @param listener - The listener to be assigned.
+   */ assignListeners(listener) {
+        listener.on((0, $aU4iK$flatfileapi.Flatfile).EventTopic.JobCreated, {
+            job: "workbook:map"
+        }, (event)=>this.handleMappingPlanCreated(event));
+        listener.on((0, $aU4iK$flatfileapi.Flatfile).EventTopic.JobCompleted, {
+            job: "file:extract"
+        }, (event)=>this.handleFileExtraction(event));
+    }
+    /**
+   * Handle file extraction.
+   *
+   * @param event - Flatfile event
+   */ async handleFileExtraction(event) {
+        const { fileId: fileId, spaceId: spaceId } = event.context;
+        try {
+            const file = await this.getFileById(fileId);
+            if (!this.isFileNameMatch(file)) {
+                await this.updateFileName(file.id, `⏸️️ ${file.name}`);
+                return;
+            } else await this.updateFileName(file.id, `⚡️ ${file.name}`);
+            if ($aU4iK$remeda.isNil(file.workbookId)) {
+                if (this.options.debug) this.logError("No Workbook Id found");
+                return;
+            }
+            try {
+                const { data: workbooks } = await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).workbooks.list({
+                    spaceId: spaceId
+                });
+                const destinationWorkbook = this.getTargetWorkbook(workbooks);
+                if ($aU4iK$remeda.isNil(destinationWorkbook)) {
+                    if (this.options.debug) this.logError("Unable to determine destination Workbook");
+                    return;
+                }
+                try {
+                    const mappings = await this.getMappingJobs(file);
+                    let destinationSheet;
+                    const jobs = await (0, $aU4iK$flatfilecommonpluginutils.asyncMap)(mappings, async ({ target: target, source: source })=>{
+                        if ($aU4iK$remeda.isNil(target)) return;
+                        destinationSheet = $aU4iK$remeda.pipe(destinationWorkbook.sheets, $aU4iK$remeda.find((s)=>s.name === target || s.id === target));
+                        const destinationSheetId = destinationSheet?.id;
+                        if ($aU4iK$remeda.isNil(destinationSheetId)) return;
+                        try {
+                            const { data: job } = await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).jobs.create({
+                                type: "workbook",
+                                operation: "map",
+                                source: file.workbookId,
+                                managed: true,
+                                destination: destinationWorkbook.id,
+                                config: {
+                                    sourceSheetId: source,
+                                    destinationSheetId: destinationSheetId
+                                }
+                            });
+                            return job;
+                        } catch (_jobError) {
+                            this.logError("Unable to create mapping job");
+                            return;
+                        }
+                    });
+                    const actualJobs = $aU4iK$remeda.pipe(jobs, $aU4iK$remeda.reject((j)=>$aU4iK$remeda.isNil(j)));
+                    if ($aU4iK$remeda.length(actualJobs) > 0) await this.updateFileName(file.id, `⚡️ ${file.name} 🔁 ${destinationSheet?.name}`);
+                } catch (_mappingsError) {
+                    this.logError("Unable to fetch mappings");
+                    return;
+                }
+            } catch (_workbookError) {
+                this.logError("Unable to list workbooks");
+                return;
+            }
+        } catch (_fileError) {
+            this.logError(`Unable to fetch file with id: ${fileId}`);
+            return;
+        }
+    }
+    /**
+   * This method selects a target workbook based on the provided set of workbooks and the class options.
+   *
+   * @param workbooks - The array of workbooks from which to select a target.
+   * @returns The selected target workbook or undefined if no suitable workbook could be found.
+   */ getTargetWorkbook(workbooks) {
+        const { targetWorkbook: targetWorkbook } = this.options;
+        const targets = $aU4iK$remeda.pipe(workbooks, $aU4iK$remeda.reject((w)=>w.labels?.includes("file")));
+        if ($aU4iK$remeda.length(targets) === 0) return undefined;
+        else if (!$aU4iK$remeda.isNil(targetWorkbook)) {
+            const target = $aU4iK$remeda.pipe(targets, $aU4iK$remeda.find((w)=>w.id === targetWorkbook || w.name === targetWorkbook));
+            if (!$aU4iK$remeda.isNil(target)) return target;
+        } else if ($aU4iK$remeda.length(targets) === 1) return $aU4iK$remeda.first(targets);
+        else return $aU4iK$remeda.pipe(targets, $aU4iK$remeda.find((w)=>w.labels?.includes("primary")));
+    }
+    /**
+   * Once the initial mapping plan is created, check if our automation rules apply and
+   * execute the mapping job if they do.
+   *
+   * @param event - Flatfile event
+   * @private
+   */ async handleMappingPlanCreated(event) {
+        const { jobId: jobId } = event.context;
+        try {
+            const { data: { plan: plan } } = await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).jobs.getExecutionPlan(jobId);
+            // const { plan } = await api.jobs.getExecutionPlan(jobId); // types don't line up... why?
+            if ($aU4iK$remeda.isNil(plan)) return;
+            if (this.options.debug) this.logInfo(`Job Execution Plan:\n${JSON.stringify(plan, null, 2)}`);
+            if ($aU4iK$remeda.length(plan.fieldMapping) === 0) {
+                this.logWarn("At least one field must be mapped");
+                if (!$aU4iK$remeda.isNil(this.options.onFailure)) this.options.onFailure(event);
+                return;
+            }
+            try {
+                switch(this.options.accuracy){
+                    case "confident":
+                        if (this.verifyConfidentMatchingStrategy(plan)) await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).jobs.execute(jobId);
+                        else {
+                            if (this.options.debug) this.logWarn("Skipping automap due to lack of confidence");
+                            if (!$aU4iK$remeda.isNil(this.options.onFailure)) this.options.onFailure(event);
+                        }
+                        break;
+                    case "exact":
+                        if (this.verifyAbsoluteMatchingStrategy(plan)) await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).jobs.execute(jobId);
+                        else {
+                            if (this.options.debug) this.logWarn("Skipping automap due to lack of confidence");
+                            if (!$aU4iK$remeda.isNil(this.options.onFailure)) this.options.onFailure(event);
+                        }
+                        break;
+                }
+            } catch (_jobError) {
+                this.logError(`Unable to execute job with id: ${jobId}`);
+                return;
+            }
+        } catch (_execPlanError) {
+            this.logError(`Unable to fetch execution plan for job with id: ${jobId}`);
+            return;
+        }
+    }
+    async getFileById(fileId) {
+        const { data: file } = await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).files.get(fileId);
+        return file;
+    }
+    /**
+   * Check if the file name matches the configured regex.
+   *
+   * @param file
+   * @private
+   */ isFileNameMatch(file) {
+        const { matchFilename: regex } = this.options;
+        if ($aU4iK$remeda.isNil(regex)) // allow mapping to continue b/c we weren't explicitly told not to
+        return true;
+        else return regex.test(file.name);
+    }
+    /**
+   * Attempts to create a mapping for each sheet in the provided file. The mapping is created
+   * based on a sample of the records in each sheet and a selection function (`this.options.selectSheets`).
+   *
+   * If `this.options.selectSheets` is not defined, it will attempt to create a default mapping
+   * if there's only one sheet in the file and a `this.options.defaultTargetSheet` is defined.
+   *
+   * @param  file - The file from which sheets are retrieved for creating mappings.
+   * @returns A promise that resolves to an array of mappings.
+   *          Each mapping is an object with a 'source' (the sheet id) and a 'target' (the result from
+   *          `this.options.selectSheets` or `this.options.defaultTargetSheet`).
+   * @private
+   */ async getMappingJobs(file) {
+        const workbookResponse = await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).workbooks.get(file.workbookId);
+        const sheets = workbookResponse.data.sheets || [];
+        const { defaultTargetSheet: defaultTargetSheet } = this.options;
+        // if (!R.isNil(this.options.selectSheets)) {
+        //   const sample = await this.getRecordSampleForSheets(sheets);
+        //   const assignments = await asyncMap(sample, async ({ sheet, records }) => {
+        //     const target = await this.options.selectSheets!(records, sheet);
+        //     return { source: sheet.id, target };
+        //   });
+        //   return R.pipe(
+        //     assignments,
+        //     R.reject(({ target }) => target === false)
+        //   );
+        // } else
+        if ($aU4iK$remeda.length(sheets) === 1 && !$aU4iK$remeda.isNil(defaultTargetSheet)) return [
+            {
+                source: $aU4iK$remeda.first(sheets).id,
+                target: defaultTargetSheet
+            }
+        ];
+        else return [];
+    }
+    /**
+   * This method retrieves a sample of records from the API for each sheet provided in the 'sheets' array.
+   * The sample size for each sheet is determined by the 'pageSize' parameter in the API request (currently set to 10).
+   *
+   * Each resulting sample is then combined with its respective sheet into an object,
+   * forming a 'SheetSample' which comprises the sheet information and its corresponding records.
+   * This operation is done for each sheet concurrently using the 'asyncMap' function.
+   *
+   * @param sheets - The list of sheets for which record samples are to be fetched.
+   * @returns A promise that resolves to an array of 'SheetSample' objects.
+   *
+   * @private
+   */ async getRecordSampleForSheets(sheets) {
+        return (0, $aU4iK$flatfilecommonpluginutils.asyncMap)(sheets, async (sheet)=>{
+            const response = await (0, ($parcel$interopDefault($aU4iK$flatfileapi))).records.get(sheet.id, {
+                pageSize: 10
+            });
+            const records = response.data.records;
+            return {
+                sheet: sheet,
+                records: records
+            };
+        });
+    }
+    verifyAbsoluteMatchingStrategy(plan) {
+        return $aU4iK$remeda.pipe(plan, (p)=>p.fieldMapping?.every((edge)=>edge.metadata?.certainty === (0, $aU4iK$flatfileapi.Flatfile).Certainty.Absolute));
+    }
+    verifyConfidentMatchingStrategy(plan) {
+        return $aU4iK$remeda.pipe(plan, (p)=>p.fieldMapping?.every((edge)=>edge.metadata?.certainty === (0, $aU4iK$flatfileapi.Flatfile).Certainty.Strong || edge.metadata?.certainty === (0, $aU4iK$flatfileapi.Flatfile).Certainty.Absolute));
+    }
+    updateFileName(fileId, fileName) {
+        return (0, ($parcel$interopDefault($aU4iK$flatfileapi))).files.update(fileId, {
+            name: fileName
+        });
+    }
+    logError(msg) {
+        console.error("[@flatfile/plugin-automap]:[FATAL] " + msg);
+    }
+    logInfo(msg) {
+        console.log("[@flatfile/plugin-automap]:[INFO] " + msg);
+    }
+    logWarn(msg) {
+        console.warn("[@flatfile/plugin-automap]:[WARN] " + msg);
+    }
+}
+
+
+function $ba3bed9455ac85e4$export$72b751986165d902(options) {
+    const automapper = new (0, $211a069233d52f10$export$cdd109dd77d50031)(options);
+    return (listener)=>{
+        automapper.assignListeners(listener);
+    };
+}
+
+
+$parcel$exportWildcard(module.exports, $ba3bed9455ac85e4$exports);
+
+
+//# sourceMappingURL=main.js.map
 
 
 /***/ }),
@@ -70863,7 +71217,7 @@ exports["default"] = toJSON;
 
 /***/ }),
 
-/***/ 76122:
+/***/ 91828:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
@@ -70881,7 +71235,7 @@ var api_default = /*#__PURE__*/__nccwpck_require__.n(api);
 ;// CONCATENATED MODULE: ./src/constants/workbook.json
 const workbook_namespaceObject = JSON.parse('{"name":"All Contacts","sheets":[{"name":"Contacts","slug":"contacts","fields":[{"key":"first_name","type":"string","label":"First Name","description":"The first name","constraints":[{"type":"required"}]},{"key":"last_name","type":"string","label":"Last Name","description":"The last name"},{"key":"email","type":"string","label":"Email","description":"The person\'s email","constraints":[{"type":"unique"}]},{"key":"phone","type":"string","label":"Phone Number","description":"The person\'s phone number"},{"key":"dateOfBirth","type":"date","label":"Date of Birth","description":"The person\'s birth date"},{"key":"age","type":"number","label":"Age","description":"The number of years since the person\'s birth date","constraints":[{"type":"computed"}]},{"key":"country","label":"Country","description":"The formatted country code","type":"reference","config":{"ref":"countries","key":"code","relationship":"has-one"}},{"key":"postalCode","type":"string","label":"Postal Code","description":"Zip or Postal Code"},{"key":"subscriber","type":"boolean","label":"Subscriber?","description":"Whether the person is already a subscriber"},{"key":"type","type":"enum","label":"Deal Status","description":"The deal status","config":{"options":[{"value":"new","label":"New","description":"This deal is pretty new so not clear where it will go"},{"value":"interested","label":"Interested","description":"The other party is interested! Promising"},{"value":"meeting","label":"Meeting","description":"An initial meeting has been set up, very exciting."},{"value":"opportunity","label":"Opportunity","description":"Looks like this is a legit opportunity!"},{"value":"unqualified","label":"Not a fit","description":"It didn\'t work out. Too bad."}]}}],"actions":[{"operation":"contacts:create-json","label":"Create JSON","description":"Would you like to create a JSON file?","icon":"ThreeRectangles","mode":"foreground","primary":false,"requireSelection":true}]},{"name":"Countries","slug":"countries","fields":[{"key":"code","type":"string","label":"Country Code","description":"The standardized country code","constraints":[{"type":"required"},{"type":"unique"}]},{"key":"name","type":"string","label":"Full name","description":"The full name of the country"},{"key":"currency","type":"string","label":"Currency","description":"The currency predominantly used in the country"}]}],"actions":[{"operation":"submitActionFg","mode":"foreground","label":"Submit","type":"string","description":"Submit Data","primary":true}]}');
 ;// CONCATENATED MODULE: ./src/constants/documents.json
-const documents_namespaceObject = JSON.parse('{"PC":"# Trigger operations based on user input\\n\\n---\\n\\nAn Action is a code-based operation that executes upon user interaction.\\n\\nActions can be defined at the Blueprint level for a Workbook or Sheet. Files may also have actions, those are dynamically created by your listener upon file upload.\\n\\n## Making this Space\\n\\nThis Space has been configured with a workbook level action.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          await api.workbooks.create({\\n              spaceId,\\n              environmentId,\\n                \\"name\\": \\"All Contacts\\",\\n                \\"sheets\\": ...\\n                \\"actions\\": [\\n                    {\\n                    \\"operation\\": \\"submitAction\\",\\n                    \\"mode\\": \\"foreground\\",\\n                    \\"label\\": \\"Submit\\",\\n                    \\"type\\": \\"string\\",\\n                    \\"description\\": \\"Submit Data\\",\\n                    \\"primary\\": true\\n                    }\\n                ]\\n          });\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n\\n  listener.filter({ job: \\"workbook:submitAction\\" }, (configure) => {\\n    configure.on(\\"job:ready\\", async (event: FlatfileEvent) => {\\n      const { jobId } = event.context;\\n      try {\\n        await api.jobs.ack(jobId, {\\n          info: \\"Job started.\\",\\n          progress: 10,\\n        });\\n\\n        // Custom code here\\n\\n        await api.jobs.complete(jobId, {\\n          outcome: {\\n            message: `Job \\"Custom Action\\" completed.`,\\n          },\\n        });\\n      } catch (error: any) {\\n        console.error(\\"Error:\\", error.stack);\\n\\n        await api.jobs.fail(jobId, {\\n          outcome: {\\n            message: \\"Job encountered an error.\\",\\n          },\\n        });\\n      }\\n    });\\n  });\\n}\\n```\\n\\n## Things you can do here\\n\\nNotice the `submitAction` operation defined on the Workbook. This action is listened for and responded to below in the `workbook:submitAction` listener.\\n\\nTo see this Action run, navigate to your Workbook and click submit.\\n\\n## Further documentation\\n\\nRead more about how to configure actions based on user input [here](https://flatfile.com/docs/guides/actions).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","sk":"# Process data with Data Hooks\\n\\n---\\n\\nData Hooks® are compact functions that automatically restructure, rectify, validate, and enhance data your data.\\n\\nThese hooks can operate on an entire record, or row, of data through methods on the FlatfileRecord class. Hooks at the record level can utilize all row fields, making them suitable for tasks needing multiple field access or new field creation.\\n\\n## Making this Space\\n\\nThis Space has been configured to use Data Hooks to compute and validate fields in the Contacts Sheet.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport { Client } from \\"@flatfile/listener\\";\\nimport { recordHook, FlatfileRecord } from \\"@flatfile/plugin-record-hook\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.use(\\n    recordHook(\\"contacts\\", (record: FlatfileRecord) => {\\n      record.compute(\\n        \\"email\\",\\n        (email, record) =>\\n          `${record.get(\\"first_name\\")}${record.get(\\"last_name\\")}@gmail.com`,\\n        \\"Email was generated from first and last name.\\"\\n      );\\n\\n      record.computeIfPresent(\\n        \\"email\\",\\n        (email) => email?.toString() || \\"\\".toLowerCase(),\\n        \\"Email was converted to lowercase.\\"\\n      );\\n\\n      record.validate(\\n        \\"last_name\\",\\n        (value) => typeof value === \\"string\\" && !/\\\\d/.test(value),\\n        \\"Last name cannot contain numbers.\\"\\n      );\\n      return record;\\n    })\\n  );\\n}\\n```\\n\\n## Things you can do here\\n\\n1. Enter and first and last name, and watch the email field populate. Notice it is lower case.\\n2. Enter a last name with a number and see the field get marked as invalid.\\n\\n## Further documentation\\n\\nRead more about how to process data with data hooks [here](https://flatfile.com/docs/guides/handling-data).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\\\\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Bx":"# Build pages in your sidebar with Documents\\n\\n---\\n\\nDocuments are ways of storing information right inside your Space. Provide guidance or reference for your customers without leaving Flatfile.\\n\\n## Making this Space\\n\\nThis Space has been configured with multiple documents upon creation.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          // Acknowledge the space:configure job:ready event was received\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          // Add first document\\n          await api.documents.create(spaceId, {\\n            title: \\"About this Documents Demo\\",\\n            body: \\"Document text here.\\",\\n          });\\n\\n          // Add another document\\n          await api.documents.create(spaceId, {\\n            title: \\"Configure multiple Documents\\",\\n            body: \\"Document text here.\\",\\n          });\\n\\n          // Notify the space:configure job has been completed\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job encountered an error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n```\\n","vO":"# Configure multiple Documents\\n\\n---\\n\\nAs this example demonstrates, you many create as many Documents are you need.\\n\\n## Further documentation\\n\\nRead more about building pages in your sidebar [here](https://flatfile.com/docs/guides/documents).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","RQ":"# Dynamically build your Spaces as they\'re created\\n\\n---\\n\\nTo work with data in Flatfile, you\'ll first need to create and then configure a Space.\\n\\nYour business needs will determine how many Spaces you\'ll need, but you\'ll likely need more than one.\\n\\nDynamic configurations make it easy to create new Spaces that are ready to go with your pre-configured specifications.\\\\\\nYou can even use the context of their creation to configure Spaces differently.\\n\\n## Making this Space\\n\\nThis very Space was configured Dynamically.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          // Acknowledge the space:configure job:ready event was received\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          // Add a workbook to this space\\n          await api.workbooks.create({\\n            spaceId,\\n            environmentId,\\n            name: \\"All Data\\",\\n            sheets: [\\n              ...\\n            ],\\n            actions: [\\n              {\\n                operation: \\"submitAction\\",\\n                mode: \\"foreground\\",\\n                label: \\"Submit\\",\\n                type: \\"string\\",\\n                primary: true,\\n              },\\n            ],\\n          });\\n\\n          // Notify the space:configure job has been completed\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n\\n  listener.filter(\\n    { job: \\"workbook:submitAction\\" },\\n    (configure: FlatfileListener) => {\\n      configure.on(\\n        \\"job:ready\\",\\n        async ({ context: { jobId } }: FlatfileEvent) => {\\n          try {\\n            await api.jobs.ack(jobId, {\\n              info: \\"Starting Job.\\",\\n              progress: 10,\\n            });\\n\\n            // Custom code here\\n\\n            await api.jobs.complete(jobId, {\\n              outcome: {\\n                message: \\"Job completed.\\",\\n              },\\n            });\\n          } catch (error) {\\n            await api.jobs.fail(jobId, {\\n              outcome: {\\n                message: \\"Job encountered an error.\\",\\n              },\\n            });\\n          }\\n        }\\n      );\\n    }\\n  );\\n}\\n```\\n\\nNotice that there are two listener configurations here:\\n\\n- `space:configure`\\n- `workbook:submitAction`\\n\\nThe `workbook:submitAction` has been configured to respond to the submit action on our Workbook. But the Workbook itself is configured dynamically via the `space:configure` listener.\\n\\n## Initializing your dynamic configuration\\n\\nWith the above code running on our Agent, we simply create a new space taking care to include the `autoConfigure: true` parameter. This parameter triggers the publication of the `space:configure` event that we\'re listening for. But you can do far more than adding a Workbook. See our other examples for further possibilities.\\n\\n## Further documentation\\n\\nRead more about dynamically building your Spaces [here](https://flatfile.com/docs/guides/dynamic-configurations).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","qJ":"# Get your data out of Flatfile\\n\\n---\\n\\nOnce your data has been imported, transformed, and validated you\'ll likely want to export that data to a destination.\\n\\nSending your data is easy and infinitely customizable via the Flatfile Platform.\\n\\n## Making this Space\\n\\nThis Space has been configured to run custom Egress code on Submit.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nimport simpleWorkbook from \\"../constants/workbook.json\\";\\nimport { egressDocument } from \\"../constants/documents.json\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n   listener.filter({ job: \\"workbook:submitAction\\" }, (configure) => {\\n    configure.on(\\"job:ready\\", async (event: FlatfileEvent) => {\\n      const { jobId } = event.context;\\n      try {\\n        await api.jobs.ack(jobId, {\\n          info: \\"Job started.\\",\\n          progress: 10,\\n        });\\n\\n        const { data } = await api.sheets.list({ workbookId });\\n\\n        const records = await Promise.all(data.map(async (element, index) => {\\n            const record = await api.records.get(element.id);\\n            return { [`Sheet[${index}]`]: record };\\n        }));\\n\\n        // Custom code exporting records here\\n\\n        await api.jobs.complete(jobId, {\\n          outcome: {\\n            message: `Job \\"Send Workbook To ACME\\" completed.`,\\n          },\\n        });\\n      } catch (error: any) {\\n        console.error(\\"Error:\\", error.stack);\\n\\n        await api.jobs.fail(jobId, {\\n          outcome: {\\n            message: \\"Job encountered an error.\\",\\n          },\\n        });\\n      }\\n    });\\n  });\\n}\\n\\n```\\n\\nAs you can see this script monitors for a job event called `workbook:submitAction`. When this event is triggered, it retrieves the relevant Sheets and their associated Records from the Workbook.\\n\\nAfter that, you can send the data wherever you like.\\n\\n## Things you can do here\\n\\nNavigate to your Workbook and click Submit to see how easy it would be to Egress your Workbook.\\n\\n## Further documentation\\n\\nRead more about getting your data out of Flatfile [here](https://flatfile.com/docs/guides/egress).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Y_":"# Extract your data no matter the source\\n\\n---\\n\\nThe Flatfile Platform is a powerful tool for working with your data. But first, your data has to be available to work with.\\n\\nMaking existing data available in Flatfile is simple: upload, extract, map.\\n\\nExtraction is the process of unpacking data from its original format to the Flatfile Platform. Whether your incoming data is `.json`, `.xlsx`, `.zip`, or a multitude of others extraction can be automated via the use of Plugins. Simply configure your Listener to use one or more extractor plugins and extraction will be handled automatically upon file upload.\\n\\n## Making this Space\\n\\nThis Space has been configured to use several extractor plugins.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport { Client, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nimport { JSONExtractor } from \\"@flatfile/plugin-json-extractor\\";\\nimport { ExcelExtractor } from \\"@flatfile/plugin-xlsx-extractor\\";\\nimport { XMLExtractor } from \\"@flatfile/plugin-xml-extractor\\";\\nimport { ZipExtractor } from \\"@flatfile/plugin-zip-extractor\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.use(JSONExtractor());\\n  listener.use(ExcelExtractor());\\n  listener.use(XMLExtractor());\\n  listener.use(ZipExtractor());\\n}\\n```\\n\\n## Things you can do here\\n\\nTo see these work, simply upload a supported file under the \\"Files\\" tab.\\n\\n- [XLSX Data](https://github.com/FlatFilers/demo-agent/tree/main/src/files/movies.xlsx)\\n- [JSON Data](https://github.com/FlatFilers/demo-agent/tree/main/src/files/movies.json)\\n\\nThe appropriate plugin will extract data automatically. Once extraction is complete, you can import and map your data into a workbook and it\'s ready for use.\\n\\n## Further documentation\\n\\nRead more about extractor plugins [here](https://flatfile.com/docs/plugins/extractors/).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Lf":"# Store descriptive information or data that provides additional context\\n\\n---\\n\\nMetadata refers is data that provides information about other data. It offers context and details about a particular piece of data, helping to describe and organize it.\\n\\nMetadata can include various attributes such as the creation date, user, size, format, and more, depending on the context.\\n\\nIn essence, metadata helps in understanding and managing data. In Flatfile, you can store and retrieve additional data about an Environment, Space, Record, or Field without exposing it to end users.\\n\\n## Making this Space\\n\\nThis Space has been configured with Records that are decorated with metadata.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nimport simpleWorkbook from \\"../constants/workbook.json\\";\\nimport { metadataDocument } from \\"../constants/documents.json\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          const { data } = await api.documents.create(spaceId, {\\n            title: \\"About this Metadata Demo\\",\\n            body: metadataDocument,\\n          });\\n\\n          const documentId = data.id;\\n          const spaceUpdateParams = {\\n            metadata: {\\n              sidebarConfig: {\\n                defaultPage: {\\n                  documentId,\\n                },\\n              },\\n            },\\n          };\\n\\n          await api.spaces.update(spaceId, spaceUpdateParams);\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n          console.error(\\"Error: \\", error.stack);\\n\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n\\n```\\n\\nYou can see that after creating this Space, this Document is created, and then a Space update call is made to make this Document the default page of this Space.\\n\\nLike this example, Flatfile uses some values in the Metadata object to support your configurations, but the Metadata object is flexible and open, enabling you to add further details contextualizing your Environments, Spaces, Workbooks, Sheets, and Records.\\n\\n## Further documentation\\n\\nRead more about contextualizing your data with descriptive information [here](https://flatfile.com/docs/guides/metadata).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","T8":"# Create distinct experiences with namespaces\\n\\n---\\n\\nNamespaces provide the ability to limit the extent of influence over Spaces, Workbooks, and Sheets. In situations where you are want to differentiate between Flatfile experiences, you can configure your system to react solely when the event aligns with the designated namespaces.\\n\\nIn your Flatfile listener, when you’re monitoring for specific events, you can set your system to only respond if the event matches the assigned namespaces.\\n\\n## Making this Space\\n\\nThis very Space was configured using a Namespace.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport namespace from \\"namespace-demo\\";\\nimport another from \\"other-demo\\";\\n\\nimport { Client } from \\"@flatfile/listener\\";\\n\\nexport default function (listener: Client) {\\n  listener.namespace([\\"space:namespace-demo\\"], namespace);\\n  listener.namespace([\\"space:another-demo\\"], another);\\n}\\n```\\n\\nNotice that there are two listener configurations here:\\n\\n- `space:namespace-demo`\\n- `space:another-demo`\\n\\nThe `space:namespace-demo` was triggered on the creation of this demo, while another demo, under another namespace will create with a different configuration, both running on the same agent\\n\\n## Further documentation\\n\\nRead more about narrowing the scope of Spaces, Workbooks, and Sheets [here](LINK).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","oe":"# Customize what your guests see in their sidebar\\n\\n---\\n\\nFlatfile allows you to update your Sidebar to hide or show certain elements.\\n\\nBy combining the customizable Sidebar functionality with the power to dynamically create and update Spaces, narrowing your scope with Namespaces, you can create different experiences for different sets of users.\\n\\n## Making this Space\\n\\nThis Space has been configured to hide the Sidebar on the left for any guests you invite to this Space.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nimport { sidebarDocument } from \\"../constants/documents.json\\";\\nimport simpleWorkbook from \\"../constants/workbook.json\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          const spaceUpdateParams = {\\n            metadata: {\\n              sidebarConfig: {\\n                showSidebar: false,\\n              },\\n            },\\n          };\\n\\n          await api.spaces.update(spaceId, spaceUpdateParams);\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n          console.error(\\"Error: \\", error.stack);\\n\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n\\n```\\n\\n## Things you can do here\\n\\nInvite guest (or yourself at an alias) and log into this Space as that user. The Sidebar will be hidden.\\n\\n## Further documentation\\n\\nRead more about configuring what your guests see in their sidebar [here](https://flatfile.com/docs/guides/guest_sidebar).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","H7":"# Welcome to Flatfile\\n\\n---\\n\\nThis is a Space. It\'s been configured with some basic options to help you get acquainted with the Flatfile Platform.\\n\\nLet\'s begin by getting familiar with what you\'re seeing here in the Sidebar.\\n\\n## Documents\\n\\nYou are reading a document called \\"About this Demo\\", it\'s been configured as the landing page of this Space and a shortcut to it is located at the top of your Sidebar.\\n\\n## Data Checklist\\n\\nBelow any documents is your \\"Data checklist\\". Use this section to explore what the data in your Workbook is expected to look like.\\n\\n## Files\\n\\nUse the \\"Files\\" tab to upload files. You can also upload them directly int Sheets. Your Workbooks and Sheets are located at below the divider in Sidebar.\\n\\n## Secrets\\n\\nConfiguring Secrets is an administrative function. Use this section to securely store key-value pairs that can be used in the code supporting your Flatfile Spaces.\\n\\n## Guests\\n\\nAs an administrator you may also invite collaborators to work with you in this Space in the \\"Manage guests\\" section. Their view will look a little different than yours. Try inviting yourself at an alias email to see the difference.\\n\\n## Data\\n\\nThe Workbook currently configured in this Space contains two Sheets: **Contacts**, and **Countries**.\\n\\n## Things you can do here\\n\\n1. You can upload/download CSV files into and from each Sheet.\\n2. You can manually add records to each Sheet directly in the UI.\\n3. You can also manually adjust cells & records individually, or in bulk.\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Ox":"# Customize the look and feel of Flatfile to match your brand\\n\\n---\\n\\nAll Spaces are customizable via theming options enabling you to blend Flatfile seamlessly into your application.\\n\\n## Making this Space\\n\\nThis Space has been configured to leverage the visual overrides available to help you theme a Space.\\\\\\nWe\'ve customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours.\\\\\\nEven better? Create co-branded experiences in all of your Spaces for every one of your customers.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.on(\\n    \\"space:created\\",\\n    async ({ context: { spaceId, environmentId } }: FlatfileEvent) => {\\n      await api.spaces.update(spaceId, {\\n        environmentId,\\n        metadata: {\\n          theme: {\\n            root: {\\n              primaryColor: \\"#090B2B\\",\\n              dangerColor: \\"#F44336\\",\\n              warningColor: \\"#FF9800\\",\\n            },\\n            document: {\\n              borderColor: \\"#CAD0DC\\",\\n            },\\n            sidebar: {\\n              logo: \\"path/to/logo/file\\",\\n              textColor: \\"#ECEEFF\\",\\n              titleColor: \\"#C4C9FF\\",\\n              focusBgColor: \\"#6673FF\\",\\n              focusTextColor: \\"#FFF\\",\\n              backgroundColor: \\"#090B2B\\",\\n              footerTextColor: \\"#C4C9FF\\",\\n              textUltralightColor: \\"#B9DDFF\\",\\n              borderColor: \\"#2E3168\\",\\n              activeTextColor: \\"#FFF\\",\\n            },\\n            table: {},\\n          },\\n          sidebarConfig: {\\n            showGuestInvite: true,\\n            showDataChecklist: true,\\n            showSidebar: true,\\n          },\\n        },\\n      });\\n    }\\n  );\\n}\\n```\\n\\n## Things you can do here\\n\\nSet the sidebar theme straight from the configurations worksheet! Simply select a theme, then select \\"More Actions\\", \\"Update Theme\\".\\\\\\nThe listener configured behind this space will get information about your selection and make a call to update your sidebar theme.\\n\\n## Further documentation\\n\\nRead more about how to customize the look and feel of Flatfile to match your brand [here](https://flatfile.com/docs/guides/theming).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n"}');
+const documents_namespaceObject = JSON.parse('{"PC":"# Trigger operations based on user input\\n\\n---\\n\\nAn Action is a code-based operation that executes upon user interaction.\\n\\nActions can be defined at the Blueprint level for a Workbook or Sheet. Files may also have actions, those are dynamically created by your listener upon file upload.\\n\\n## Making this Space\\n\\nThis Space has been configured with a workbook level action.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          await api.workbooks.create({\\n              spaceId,\\n              environmentId,\\n                \\"name\\": \\"All Contacts\\",\\n                \\"sheets\\": ...\\n                \\"actions\\": [\\n                    {\\n                    \\"operation\\": \\"submitAction\\",\\n                    \\"mode\\": \\"foreground\\",\\n                    \\"label\\": \\"Submit\\",\\n                    \\"type\\": \\"string\\",\\n                    \\"description\\": \\"Submit Data\\",\\n                    \\"primary\\": true\\n                    }\\n                ]\\n          });\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n\\n  listener.filter({ job: \\"workbook:submitAction\\" }, (configure) => {\\n    configure.on(\\"job:ready\\", async (event: FlatfileEvent) => {\\n      const { jobId } = event.context;\\n      try {\\n        await api.jobs.ack(jobId, {\\n          info: \\"Job started.\\",\\n          progress: 10,\\n        });\\n\\n        // Custom code here\\n\\n        await api.jobs.complete(jobId, {\\n          outcome: {\\n            message: `Job \\"Custom Action\\" completed.`,\\n          },\\n        });\\n      } catch (error: any) {\\n        console.error(\\"Error:\\", error.stack);\\n\\n        await api.jobs.fail(jobId, {\\n          outcome: {\\n            message: \\"Job encountered an error.\\",\\n          },\\n        });\\n      }\\n    });\\n  });\\n}\\n```\\n\\n## Things you can do here\\n\\nNotice the `submitAction` operation defined on the Workbook. This action is listened for and responded to below in the `workbook:submitAction` listener.\\n\\nTo see this Action run, navigate to your Workbook and click submit.\\n\\n## Further documentation\\n\\nRead more about how to configure actions based on user input [here](https://flatfile.com/docs/guides/actions).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","sk":"# Process data with Data Hooks\\n\\n---\\n\\nData Hooks® are compact functions that automatically restructure, rectify, validate, and enhance data your data.\\n\\nThese hooks can operate on an entire record, or row, of data through methods on the FlatfileRecord class. Hooks at the record level can utilize all row fields, making them suitable for tasks needing multiple field access or new field creation.\\n\\n## Making this Space\\n\\nThis Space has been configured to use Data Hooks to compute and validate fields in the Contacts Sheet.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport { Client } from \\"@flatfile/listener\\";\\nimport { recordHook, FlatfileRecord } from \\"@flatfile/plugin-record-hook\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.use(\\n    recordHook(\\"contacts\\", (record: FlatfileRecord) => {\\n      record.compute(\\n        \\"email\\",\\n        (email, record) =>\\n          `${record.get(\\"first_name\\")}${record.get(\\"last_name\\")}@gmail.com`,\\n        \\"Email was generated from first and last name.\\"\\n      );\\n\\n      record.computeIfPresent(\\n        \\"email\\",\\n        (email) => email?.toString() || \\"\\".toLowerCase(),\\n        \\"Email was converted to lowercase.\\"\\n      );\\n\\n      record.validate(\\n        \\"last_name\\",\\n        (value) => typeof value === \\"string\\" && !/\\\\d/.test(value),\\n        \\"Last name cannot contain numbers.\\"\\n      );\\n      return record;\\n    })\\n  );\\n}\\n```\\n\\n## Things you can do here\\n\\n1. Enter and first and last name, and watch the email field populate. Notice it is lower case.\\n2. Enter a last name with a number and see the field get marked as invalid.\\n\\n## Further documentation\\n\\nRead more about how to process data with data hooks [here](https://flatfile.com/docs/guides/handling-data).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Bx":"# Build pages in your sidebar with Documents\\n\\n---\\n\\nDocuments are ways of storing information right inside your Space. Provide guidance or reference for your customers without leaving Flatfile.\\n\\n## Making this Space\\n\\nThis Space has been configured with multiple documents upon creation.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          // Acknowledge the space:configure job:ready event was received\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          // Add first document\\n          await api.documents.create(spaceId, {\\n            title: \\"About this Documents Demo\\",\\n            body: \\"Document text here.\\",\\n          });\\n\\n          // Add another document\\n          await api.documents.create(spaceId, {\\n            title: \\"Configure multiple Documents\\",\\n            body: \\"Document text here.\\",\\n          });\\n\\n          // Notify the space:configure job has been completed\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job encountered an error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n```\\n","vO":"# Configure multiple Documents\\n\\n---\\n\\nAs this example demonstrates, you many create as many Documents are you need.\\n\\n## Further documentation\\n\\nRead more about building pages in your sidebar [here](https://flatfile.com/docs/guides/documents).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","RQ":"# Dynamically build your Spaces as they\'re created\\n\\n---\\n\\nTo work with data in Flatfile, you\'ll first need to create and then configure a Space.\\n\\nYour business needs will determine how many Spaces you\'ll need, but you\'ll likely need more than one.\\n\\nDynamic configurations make it easy to create new Spaces that are ready to go with your pre-configured specifications.\\\\\\nYou can even use the context of their creation to configure Spaces differently.\\n\\n## Making this Space\\n\\nThis very Space was configured Dynamically.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          // Acknowledge the space:configure job:ready event was received\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          // Add a workbook to this space\\n          await api.workbooks.create({\\n            spaceId,\\n            environmentId,\\n            name: \\"All Data\\",\\n            sheets: [\\n              ...\\n            ],\\n            actions: [\\n              {\\n                operation: \\"submitAction\\",\\n                mode: \\"foreground\\",\\n                label: \\"Submit\\",\\n                type: \\"string\\",\\n                primary: true,\\n              },\\n            ],\\n          });\\n\\n          // Notify the space:configure job has been completed\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n\\n  listener.filter(\\n    { job: \\"workbook:submitAction\\" },\\n    (configure: FlatfileListener) => {\\n      configure.on(\\n        \\"job:ready\\",\\n        async ({ context: { jobId } }: FlatfileEvent) => {\\n          try {\\n            await api.jobs.ack(jobId, {\\n              info: \\"Starting Job.\\",\\n              progress: 10,\\n            });\\n\\n            // Custom code here\\n\\n            await api.jobs.complete(jobId, {\\n              outcome: {\\n                message: \\"Job completed.\\",\\n              },\\n            });\\n          } catch (error) {\\n            await api.jobs.fail(jobId, {\\n              outcome: {\\n                message: \\"Job encountered an error.\\",\\n              },\\n            });\\n          }\\n        }\\n      );\\n    }\\n  );\\n}\\n```\\n\\nNotice that there are two listener configurations here:\\n\\n- `space:configure`\\n- `workbook:submitAction`\\n\\nThe `workbook:submitAction` has been configured to respond to the submit action on our Workbook. But the Workbook itself is configured dynamically via the `space:configure` listener.\\n\\n## Initializing your dynamic configuration\\n\\nWith the above code running on our Agent, we simply create a new space taking care to include the `autoConfigure: true` parameter. This parameter triggers the publication of the `space:configure` event that we\'re listening for. But you can do far more than adding a Workbook. See our other examples for further possibilities.\\n\\n## Further documentation\\n\\nRead more about dynamically building your Spaces [here](https://flatfile.com/docs/guides/dynamic-configurations).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","qJ":"# Get your data out of Flatfile\\n\\n---\\n\\nOnce your data has been imported, transformed, and validated you\'ll likely want to export that data to a destination.\\n\\nSending your data is easy and infinitely customizable via the Flatfile Platform.\\n\\n## Making this Space\\n\\nThis Space has been configured to run custom Egress code on Submit.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nimport simpleWorkbook from \\"../constants/workbook.json\\";\\nimport { egressDocument } from \\"../constants/documents.json\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n   listener.filter({ job: \\"workbook:submitAction\\" }, (configure) => {\\n    configure.on(\\"job:ready\\", async (event: FlatfileEvent) => {\\n      const { jobId } = event.context;\\n      try {\\n        await api.jobs.ack(jobId, {\\n          info: \\"Job started.\\",\\n          progress: 10,\\n        });\\n\\n        const { data } = await api.sheets.list({ workbookId });\\n\\n        const records = await Promise.all(data.map(async (element, index) => {\\n            const record = await api.records.get(element.id);\\n            return { [`Sheet[${index}]`]: record };\\n        }));\\n\\n        // Custom code exporting records here\\n\\n        await api.jobs.complete(jobId, {\\n          outcome: {\\n            message: `Job \\"Send Workbook To ACME\\" completed.`,\\n          },\\n        });\\n      } catch (error: any) {\\n        console.error(\\"Error:\\", error.stack);\\n\\n        await api.jobs.fail(jobId, {\\n          outcome: {\\n            message: \\"Job encountered an error.\\",\\n          },\\n        });\\n      }\\n    });\\n  });\\n}\\n\\n```\\n\\nAs you can see this script monitors for a job event called `workbook:submitAction`. When this event is triggered, it retrieves the relevant Sheets and their associated Records from the Workbook.\\n\\nAfter that, you can send the data wherever you like.\\n\\n## Things you can do here\\n\\nNavigate to your Workbook and click Submit to see how easy it would be to Egress your Workbook.\\n\\n## Further documentation\\n\\nRead more about getting your data out of Flatfile [here](https://flatfile.com/docs/guides/egress).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Y_":"# Extract your data no matter the source\\n\\n---\\n\\nThe Flatfile Platform is a powerful tool for working with your data. But first, your data has to be available to work with.\\n\\nMaking existing data available in Flatfile is simple: upload, extract, map.\\n\\nExtraction is the process of unpacking data from its original format to the Flatfile Platform. Whether your incoming data is `.json`, `.xlsx`, `.zip`, or a multitude of others extraction can be automated via the use of Plugins. Simply configure your Listener to use one or more extractor plugins and extraction will be handled automatically upon file upload.\\n\\n## Making this Space\\n\\nThis Space has been configured to use several extractor plugins.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport { Client, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nimport { JSONExtractor } from \\"@flatfile/plugin-json-extractor\\";\\nimport { ExcelExtractor } from \\"@flatfile/plugin-xlsx-extractor\\";\\nimport { XMLExtractor } from \\"@flatfile/plugin-xml-extractor\\";\\nimport { ZipExtractor } from \\"@flatfile/plugin-zip-extractor\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.use(JSONExtractor());\\n  listener.use(ExcelExtractor());\\n  listener.use(XMLExtractor());\\n  listener.use(ZipExtractor());\\n}\\n```\\n\\n## Things you can do here\\n\\nTo see these work, simply upload a supported file under the \\"Files\\" tab.\\n\\n- [XLSX Data](https://github.com/FlatFilers/demo-agent/tree/main/src/files/movies.xlsx)\\n- [JSON Data](https://github.com/FlatFilers/demo-agent/tree/main/src/files/movies.json)\\n\\nThe appropriate plugin will extract data automatically. Once extraction is complete, you can import and map your data into a workbook and it\'s ready for use.\\n\\n## Further documentation\\n\\nRead more about extractor plugins [here](https://flatfile.com/docs/plugins/extractors/).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","nh":"# Deliver a completely automated data import experience\\n\\n---\\n\\nWith Flatfile’s headless data import capabilities, you can seamlessly integrate an adaptable data connection into your system.\\n\\nYou can achieve a fully automated data exchange between systems in just three steps: `ingress`, `processing`, `egress`.\\n\\n## Making this Space\\n\\nThis Space has been configured to run as a Headless workflow.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          // Create a workbook when the space is configured\\n          await api.workbooks.create({\\n            spaceId,\\n            environmentId,\\n            ...\\n          });\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n          console.error(\\"Error: \\", error.stack);\\n\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n\\n  // We expect Excel data, and use our plugin to extract it.\\n  listener.use(ExcelExtractor({ rawNumbers: true }));\\n  // Use automap to map the data into our Workbook\\n  listener.use(\\n    automap({\\n      accuracy: \\"confident\\",\\n      defaultTargetSheet: \\"Inventory\\",\\n      matchFilename: /^.*inventory\\\\.xlsx$/,\\n      onFailure: console.error,\\n    })\\n  );\\n\\n  // Use RecordHooks to transform and validate our data\\n  listener.use(\\n    recordHook(\\"inventory\\", async (record, event) => {\\n      const author = record.get(\\"author\\");\\n      function validateNameFormat(name: string) {\\n        const pattern: RegExp = /^\\\\s*[\\\\p{L}\'-]+\\\\s*,\\\\s*[\\\\p{L}\'-]+\\\\s*$/u;\\n        return pattern.test(name);\\n      }\\n\\n      if (!validateNameFormat(author as string)) {\\n        const nameSplit = (author as string).split(\\" \\");\\n        record.set(\\"author\\", `${nameSplit[1]}, ${nameSplit[0]}`);\\n        record.addComment(\\"author\\", \\"Author name was updated for vendor\\");\\n        return record;\\n      }\\n    })\\n  );\\n\\n  // Listen for our workbook:map event to be completed forwarding data\\n  listener.filter({ job: \\"workbook:map\\" }, (configure) => {\\n    configure.on(\\"job:completed\\", async (event: FlatfileEvent) => {\\n\\n      // Get our data as a CSV\\n      const { data } = await api.workbooks.get(event.context.workbookId);\\n      const orderSheet = data.sheets[1].id;\\n      const csv = await api.sheets.getRecordsAsCsv(orderSheet);\\n\\n      // Custom egress code here\\n    });\\n  });\\n```\\n\\n## Things you can do here\\n\\nIn a Headless use case, you a user would only use the UI if an automation needed some advice on how to proceed.\\n\\nThis Space has been configured to automatically automatically process and show where your custom code may egress, but you\'ll need to mimic ingress.\\n\\nYou can do that by importing [this inventory file](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/headless/inventory.xlsx).\\n\\nWatch all of the processing happen without further human intervention!\\n\\n## Further documentation\\n\\nRead more about configuring a completely automated data import experience [here](https://flatfile.com/docs/guides/use-cases/headless).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Lf":"# Store descriptive information or data that provides additional context\\n\\n---\\n\\nMetadata refers is data that provides information about other data. It offers context and details about a particular piece of data, helping to describe and organize it.\\n\\nMetadata can include various attributes such as the creation date, user, size, format, and more, depending on the context.\\n\\nIn essence, metadata helps in understanding and managing data. In Flatfile, you can store and retrieve additional data about an Environment, Space, Record, or Field without exposing it to end users.\\n\\n## Making this Space\\n\\nThis Space has been configured with Records that are decorated with metadata.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nimport simpleWorkbook from \\"../constants/workbook.json\\";\\nimport { metadataDocument } from \\"../constants/documents.json\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          const { data } = await api.documents.create(spaceId, {\\n            title: \\"About this Metadata Demo\\",\\n            body: metadataDocument,\\n          });\\n\\n          const documentId = data.id;\\n          const spaceUpdateParams = {\\n            metadata: {\\n              sidebarConfig: {\\n                defaultPage: {\\n                  documentId,\\n                },\\n              },\\n            },\\n          };\\n\\n          await api.spaces.update(spaceId, spaceUpdateParams);\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n          console.error(\\"Error: \\", error.stack);\\n\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n\\n```\\n\\nYou can see that after creating this Space, this Document is created, and then a Space update call is made to make this Document the default page of this Space.\\n\\nLike this example, Flatfile uses some values in the Metadata object to support your configurations, but the Metadata object is flexible and open, enabling you to add further details contextualizing your Environments, Spaces, Workbooks, Sheets, and Records.\\n\\n## Further documentation\\n\\nRead more about contextualizing your data with descriptive information [here](https://flatfile.com/docs/guides/metadata).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","T8":"# Create distinct experiences with namespaces\\n\\n---\\n\\nNamespaces provide the ability to limit the extent of influence over Spaces, Workbooks, and Sheets. In situations where you are want to differentiate between Flatfile experiences, you can configure your system to react solely when the event aligns with the designated namespaces.\\n\\nIn your Flatfile listener, when you’re monitoring for specific events, you can set your system to only respond if the event matches the assigned namespaces.\\n\\n## Making this Space\\n\\nThis very Space was configured using a Namespace.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport namespace from \\"namespace-demo\\";\\nimport another from \\"other-demo\\";\\n\\nimport { Client } from \\"@flatfile/listener\\";\\n\\nexport default function (listener: Client) {\\n  listener.namespace([\\"space:namespace-demo\\"], namespace);\\n  listener.namespace([\\"space:another-demo\\"], another);\\n}\\n```\\n\\nNotice that there are two listener configurations here:\\n\\n- `space:namespace-demo`\\n- `space:another-demo`\\n\\nThe `space:namespace-demo` was triggered on the creation of this demo, while another demo, under another namespace will create with a different configuration, both running on the same agent\\n\\n## Further documentation\\n\\nRead more about narrowing the scope of Spaces, Workbooks, and Sheets [here](LINK).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","xb":"# Securely store and use credentials\\n\\n---\\n\\nSecrets enable the secure sharing of credentials with listener implementations, all without requiring developers to have direct knowledge of the secret values in advance.\\n\\nThese values are established within the user interface but are accessed through the SDK or API.\\n\\n## Making this Space\\n\\nThis Space has been configured with a Secret.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          await api.secrets.upsert({\\n            environmentId,\\n            spaceId,\\n            name: \\"My First Secret\\",\\n            value: \\"My Super Secret Value\\",\\n          });\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n\\n```\\n\\n## Things you can do here\\n\\nGo to the Secrets tab of this space and check out the Secret that has been populated. This secret is then can then be accessed in your Listener configuration and used to interact with external resources requiring credentials.\\n\\n## Further documentation\\n\\nRead more about securely storing use credentials in your configuration [here](https://flatfile.com/docs/guides/secrets).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","oe":"# Customize what your guests see in their sidebar\\n\\n---\\n\\nFlatfile allows you to update your Sidebar to hide or show certain elements.\\n\\nBy combining the customizable Sidebar functionality with the power to dynamically create and update Spaces, narrowing your scope with Namespaces, you can create different experiences for different sets of users.\\n\\n## Making this Space\\n\\nThis Space has been configured to hide the Sidebar on the left for any guests you invite to this Space.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent, FlatfileListener } from \\"@flatfile/listener\\";\\nimport { sidebarDocument } from \\"../constants/documents.json\\";\\nimport simpleWorkbook from \\"../constants/workbook.json\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.filter({ job: \\"space:configure\\" }, (configure: FlatfileListener) => {\\n    configure.on(\\n      \\"job:ready\\",\\n      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {\\n        try {\\n          await api.jobs.ack(jobId, {\\n            info: \\"Job started.\\",\\n            progress: 10,\\n          });\\n\\n          const spaceUpdateParams = {\\n            metadata: {\\n              sidebarConfig: {\\n                showSidebar: false,\\n              },\\n            },\\n          };\\n\\n          await api.spaces.update(spaceId, spaceUpdateParams);\\n\\n          await api.jobs.complete(jobId, {\\n            outcome: {\\n              message: \\"Job completed.\\",\\n            },\\n          });\\n        } catch (error: any) {\\n          console.error(\\"Error: \\", error.stack);\\n\\n          await api.jobs.fail(jobId, {\\n            outcome: {\\n              message: \\"Job error.\\",\\n            },\\n          });\\n        }\\n      }\\n    );\\n  });\\n}\\n\\n```\\n\\n## Things you can do here\\n\\nInvite guest (or yourself at an alias) and log into this Space as that user. The Sidebar will be hidden.\\n\\n## Further documentation\\n\\nRead more about configuring what your guests see in their sidebar [here](https://flatfile.com/docs/guides/guest_sidebar).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","H7":"# Welcome to Flatfile\\n\\n---\\n\\nThis is a Space. It\'s been configured with some basic options to help you get acquainted with the Flatfile Platform.\\n\\nLet\'s begin by getting familiar with what you\'re seeing here in the Sidebar.\\n\\n## Documents\\n\\nYou are reading a document called \\"About this Demo\\", it\'s been configured as the landing page of this Space and a shortcut to it is located at the top of your Sidebar.\\n\\n## Data Checklist\\n\\nBelow any documents is your \\"Data checklist\\". Use this section to explore what the data in your Workbook is expected to look like.\\n\\n## Files\\n\\nUse the \\"Files\\" tab to upload files. You can also upload them directly int Sheets. Your Workbooks and Sheets are located at below the divider in Sidebar.\\n\\n## Secrets\\n\\nConfiguring Secrets is an administrative function. Use this section to securely store key-value pairs that can be used in the code supporting your Flatfile Spaces.\\n\\n## Guests\\n\\nAs an administrator you may also invite collaborators to work with you in this Space in the \\"Manage guests\\" section. Their view will look a little different than yours. Try inviting yourself at an alias email to see the difference.\\n\\n## Data\\n\\nThe Workbook currently configured in this Space contains two Sheets: **Contacts**, and **Countries**.\\n\\n## Things you can do here\\n\\n1. You can upload/download CSV files into and from each Sheet.\\n2. You can manually add records to each Sheet directly in the UI.\\n3. You can also manually adjust cells & records individually, or in bulk.\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n- [Theming](https://platform.flatfile.com/getting-started)\\n","Ox":"# Customize the look and feel of Flatfile to match your brand\\n\\n---\\n\\nAll Spaces are customizable via theming options enabling you to blend Flatfile seamlessly into your application.\\n\\n## Making this Space\\n\\nThis Space has been configured to leverage the visual overrides available to help you theme a Space.\\\\\\nWe\'ve customized the colors and logo in this Space to match a sample brand but you can very easily update all of the elements you see to a different aesthetic to match yours.\\\\\\nEven better? Create co-branded experiences in all of your Spaces for every one of your customers.\\n\\nHere\'s a look at the code that was used to create it:\\n\\n```jsx\\nimport api from \\"@flatfile/api\\";\\nimport { Client, FlatfileEvent } from \\"@flatfile/listener\\";\\n\\nexport default function flatfileEventListener(listener: Client) {\\n  listener.on(\\n    \\"space:created\\",\\n    async ({ context: { spaceId, environmentId } }: FlatfileEvent) => {\\n      await api.spaces.update(spaceId, {\\n        environmentId,\\n        metadata: {\\n          theme: {\\n            root: {\\n              primaryColor: \\"#090B2B\\",\\n              dangerColor: \\"#F44336\\",\\n              warningColor: \\"#FF9800\\",\\n            },\\n            document: {\\n              borderColor: \\"#CAD0DC\\",\\n            },\\n            sidebar: {\\n              logo: \\"path/to/logo/file\\",\\n              textColor: \\"#ECEEFF\\",\\n              titleColor: \\"#C4C9FF\\",\\n              focusBgColor: \\"#6673FF\\",\\n              focusTextColor: \\"#FFF\\",\\n              backgroundColor: \\"#090B2B\\",\\n              footerTextColor: \\"#C4C9FF\\",\\n              textUltralightColor: \\"#B9DDFF\\",\\n              borderColor: \\"#2E3168\\",\\n              activeTextColor: \\"#FFF\\",\\n            },\\n            table: {},\\n          },\\n          sidebarConfig: {\\n            showGuestInvite: true,\\n            showDataChecklist: true,\\n            showSidebar: true,\\n          },\\n        },\\n      });\\n    }\\n  );\\n}\\n```\\n\\n## Things you can do here\\n\\nSet the sidebar theme straight from the configurations worksheet! Simply select a theme, then select \\"More Actions\\", \\"Update Theme\\".\\\\\\nThe listener configured behind this space will get information about your selection and make a call to update your sidebar theme.\\n\\n## Further documentation\\n\\nRead more about how to customize the look and feel of Flatfile to match your brand [here](https://flatfile.com/docs/guides/theming).\\n\\n## Learn more about Flatfile by trying our other demos\\n\\n- [Actions](https://platform.flatfile.com/getting-started)\\n- [Data Handling](https://platform.flatfile.com/getting-started)\\n- [Documents](https://platform.flatfile.com/getting-started)\\n- [Dynamic Configurations](https://platform.flatfile.com/getting-started)\\n- [Egress](https://platform.flatfile.com/getting-started)\\n- [Extractors](https://platform.flatfile.com/getting-started)\\n- [Headless](https://platform.flatfile.com/getting-started)\\n- [Metadata](https://platform.flatfile.com/getting-started)\\n- [Namespaces](https://platform.flatfile.com/getting-started)\\n- [Secrets](https://platform.flatfile.com/getting-started)\\n- [Sidebar](https://platform.flatfile.com/getting-started)\\n"}');
 ;// CONCATENATED MODULE: ./src/demos/actions.ts
 
 
@@ -71319,6 +71673,162 @@ function extractor_flatfileEventListener(listener) {
     listener.use((0,plugin_zip_extractor_dist_main.ZipExtractor)());
 }
 
+;// CONCATENATED MODULE: ./src/constants/headlessWorkbook.json
+const headlessWorkbook_namespaceObject = JSON.parse('{"name":"Inventory","sheets":[{"name":"Inventory","slug":"inventory","fields":[{"key":"title","type":"string","label":"Title"},{"key":"author","type":"string","label":"Author"},{"key":"isbn","type":"string","label":"ISBN"},{"key":"stock","type":"number","label":"Stock"}],"actions":[]},{"name":"Purchase Order","slug":"purchase-order","fields":[{"key":"title","type":"string","label":"Title"},{"key":"author","type":"string","label":"Author"},{"key":"isbn","type":"string","label":"ISBN"},{"key":"purchase","type":"number","label":"Purchase"}],"actions":[]}],"actions":[{"operation":"importAction","mode":"foreground","label":"Import","type":"string","description":"Import Data","primary":true}]}');
+// EXTERNAL MODULE: ./node_modules/@flatfile/plugin-automap/dist/main.js
+var plugin_automap_dist_main = __nccwpck_require__(14787);
+;// CONCATENATED MODULE: ./src/demos/headless.ts
+
+
+
+
+
+
+// import nodemailer from "nodemailer";
+// import { promisify } from "util";
+function headless_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: "Job started.",
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this Headless Demo",
+                    body: documents_namespaceObject.nh,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const headlessWorkbook = {
+                    ...{ Labels: ["Primary", "Headless-Demo"] },
+                    ...headlessWorkbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...headlessWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: "Job completed.",
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: "Job error.",
+                    },
+                });
+            }
+        });
+    });
+    listener.use((0,plugin_xlsx_extractor_dist_main.ExcelExtractor)({ rawNumbers: true }));
+    listener.use((0,plugin_automap_dist_main.automap)({
+        accuracy: "confident",
+        defaultTargetSheet: "Inventory",
+        matchFilename: /^.*inventory\.xlsx$/,
+        onFailure: console.error,
+    }));
+    listener.use((0,main.recordHook)("inventory", async (record, event) => {
+        const author = record.get("author");
+        function validateNameFormat(name) {
+            const pattern = /^\s*[\p{L}'-]+\s*,\s*[\p{L}'-]+\s*$/u;
+            return pattern.test(name);
+        }
+        if (!validateNameFormat(author)) {
+            const nameSplit = author.split(" ");
+            record.set("author", `${nameSplit[1]}, ${nameSplit[0]}`);
+            record.addComment("author", "Author name was updated for vendor");
+            return record;
+        }
+    }));
+    // listener.filter({ job: "workbook:map" }, (configure) => {
+    //   configure.on("job:completed", async (event: FlatfileEvent) => {
+    //     const email = await event.secrets("email");
+    //     const password = await event.secrets("password");
+    //     const { data } = await api.workbooks.get(event.context.workbookId);
+    //     // @ts-ignore
+    //     const inventorySheet = data.sheets[0].id;
+    //     // @ts-ignore
+    //     const orderSheet = data.sheets[1].id;
+    //     const currentInventory = await api.records.get(inventorySheet);
+    //     const purchaseInventory = currentInventory.data.records.map((item) => {
+    //       const stockValue = item.values.stock.value;
+    //       const stockOrder = Math.max(3 - (stockValue as number), 0);
+    //       item.values.purchase = {
+    //         value: stockOrder,
+    //         valid: true,
+    //       };
+    //       const { stock, ...fields } = item.values;
+    //       return fields;
+    //     });
+    //     const purchaseOrder = purchaseInventory.filter(
+    //       (item) => (item.purchase.value as number) > 0
+    //     );
+    //     await api.records.insert(orderSheet, purchaseOrder);
+    //     const csv = await api.sheets.getRecordsAsCsv(orderSheet);
+    //     const transporter = nodemailer.createTransport({
+    //       service: "Gmail",
+    //       auth: {
+    //         user: email,
+    //         pass: password,
+    //       },
+    //     });
+    //     const mailOptions = {
+    //       from: email,
+    //       to: email,
+    //       subject: "Purchase Order",
+    //       text: "Attached",
+    //       attachments: [
+    //         {
+    //           filename: "orders.csv",
+    //           content: csv,
+    //         },
+    //       ],
+    //     };
+    //     const sendMail = promisify(transporter.sendMail.bind(transporter));
+    //     await sendMail(mailOptions);
+    //   });
+    // });
+    // listener.filter({ job: "workbook:importAction" }, (configure) => {
+    //   configure.on("job:ready", async (event: FlatfileEvent) => {
+    //     const { jobId, spaceId, environmentId, workbookId } = event.context;
+    //     try {
+    //       await api.jobs.ack(jobId, {
+    //         info: "Job started.",
+    //         progress: 10,
+    //       });
+    //       // How the heck are we going to upload a file from here?
+    //       await api.jobs.complete(jobId, {
+    //         outcome: {
+    //           message: `Job "Custom Action" completed.`,
+    //         },
+    //       });
+    //     } catch (error: any) {
+    //       console.error("Error:", error.stack);
+    //       await api.jobs.fail(jobId, {
+    //         outcome: {
+    //           message: "Job encountered an error.",
+    //         },
+    //       });
+    //     }
+    //   });
+    // });
+}
+
 ;// CONCATENATED MODULE: ./src/demos/metadata.ts
 
 
@@ -71410,6 +71920,67 @@ function namespace_flatfileEventListener(listener) {
                     spaceId,
                     environmentId,
                     ...namespaceWorkbook,
+                });
+                await api_default().jobs.complete(jobId, {
+                    outcome: {
+                        message: "Job completed.",
+                    },
+                });
+            }
+            catch (error) {
+                console.error("Error: ", error.stack);
+                await api_default().jobs.fail(jobId, {
+                    outcome: {
+                        message: "Job error.",
+                    },
+                });
+            }
+        });
+    });
+}
+
+;// CONCATENATED MODULE: ./src/demos/secrets.ts
+
+
+
+function secrets_flatfileEventListener(listener) {
+    listener.filter({ job: "space:configure" }, (configure) => {
+        configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
+            try {
+                await api_default().jobs.ack(jobId, {
+                    info: "Job started.",
+                    progress: 10,
+                });
+                const { data } = await api_default().documents.create(spaceId, {
+                    title: "About this Secrets Demo",
+                    body: documents_namespaceObject.xb,
+                });
+                const documentId = data.id;
+                const spaceUpdateParams = {
+                    metadata: {
+                        sidebarConfig: {
+                            defaultPage: {
+                                documentId,
+                            },
+                        },
+                    },
+                };
+                await api_default().spaces.update(spaceId, spaceUpdateParams);
+                const secretsWorkbook = {
+                    ...{ Labels: ["Primary", "Secrets-Demo"] },
+                    ...workbook_namespaceObject,
+                };
+                // @ts-ignore
+                await api_default().workbooks.create({
+                    spaceId,
+                    environmentId,
+                    ...secretsWorkbook,
+                });
+                await api_default().secrets.upsert({
+                    environmentId,
+                    spaceId,
+                    name: "My First Secret",
+                    value: "My Super Secret Value",
                 });
                 await api_default().jobs.complete(jobId, {
                     outcome: {
@@ -72037,8 +72608,9 @@ const reduceDescriptors = (obj, reducer) => {
   const reducedDescriptors = {};
 
   forEach(descriptors, (descriptor, name) => {
-    if (reducer(descriptor, name, obj) !== false) {
-      reducedDescriptors[name] = descriptor;
+    let ret;
+    if ((ret = reducer(descriptor, name, obj)) !== false) {
+      reducedDescriptors[name] = ret || descriptor;
     }
   });
 
@@ -72902,10 +73474,6 @@ function formDataToJSON(formData) {
 
 
 
-const DEFAULT_CONTENT_TYPE = {
-  'Content-Type': undefined
-};
-
 /**
  * It takes a string, tries to parse it, and if it fails, it returns the stringified version
  * of the input
@@ -72935,7 +73503,7 @@ const defaults = {
 
   transitional: defaults_transitional,
 
-  adapter: ['xhr', 'http'],
+  adapter: node.isNode ? 'http' : 'xhr',
 
   transformRequest: [function transformRequest(data, headers) {
     const contentType = headers.getContentType() || '';
@@ -73044,17 +73612,14 @@ const defaults = {
 
   headers: {
     common: {
-      'Accept': 'application/json, text/plain, */*'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': undefined
     }
   }
 };
 
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+utils.forEach(['delete', 'get', 'head', 'post', 'put', 'patch'], (method) => {
   defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
 });
 
 /* harmony default export */ const lib_defaults = (defaults);
@@ -73401,7 +73966,17 @@ class AxiosHeaders {
 
 AxiosHeaders.accessor(['Content-Type', 'Content-Length', 'Accept', 'Accept-Encoding', 'User-Agent', 'Authorization']);
 
-utils.freezeMethods(AxiosHeaders.prototype);
+// reserved names hotfix
+utils.reduceDescriptors(AxiosHeaders.prototype, ({value}, key) => {
+  let mapped = key[0].toUpperCase() + key.slice(1); // map `set` => `Set`
+  return {
+    get: () => value,
+    set(headerValue) {
+      this[mapped] = headerValue;
+    }
+  }
+});
+
 utils.freezeMethods(AxiosHeaders);
 
 /* harmony default export */ const core_AxiosHeaders = (AxiosHeaders);
@@ -73569,7 +74144,7 @@ var follow_redirects = __nccwpck_require__(67707);
 // EXTERNAL MODULE: external "zlib"
 var external_zlib_ = __nccwpck_require__(59796);
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/env/data.js
-const VERSION = "1.4.0";
+const VERSION = "1.5.0";
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/helpers/parseProtocol.js
 
 
@@ -74494,10 +75069,12 @@ const wrapAsync = (asyncExecutor) => {
       auth,
       protocol,
       family,
-      lookup,
       beforeRedirect: dispatchBeforeRedirect,
       beforeRedirects: {}
     };
+
+    // cacheable-lookup integration hotfix
+    !utils.isUndefined(lookup) && (options.lookup = lookup);
 
     if (config.socketPath) {
       options.socketPath = config.socketPath;
@@ -75566,15 +76143,13 @@ class Axios {
     // Set config.method
     config.method = (config.method || this.defaults.method || 'get').toLowerCase();
 
-    let contextHeaders;
-
     // Flatten headers
-    contextHeaders = headers && utils.merge(
+    let contextHeaders = headers && utils.merge(
       headers.common,
       headers[config.method]
     );
 
-    contextHeaders && utils.forEach(
+    headers && utils.forEach(
       ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
       (method) => {
         delete headers[method];
@@ -75957,6 +76532,7 @@ Object.entries(HttpStatusCode).forEach(([key, value]) => {
 
 
 
+
 /**
  * Create an instance of Axios
  *
@@ -76017,6 +76593,8 @@ axios.mergeConfig = mergeConfig;
 axios.AxiosHeaders = core_AxiosHeaders;
 
 axios.formToJSON = thing => helpers_formDataToJSON(utils.isHTMLForm(thing) ? new FormData(thing) : thing);
+
+axios.getAdapter = adapters.getAdapter;
 
 axios.HttpStatusCode = helpers_HttpStatusCode;
 
@@ -76271,10 +76849,10 @@ function theming_flatfileEventListener(listener) {
 
 
 
-// import headless from "./demos/headless";
 
 
-// import secrets from "./demos/secrets";
+
+
 
 
 
@@ -76285,10 +76863,10 @@ function theming_flatfileEventListener(listener) {
     listener.namespace(["space:dynamic-demo"], dynamic_flatfileEventListener);
     listener.namespace(["space:egress-demo"], egress_flatfileEventListener);
     listener.namespace(["space:extractor-demo"], extractor_flatfileEventListener);
-    // listener.namespace(["space:headless-demo"], headless);
+    listener.namespace(["space:headless-demo"], headless_flatfileEventListener);
     listener.namespace(["space:metadata-demo"], metadata_flatfileEventListener);
     listener.namespace(["space:namespace-demo"], namespace_flatfileEventListener);
-    // listener.namespace(["space:secrets-demo"], secrets);
+    listener.namespace(["space:secrets-demo"], secrets_flatfileEventListener);
     listener.namespace(["space:sidebar-demo"], sidebar_flatfileEventListener);
     listener.namespace(["space:simple-demo"], simple_flatfileEventListener);
     listener.namespace(["space:theming-demo"], theming_flatfileEventListener);
@@ -76796,7 +77374,7 @@ module.exports = self.URLSearchParams;
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
-// Axios v1.4.0 Copyright (c) 2023 Matt Zabriskie and contributors
+// Axios v1.5.0 Copyright (c) 2023 Matt Zabriskie and contributors
 
 
 const FormData$1 = __nccwpck_require__(64334);
@@ -77366,8 +77944,9 @@ const reduceDescriptors = (obj, reducer) => {
   const reducedDescriptors = {};
 
   forEach(descriptors, (descriptor, name) => {
-    if (reducer(descriptor, name, obj) !== false) {
-      reducedDescriptors[name] = descriptor;
+    let ret;
+    if ((ret = reducer(descriptor, name, obj)) !== false) {
+      reducedDescriptors[name] = ret || descriptor;
     }
   });
 
@@ -78151,10 +78730,6 @@ function formDataToJSON(formData) {
   return null;
 }
 
-const DEFAULT_CONTENT_TYPE = {
-  'Content-Type': undefined
-};
-
 /**
  * It takes a string, tries to parse it, and if it fails, it returns the stringified version
  * of the input
@@ -78184,7 +78759,7 @@ const defaults = {
 
   transitional: transitionalDefaults,
 
-  adapter: ['xhr', 'http'],
+  adapter: 'http' ,
 
   transformRequest: [function transformRequest(data, headers) {
     const contentType = headers.getContentType() || '';
@@ -78293,17 +78868,14 @@ const defaults = {
 
   headers: {
     common: {
-      'Accept': 'application/json, text/plain, */*'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': undefined
     }
   }
 };
 
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+utils.forEach(['delete', 'get', 'head', 'post', 'put', 'patch'], (method) => {
   defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
 });
 
 const defaults$1 = defaults;
@@ -78639,7 +79211,17 @@ class AxiosHeaders {
 
 AxiosHeaders.accessor(['Content-Type', 'Content-Length', 'Accept', 'Accept-Encoding', 'User-Agent', 'Authorization']);
 
-utils.freezeMethods(AxiosHeaders.prototype);
+// reserved names hotfix
+utils.reduceDescriptors(AxiosHeaders.prototype, ({value}, key) => {
+  let mapped = key[0].toUpperCase() + key.slice(1); // map `set` => `Set`
+  return {
+    get: () => value,
+    set(headerValue) {
+      this[mapped] = headerValue;
+    }
+  }
+});
+
 utils.freezeMethods(AxiosHeaders);
 
 const AxiosHeaders$1 = AxiosHeaders;
@@ -78759,7 +79341,7 @@ function buildFullPath(baseURL, requestedURL) {
   return requestedURL;
 }
 
-const VERSION = "1.4.0";
+const VERSION = "1.5.0";
 
 function parseProtocol(url) {
   const match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
@@ -79608,10 +80190,12 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
       auth,
       protocol,
       family,
-      lookup,
       beforeRedirect: dispatchBeforeRedirect,
       beforeRedirects: {}
     };
+
+    // cacheable-lookup integration hotfix
+    !utils.isUndefined(lookup) && (options.lookup = lookup);
 
     if (config.socketPath) {
       options.socketPath = config.socketPath;
@@ -80609,15 +81193,13 @@ class Axios {
     // Set config.method
     config.method = (config.method || this.defaults.method || 'get').toLowerCase();
 
-    let contextHeaders;
-
     // Flatten headers
-    contextHeaders = headers && utils.merge(
+    let contextHeaders = headers && utils.merge(
       headers.common,
       headers[config.method]
     );
 
-    contextHeaders && utils.forEach(
+    headers && utils.forEach(
       ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
       (method) => {
         delete headers[method];
@@ -81026,6 +81608,8 @@ axios.mergeConfig = mergeConfig;
 axios.AxiosHeaders = AxiosHeaders$1;
 
 axios.formToJSON = thing => formDataToJSON(utils.isHTMLForm(thing) ? new FormData(thing) : thing);
+
+axios.getAdapter = adapters.getAdapter;
 
 axios.HttpStatusCode = HttpStatusCode$1;
 

@@ -86,6 +86,8 @@ Read more about contextualizing your data with descriptive information [here](ht
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
 - [Egress](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
+- [Headless](https://platform.flatfile.com/getting-started)
 - [Namespaces](https://platform.flatfile.com/getting-started)
+- [Secrets](https://platform.flatfile.com/getting-started)
 - [Sidebar](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)
