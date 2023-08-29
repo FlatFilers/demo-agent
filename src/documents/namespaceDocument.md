@@ -2,17 +2,34 @@
 
 ---
 
+Namespaces provide the ability to limit the extent of influence over Spaces, Workbooks, and Sheets. In situations where you are want to differentiate between Flatfile experiences, you can configure your system to react solely when the event aligns with the designated namespaces.
+
+In your Flatfile listener, when you’re monitoring for specific events, you can set your system to only respond if the event matches the assigned namespaces.
+
 ## Making this Space
 
-This Space has been configured
+This very Space was configured using a Namespace.
 
 Here's a look at the code that was used to create it:
 
 ```jsx
-// CODE HERE
+import namespace from "namespace-demo";
+import another from "other-demo";
+
+import { Client } from "@flatfile/listener";
+
+export default function (listener: Client) {
+  listener.namespace(["space:namespace-demo"], namespace);
+  listener.namespace(["space:another-demo"], another);
+}
 ```
 
-More Text
+Notice that there are two listener configurations here:
+
+- `space:namespace-demo`
+- `space:another-demo`
+
+The `space:namespace-demo` was triggered on the creation of this demo, while another demo, under another namespace will create with a different configuration, both running on the same agent
 
 ## Further documentation
 
@@ -24,10 +41,6 @@ Read more about narrowing the scope of Spaces, Workbooks, and Sheets [here](LINK
 - [Data Handling](https://platform.flatfile.com/getting-started)
 - [Documents](https://platform.flatfile.com/getting-started)
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
-- [Egress](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
-- [Headless](https://platform.flatfile.com/getting-started)
 - [Metadata](https://platform.flatfile.com/getting-started)
-- [Secrets](https://platform.flatfile.com/getting-started)
-- [Sidebar](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)

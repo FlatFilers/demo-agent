@@ -107,4 +107,6 @@ Read more about how to configure actions based on user input [here](https://flat
 - [Documents](https://platform.flatfile.com/getting-started)
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
+- [Metadata](https://platform.flatfile.com/getting-started)
+- [Namespaces](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)

@@ -38,7 +38,7 @@ export default function flatfileEventListener(listener: Client) {
           };
 
           // @ts-ignore
-          await api.workbooks.create({
+          const workbookData = await api.workbooks.create({
             spaceId,
             environmentId,
             ...metadataWorkbook,
