@@ -76,6 +76,8 @@ Read more about configuring what your guests see in their sidebar [here](https:/
 - [Dynamic Configurations](https://platform.flatfile.com/getting-started)
 - [Egress](https://platform.flatfile.com/getting-started)
 - [Extractors](https://platform.flatfile.com/getting-started)
+- [Headless](https://platform.flatfile.com/getting-started)
 - [Metadata](https://platform.flatfile.com/getting-started)
 - [Namespaces](https://platform.flatfile.com/getting-started)
+- [Secrets](https://platform.flatfile.com/getting-started)
 - [Theming](https://platform.flatfile.com/getting-started)

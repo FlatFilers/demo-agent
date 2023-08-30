@@ -1,0 +1,69 @@
+{
+  "name": "Inventory",
+  "sheets": [
+    {
+      "name": "Inventory",
+      "slug": "inventory",
+      "fields": [
+        {
+          "key": "title",
+          "type": "string",
+          "label": "Title"
+        },
+        {
+          "key": "author",
+          "type": "string",
+          "label": "Author"
+        },
+        {
+          "key": "isbn",
+          "type": "string",
+          "label": "ISBN"
+        },
+        {
+          "key": "stock",
+          "type": "number",
+          "label": "Stock"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "name": "Purchase Order",
+      "slug": "purchase-order",
+      "fields": [
+        {
+          "key": "title",
+          "type": "string",
+          "label": "Title"
+        },
+        {
+          "key": "author",
+          "type": "string",
+          "label": "Author"
+        },
+        {
+          "key": "isbn",
+          "type": "string",
+          "label": "ISBN"
+        },
+        {
+          "key": "purchase",
+          "type": "number",
+          "label": "Purchase"
+        }
+      ],
+      "actions": []
+    }
+  ],
+  "actions": [
+    {
+      "operation": "importAction",
+      "mode": "foreground",
+      "label": "Import",
+      "type": "string",
+      "description": "Import Data",
+      "primary": true
+    }
+  ]
+}

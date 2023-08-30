@@ -44,6 +44,13 @@ export default function flatfileEventListener(listener: Client) {
             ...secretsWorkbook,
           });
 
+          await api.secrets.upsert({
+            environmentId,
+            spaceId,
+            name: "My First Secret",
+            value: "My Super Secret Value",
+          });
+
           await api.jobs.complete(jobId, {
             outcome: {
               message: "Job completed.",

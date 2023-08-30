@@ -1,0 +1,26 @@
+[
+  {
+    "Title": { "value": "The Wall" },
+    "Author": { "value": "Marlen Haushofer" },
+    "ISN": { "value": 9780811231947 },
+    "STOCK": { "value": 2 }
+  },
+  {
+    "Title": { "value": "Fates and Furries" },
+    "Author": { "value": "Lauren Groff" },
+    "ISN": { "value": 9781611764628 },
+    "STOCK": { "value": 4 }
+  },
+  {
+    "Title": { "value": "This Land" },
+    "Author": { "value": "Christopher Ketcham" },
+    "ISN": { "value": 9780735220997 },
+    "STOCK": { "value": 1 }
+  },
+  {
+    "Title": { "value": "Pilgrim at Tinker Creek" },
+    "Author": { "value": "Annie Dillard" },
+    "ISN": { "value": 9780061233326 },
+    "STOCK": { "value": 4 }
+  }
+]
