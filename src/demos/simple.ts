@@ -2,6 +2,10 @@ import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import { FlatfileRecord, recordHook } from "@flatfile/plugin-record-hook";
 import axios from "axios";
+import { JSONExtractor } from "@flatfile/plugin-json-extractor";
+import { ExcelExtractor } from "@flatfile/plugin-xlsx-extractor";
+import { XMLExtractor } from "@flatfile/plugin-xml-extractor";
+import { ZipExtractor } from "@flatfile/plugin-zip-extractor";
 
 import simpleWorkbook from "../constants/workbook.json";
 import { simpleDocument } from "../constants/documents.json";
@@ -142,4 +146,9 @@ export default function flatfileEventListener(listener: Client) {
       }
     );
   });
+
+  listener.use(JSONExtractor());
+  listener.use(ExcelExtractor());
+  listener.use(XMLExtractor());
+  listener.use(ZipExtractor());
 }
