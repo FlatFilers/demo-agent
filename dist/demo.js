@@ -32938,7 +32938,7 @@ const $9db31fd3d296e71b$export$4e02105ea584cac = async (event, handler, options 
         if (!records) return;
         const batch = await $9db31fd3d296e71b$var$prepareXRecords(records);
         // run client defined data hooks
-        await (0, $75O3s$flatfileutilcommon.asyncBatch)(batch.records, handler, options);
+        await (0, $75O3s$flatfileutilcommon.asyncBatch)(batch.records, handler, options, event);
         const recordsUpdates = new (0, $be4385c8965778a3$export$eee91424402f49f4)(batch.records).toXRecords();
         await event.cache.set("records", async ()=>recordsUpdates);
         event.afterAll(async ()=>{
@@ -33007,7 +33007,7 @@ $parcel$exportWildcard(module.exports, $079af9f5f39402b0$exports);
 /***/ 6372:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var $9S02B$flatfileutilextractor = __nccwpck_require__(99017);
+var $9S02B$flatfileutilextractor = __nccwpck_require__(92701);
 var $9S02B$xlsx = __nccwpck_require__(54487);
 var $9S02B$remeda = __nccwpck_require__(18886);
 
@@ -33105,6 +33105,123 @@ const $2fa8362c8d9a5254$export$985e2a9b035be4a9 = (options)=>{
     return (0, $9S02B$flatfileutilextractor.Extractor)(/\.(xlsx?|xlsm|xlsb|xltx?|xltm)$/i, (0, $b722900357c9eb03$export$9df12741220b4999), options);
 };
 const $2fa8362c8d9a5254$export$a3564b9074c7da = $2fa8362c8d9a5254$export$985e2a9b035be4a9;
+
+
+//# sourceMappingURL=main.js.map
+
+
+/***/ }),
+
+/***/ 92701:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+var $bsRjP$flatfileutilfilebuffer = __nccwpck_require__(25110);
+var $bsRjP$flatfileapi = __nccwpck_require__(45055);
+var $bsRjP$remeda = __nccwpck_require__(18886);
+var $bsRjP$flatfileutilcommon = __nccwpck_require__(16847);
+
+function $parcel$interopDefault(a) {
+  return a && a.__esModule ? a.default : a;
+}
+function $parcel$export(e, n, v, s) {
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
+}
+
+$parcel$export(module.exports, "Extractor", () => $17444219ed74b69d$export$be6da8daffe4c64e);
+
+
+
+
+const $17444219ed74b69d$export$be6da8daffe4c64e = (fileExt, parseBuffer, options)=>{
+    return (handler)=>{
+        handler.use((0, $bsRjP$flatfileutilfilebuffer.fileBuffer)(fileExt, async (file, buffer, event)=>{
+            const job = await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).jobs.create({
+                type: "file",
+                operation: "extract",
+                status: "ready",
+                source: event.context.fileId
+            });
+            try {
+                await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).jobs.update(job.data.id, {
+                    status: "executing"
+                });
+                await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).jobs.ack(job.data.id, {
+                    progress: 10,
+                    info: "Parsing Sheets"
+                });
+                const capture = parseBuffer(buffer, options);
+                const workbook = await $17444219ed74b69d$var$createWorkbook(event.context.environmentId, file, capture);
+                if (!workbook.sheets || workbook.sheets.length === 0) throw new Error("because no Sheets found");
+                await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).jobs.ack(job.data.id, {
+                    progress: 50,
+                    info: "Adding records to Sheets"
+                });
+                const { chunkSize: chunkSize, parallel: parallel } = {
+                    chunkSize: 3000,
+                    parallel: 1,
+                    ...options
+                };
+                for (const sheet of workbook.sheets){
+                    if (!capture[sheet.name]) continue;
+                    await (0, $bsRjP$flatfileutilcommon.asyncBatch)(capture[sheet.name].data, async (chunk)=>{
+                        await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).records.insert(sheet.id, chunk);
+                    }, {
+                        chunkSize: chunkSize,
+                        parallel: parallel
+                    });
+                }
+                await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).files.update(file.id, {
+                    workbookId: workbook.id
+                });
+                await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).jobs.complete(job.data.id, {
+                    info: "Extraction complete"
+                });
+                console.log(workbook);
+            } catch (e) {
+                console.log(`error ${e}`);
+                await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).jobs.fail(job.data.id, {
+                    info: `Extraction failed ${e.message}`
+                });
+            }
+        }));
+    };
+};
+async function $17444219ed74b69d$var$createWorkbook(environmentId, file, workbookCapture) {
+    const workbookConfig = $17444219ed74b69d$var$getWorkbookConfig(file.name, file.spaceId, environmentId, workbookCapture);
+    const workbook = await (0, ($parcel$interopDefault($bsRjP$flatfileapi))).workbooks.create(workbookConfig);
+    if (!workbook.data.sheets || workbook.data.sheets.length === 0) throw new Error("because no Sheets found");
+    return workbook.data;
+}
+function $17444219ed74b69d$var$getWorkbookConfig(name, spaceId, environmentId, workbookCapture) {
+    const sheets = Object.values((0, $bsRjP$remeda.mapValues)(workbookCapture, (sheet, sheetName)=>{
+        return $17444219ed74b69d$var$getSheetConfig(sheetName, sheet);
+    }));
+    return {
+        name: `[file] ${name}`,
+        labels: [
+            "file"
+        ],
+        spaceId: spaceId,
+        environmentId: environmentId,
+        sheets: sheets
+    };
+}
+function $17444219ed74b69d$var$getSheetConfig(name, { headers: headers, required: required, descriptions: descriptions }) {
+    return {
+        name: name,
+        fields: headers.map((key)=>({
+                key: key,
+                label: key,
+                description: descriptions?.[key] || "",
+                type: "string",
+                constraints: required?.[key] ? [
+                    {
+                        type: "required"
+                    }
+                ] : []
+            }))
+    };
+}
 
 
 //# sourceMappingURL=main.js.map
@@ -33327,9 +33444,9 @@ function $parcel$export(e, n, v, s) {
 var $76ccc61fef5ab5ce$exports = {};
 
 $parcel$export($76ccc61fef5ab5ce$exports, "asyncBatch", () => $76ccc61fef5ab5ce$export$2f3768c184a3cc95);
-async function $76ccc61fef5ab5ce$export$2f3768c184a3cc95(arr, callback, options = {}) {
+async function $76ccc61fef5ab5ce$export$2f3768c184a3cc95(arr, callback, options = {}, event) {
     const { chunkSize: chunkSize, parallel: parallel } = {
-        chunkSize: 1000,
+        chunkSize: 3000,
         parallel: 1,
         ...options
     };
@@ -33339,7 +33456,7 @@ async function $76ccc61fef5ab5ce$export$2f3768c184a3cc95(arr, callback, options 
     for(let i = 0; i < arr.length; i += chunkSize)chunks.push(arr.slice(i, i + chunkSize));
     // Create a helper function to process a chunk
     async function processChunk(chunk) {
-        const result = await callback(chunk);
+        const result = await callback(chunk, event);
         results.push(result);
     }
     // Execute the chunks in parallel
@@ -33369,7 +33486,33 @@ async function $76ccc61fef5ab5ce$export$2f3768c184a3cc95(arr, callback, options 
 }
 
 
+var $4de29c2dcdb3b5e8$exports = {};
+
+$parcel$export($4de29c2dcdb3b5e8$exports, "log", () => $4de29c2dcdb3b5e8$export$bef1f36f5486a6a3);
+$parcel$export($4de29c2dcdb3b5e8$exports, "logInfo", () => $4de29c2dcdb3b5e8$export$89c0607256d35f0a);
+$parcel$export($4de29c2dcdb3b5e8$exports, "logWarn", () => $4de29c2dcdb3b5e8$export$cc36178e946876e8);
+$parcel$export($4de29c2dcdb3b5e8$exports, "logError", () => $4de29c2dcdb3b5e8$export$58da9968c3170cb1);
+const $4de29c2dcdb3b5e8$export$bef1f36f5486a6a3 = (packageName, msg, type = "log")=>{
+    const status = {
+        log: "INFO",
+        warn: "WARN",
+        error: "FATAL"
+    };
+    console[type](`[${packageName}]:[${status[type]}] ${msg}`);
+};
+const $4de29c2dcdb3b5e8$export$89c0607256d35f0a = (packageName, msg)=>{
+    $4de29c2dcdb3b5e8$export$bef1f36f5486a6a3(packageName, msg);
+};
+const $4de29c2dcdb3b5e8$export$cc36178e946876e8 = (packageName, msg)=>{
+    $4de29c2dcdb3b5e8$export$bef1f36f5486a6a3(packageName, msg, "warn");
+};
+const $4de29c2dcdb3b5e8$export$58da9968c3170cb1 = (packageName, msg)=>{
+    $4de29c2dcdb3b5e8$export$bef1f36f5486a6a3(packageName, msg, "error");
+};
+
+
 $parcel$exportWildcard(module.exports, $76ccc61fef5ab5ce$exports);
+$parcel$exportWildcard(module.exports, $4de29c2dcdb3b5e8$exports);
 
 
 //# sourceMappingURL=main.js.map
@@ -76609,6 +76752,10 @@ axios.default = axios;
 
 
 
+
+
+
+
 function simple_flatfileEventListener(listener) {
     listener.filter({ job: "space:configure" }, (configure) => {
         configure.on("job:ready", async ({ context: { spaceId, environmentId, jobId } }) => {
@@ -76716,6 +76863,10 @@ function simple_flatfileEventListener(listener) {
             }
         });
     });
+    listener.use((0,dist_main.JSONExtractor)());
+    listener.use((0,plugin_xlsx_extractor_dist_main.ExcelExtractor)());
+    listener.use((0,dist.XMLExtractor)());
+    listener.use((0,plugin_zip_extractor_dist_main.ZipExtractor)());
 }
 
 ;// CONCATENATED MODULE: ./src/constants/sidebarWorkbook.json
