@@ -95,7 +95,7 @@ export default function flatfileEventListener(listener: Client) {
 
 Notice the `submitAction` operation defined on the Workbook. This action is listened for and responded to below in the `workbook:submitAction` listener.
 
-To see this Action run, navigate to your Workbook and click submit.
+To see this Action run navigate to the Contacts Workbook and click `Submit`.
 
 ## Further documentation
 
