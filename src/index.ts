@@ -7,6 +7,7 @@ import dynamic from "./demos/dynamic";
 import egress from "./demos/egress";
 import extractor from "./demos/extractor";
 import headless from "./demos/headless";
+import localization from "./demos/localization";
 import metadata from "./demos/metadata";
 import namespace from "./demos/namespace";
 import secrets from "./demos/secrets";
@@ -24,6 +25,7 @@ export default function (listener: Client) {
   listener.namespace(["space:egress-demo"], egress);
   listener.namespace(["space:extractor-demo"], extractor);
   listener.namespace(["space:headless-demo"], headless);
+  listener.namespace(["space:localization-demo"], localization);
   listener.namespace(["space:metadata-demo"], metadata);
   listener.namespace(["space:namespace-demo"], namespace);
   listener.namespace(["space:secrets-demo"], secrets);
