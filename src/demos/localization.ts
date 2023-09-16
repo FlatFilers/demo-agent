@@ -1,6 +1,6 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
-import simpleWorkbook from "../constants/workbook.json";
+import baseWorkbook from "../constants/localizationWorkbook.json";
 import { localizationDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
@@ -14,27 +14,29 @@ export default function flatfileEventListener(listener: Client) {
             progress: 10,
           });
 
-          const { data } = await api.documents.create(spaceId, {
-            title: "About this Localization Demo",
-            body: localizationDocument,
+          //documents are using translation keys instead of hardcoding strings
+          const document = await api.documents.create(spaceId, {
+            title: "myDocument.title", // "About this Localization Demo",
+            body: "myDocument.body", // localizationDocument
           });
 
+          //setting the translation path for the space
           await api.spaces.update(spaceId, {
             metadata: {
               sidebarConfig: {
                 defaultPage: {
-                  documentId: data.id,
+                  documentId: document.data.id,
                 },
               },
             },
-            translationsPath: "",
+            translationsPath:
+              "https://raw.githubusercontent.com/FlatFilers/Platform-Translations/kitchen-sink/locales/en/translation.json",
           });
 
           const localizationWorkbook = {
             ...{ Labels: ["Primary", "Localization-Demo"] },
-            ...simpleWorkbook,
+            ...baseWorkbook,
           };
-
           // @ts-ignore
           await api.workbooks.create({
             spaceId,
@@ -58,5 +60,20 @@ export default function flatfileEventListener(listener: Client) {
         }
       }
     );
+  });
+  listener.filter({ job: "job:submit" }, (configure) => {
+    configure.on("job:ready", async ({ context: { jobId } }) => {
+      await api.jobs.complete(jobId, {
+        outcome: {
+          heading: "mySubmitAction.outcome.heading",
+          message: "mySubmitAction.outcome.message",
+          next: {
+            type: "url",
+            url: "https://google.com",
+            label: "mySubmitAction.outcome.label",
+          },
+        },
+      });
+    });
   });
 }
