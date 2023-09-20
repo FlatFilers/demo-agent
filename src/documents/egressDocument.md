@@ -69,16 +69,4 @@ Navigate to your Workbook and click Submit to see how easy it would be to Egress
 
 Read more about getting your data out of Flatfile [here](https://flatfile.com/docs/guides/egress).
 
-## Learn more about Flatfile by trying our other demos
-
-- [Actions](https://platform.flatfile.com/getting-started)
-- [Data Handling](https://platform.flatfile.com/getting-started)
-- [Documents](https://platform.flatfile.com/getting-started)
-- [Dynamic Configurations](https://platform.flatfile.com/getting-started)
-- [Extractors](https://platform.flatfile.com/getting-started)
-- [Headless](https://platform.flatfile.com/getting-started)
-- [Metadata](https://platform.flatfile.com/getting-started)
-- [Namespaces](https://platform.flatfile.com/getting-started)
-- [Secrets](https://platform.flatfile.com/getting-started)
-- [Sidebar](https://platform.flatfile.com/getting-started)
-- [Theming](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
