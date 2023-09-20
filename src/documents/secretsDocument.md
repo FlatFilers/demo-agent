@@ -61,16 +61,4 @@ Go to the Secrets tab of this space and check out the Secret that has been popul
 
 Read more about securely storing use credentials in your configuration [here](https://flatfile.com/docs/guides/secrets).
 
-## Learn more about Flatfile by trying our other demos
-
-- [Actions](https://platform.flatfile.com/getting-started)
-- [Data Handling](https://platform.flatfile.com/getting-started)
-- [Documents](https://platform.flatfile.com/getting-started)
-- [Dynamic Configurations](https://platform.flatfile.com/getting-started)
-- [Egress](https://platform.flatfile.com/getting-started)
-- [Extractors](https://platform.flatfile.com/getting-started)
-- [Headless](https://platform.flatfile.com/getting-started)
-- [Metadata](https://platform.flatfile.com/getting-started)
-- [Namespaces](https://platform.flatfile.com/getting-started)
-- [Sidebar](https://platform.flatfile.com/getting-started)
-- [Theming](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
