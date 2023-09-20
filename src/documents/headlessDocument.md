@@ -6,6 +6,16 @@ With Flatfile’s headless data import capabilities, you can seamlessly integrat
 
 You can achieve a fully automated data exchange between systems in just three steps: `ingress`, `processing`, `egress`.
 
+## Things you can do here
+
+In a Headless use case, you a user would only use the UI if an automation needed some advice on how to proceed.
+
+This Space has been configured to automatically automatically process and show where your custom code may egress, but you'll need to mimic ingress.
+
+You can do that by importing [this inventory file](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/headless/inventory.xlsx).
+
+Watch all of the processing happen without further human intervention!
+
 ## Making this Space
 
 This Space has been configured to run as a Headless workflow.
@@ -91,16 +101,6 @@ Here's a look at the code that was used to create it:
     });
   });
 ```
-
-## Things you can do here
-
-In a Headless use case, you a user would only use the UI if an automation needed some advice on how to proceed.
-
-This Space has been configured to automatically automatically process and show where your custom code may egress, but you'll need to mimic ingress.
-
-You can do that by importing [this inventory file](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/headless/inventory.xlsx).
-
-Watch all of the processing happen without further human intervention!
 
 ## Further documentation
 

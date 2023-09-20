@@ -6,6 +6,10 @@ Flatfile allows you to update your Sidebar to hide or show certain elements.
 
 By combining the customizable Sidebar functionality with the power to dynamically create and update Spaces, narrowing your scope with Namespaces, you can create different experiences for different sets of users.
 
+## Things you can do here
+
+Invite guest (or yourself at an alias) and log into this Space as that user. The Sidebar will be hidden.
+
 ## Making this Space
 
 This Space has been configured to hide the Sidebar on the left for any guests you invite to this Space.
@@ -59,10 +63,6 @@ export default function flatfileEventListener(listener: Client) {
 }
 
 ```
-
-## Things you can do here
-
-Invite guest (or yourself at an alias) and log into this Space as that user. The Sidebar will be hidden.
 
 ## Further documentation
 
