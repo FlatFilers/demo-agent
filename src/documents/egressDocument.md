@@ -6,6 +6,10 @@ Once your data has been imported, transformed, and validated you'll likely want 
 
 Sending your data is easy and infinitely customizable via the Flatfile Platform.
 
+## Things you can do here
+
+Navigate to your Workbook and click Submit to see how easy it would be to Egress your Workbook.
+
 ## Making this Space
 
 This Space has been configured to run custom Egress code on Submit.
@@ -60,10 +64,6 @@ export default function flatfileEventListener(listener: Client) {
 As you can see this script monitors for a job event called `workbook:submitAction`. When this event is triggered, it retrieves the relevant Sheets and their associated Records from the Workbook.
 
 After that, you can send the data wherever you like.
-
-## Things you can do here
-
-Navigate to your Workbook and click Submit to see how easy it would be to Egress your Workbook.
 
 ## Further documentation
 

@@ -4,6 +4,11 @@
 
 All Spaces are customizable via theming options enabling you to blend Flatfile seamlessly into your application.
 
+## Things you can do here
+
+Set the sidebar theme straight from the configurations worksheet! Simply select a theme, then select "More Actions", "Update Theme".\
+The listener configured behind this space will get information about your selection and make a call to update your sidebar theme.
+
 ## Making this Space
 
 This Space has been configured to leverage the visual overrides available to help you theme a Space.\
@@ -57,11 +62,6 @@ export default function flatfileEventListener(listener: Client) {
   );
 }
 ```
-
-## Things you can do here
-
-Set the sidebar theme straight from the configurations worksheet! Simply select a theme, then select "More Actions", "Update Theme".\
-The listener configured behind this space will get information about your selection and make a call to update your sidebar theme.
 
 ## Further documentation
 

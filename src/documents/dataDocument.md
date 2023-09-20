@@ -6,6 +6,11 @@ Data Hooks® are compact functions that automatically restructure, rectify, vali
 
 These hooks can operate on an entire record, or row, of data through methods on the FlatfileRecord class. Hooks at the record level can utilize all row fields, making them suitable for tasks needing multiple field access or new field creation.
 
+## Things you can do here
+
+1. Enter and first and last name, and watch the email field populate. Notice it is lower case.
+2. Enter a last name with a number and see the field get marked as invalid.
+
 ## Making this Space
 
 This Space has been configured to use Data Hooks to compute and validate fields in the Contacts Sheet.
@@ -42,11 +47,6 @@ export default function flatfileEventListener(listener: Client) {
   );
 }
 ```
-
-## Things you can do here
-
-1. Enter and first and last name, and watch the email field populate. Notice it is lower case.
-2. Enter a last name with a number and see the field get marked as invalid.
 
 ## Further documentation
 

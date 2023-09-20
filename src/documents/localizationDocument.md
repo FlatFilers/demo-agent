@@ -4,6 +4,27 @@
 
 Enable translations, customizations, and text overrides for your Spaces easily with Flatfile's localization support.
 
+## Things you can do here
+
+Try Different Languages for Some Puppy Fun! 🌍
+
+Wouldn't it be pawsome if puppies could speak every language? Well, here in our Puppy Localization Playground, you can experience just that!
+
+🐕 Give it a try:
+
+- **English**: Just add `?lng=en` to the URL and reload the page for an experience suited to the English Pointer!
+- **German**: Append `?lng=de` to the end of the URL and hit enter for a woof-tastic German experience.
+- **French**: Use `?lng=fr` for a delightful French translation that even French poodles would approve of!
+- **Spanish**: Want to bark in Spanish? Just add `?lng=es` to the URL.
+
+We're not teaching puppies to translate, but our magical translation.json file does the trick. The best part? Our Markdown page updates itself dynamically based on the selected language! No hardcoding needed. 🪄
+
+So, as you navigate through our Puppy Localization Playground, notice how the words transform into the language you choose. 🌟
+
+Go ahead, try it out! Explore the puppy world in different languages and see how localization makes the web a tail-waggingly good place for everyone! 🌐
+
+Check out our [pupified translations here](https://github.com/FlatFilers/Platform-Translations/blob/kitchen-sink/locales/en/translation.json). You can also checkout the source code for this space in [Typescript](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/localization/index.ts) and in [Javascript](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/javascript/localization/index.js).
+
 ## Making this Space
 
 This Space has been configured with localization options.
@@ -70,27 +91,6 @@ export default function flatfileEventListener(listener: Client) {
   });
 }
 ```
-
-## Things you can do here
-
-Try Different Languages for Some Puppy Fun! 🌍
-
-Wouldn't it be pawsome if puppies could speak every language? Well, here in our Puppy Localization Playground, you can experience just that!
-
-🐕 Give it a try:
-
-- **English**: Just add `?lng=en` to the URL and reload the page for an experience suited to the English Pointer!
-- **German**: Append `?lng=de` to the end of the URL and hit enter for a woof-tastic German experience.
-- **French**: Use `?lng=fr` for a delightful French translation that even French poodles would approve of!
-- **Spanish**: Want to bark in Spanish? Just add `?lng=es` to the URL.
-
-We're not teaching puppies to translate, but our magical translation.json file does the trick. The best part? Our Markdown page updates itself dynamically based on the selected language! No hardcoding needed. 🪄
-
-So, as you navigate through our Puppy Localization Playground, notice how the words transform into the language you choose. 🌟
-
-Go ahead, try it out! Explore the puppy world in different languages and see how localization makes the web a tail-waggingly good place for everyone! 🌐
-
-Check out our [pupified translations here](https://github.com/FlatFilers/Platform-Translations/blob/kitchen-sink/locales/en/translation.json). You can also checkout the source code for this space in [Typescript](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/localization/index.ts) and in [Javascript](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/javascript/localization/index.js).
 
 ## Further documentation
 
