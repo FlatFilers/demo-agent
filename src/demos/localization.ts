@@ -30,7 +30,7 @@ export default function flatfileEventListener(listener: Client) {
               },
             },
             translationsPath:
-              "https://raw.githubusercontent.com/FlatFilers/Platform-Translations/kitchen-sink/locales/en/translation.json",
+              "https://raw.githubusercontent.com/FlatFilers/Platform-Translations/demo-structure/locales/en/translation.json",
           });
 
           const localizationWorkbook = {
