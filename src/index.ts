@@ -1,6 +1,7 @@
 "use strict";
 
 import actions from "./demos/actions";
+import connect from "./demos/connect";
 import data from "./demos/data";
 import documents from "./demos/documents";
 import dynamic from "./demos/dynamic";
@@ -32,4 +33,5 @@ export default function (listener: Client) {
   listener.namespace(["space:sidebar-demo"], sidebar);
   listener.namespace(["space:simple-demo"], simple);
   listener.namespace(["space:theming-demo"], theming);
+  listener.namespace(["space:connect-demo"], connect);
 }
