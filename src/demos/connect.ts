@@ -2,7 +2,7 @@ import api from "@flatfile/api";
 import { FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import mergePlugin from "@flatfile/plugin-connect-via-merge";
 import { configureSpace } from "@flatfile/plugin-space-configure";
-import { dataDocument } from "../constants/documents.json";
+import { connectDocument } from "../constants/documents.json";
 import simpleWorkbook from "../constants/workbook.json";
 
 export default function flatfileEventListener(listener: FlatfileListener) {
@@ -21,7 +21,7 @@ export default function flatfileEventListener(listener: FlatfileListener) {
         const { spaceId } = event.context;
         const { data } = await api.documents.create(spaceId, {
           title: "About this Connect via Merge.dev Demo",
-          body: dataDocument,
+          body: connectDocument,
         });
         await tick(80, "Document created");
         const documentId = data.id;
