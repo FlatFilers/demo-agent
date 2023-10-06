@@ -15,7 +15,7 @@
     "@flatfile/api": "^1.5.25",
     "@flatfile/listener": "^0.3.14",
     "@flatfile/plugin-automap": "^0.0.3",
-    "@flatfile/plugin-connect-via-merge": "^0.0.0",
+    "@flatfile/plugin-connect-via-merge": "^0.0.1",
     "@flatfile/plugin-delimiter-extractor": "^0.4.0",
     "@flatfile/plugin-json-extractor": "^0.4.2",
     "@flatfile/plugin-record-hook": "^1.0.1",
@@ -34,6 +34,7 @@
   "scripts": {
     "documents": "node ./scripts/documents.js",
     "bundle": "node ./scripts/bundle.js",
-    "build": "npm run documents && npm run bundle"
+    "build": "npm run documents && npm run bundle",
+    "deploy": "npx flatfile@latest deploy"
   }
 }
