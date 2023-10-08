@@ -4,7 +4,7 @@
 
 An Action is a code-based operation that executes upon user interaction.
 
-Actions can be defined at the Blueprint level for a Workbook or Sheet. Files may also have actions, those are dynamically created by your listener upon file upload.
+Actions can be defined in your Workbook or Sheet Blueprint. Files may also have actions, but as files have no Blueprints these are configured dynamically by your code upon file upload.
 
 ## Things you can do here
 
@@ -14,7 +14,7 @@ To see this Action run navigate to the Contacts Workbook and click `Submit`.
 
 ## Making this Space
 
-This Space has been configured with a workbook level action.
+This Space has been configured with a Workbook level action.
 
 Here's a look at the code that was used to create it:
 

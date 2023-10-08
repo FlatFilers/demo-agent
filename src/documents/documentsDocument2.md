@@ -2,7 +2,7 @@
 
 ---
 
-As this example demonstrates, you many create as many Documents are you need.
+As this example demonstrates, you may create as many Documents are you need.
 
 ## Further documentation
 
