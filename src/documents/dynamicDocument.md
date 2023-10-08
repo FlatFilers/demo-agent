@@ -31,7 +31,7 @@ export default function flatfileEventListener(listener: Client) {
             progress: 10,
           });
 
-          // Add a workbook to this space
+          // Add a Workbook to this space
           await api.workbooks.create({
             spaceId,
             environmentId,

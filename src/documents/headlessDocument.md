@@ -33,7 +33,7 @@ Here's a look at the code that was used to create it:
             progress: 10,
           });
 
-          // Create a workbook when the space is configured
+          // Create a Workbook when the space is configured
           await api.workbooks.create({
             spaceId,
             environmentId,

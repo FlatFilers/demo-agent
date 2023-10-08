@@ -16,7 +16,7 @@ Below any documents is your "Data checklist". Use this section to explore what t
 
 ## Files
 
-Use the "Files" tab to upload files. You can also upload them directly int Sheets. Your Workbooks and Sheets are located at below the divider in Sidebar.
+Use the "Files" tab to upload files. You can also upload them directly into Sheets. Your Workbooks and Sheets are located below the divider in Sidebar.
 
 ## Secrets
 

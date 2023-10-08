@@ -2,7 +2,7 @@
 
 ---
 
-Namespaces provide the ability to limit the extent of influence over Spaces, Workbooks, and Sheets. In situations where you are want to differentiate between Flatfile experiences, you can configure your system to react solely when the event aligns with the designated namespaces.
+Namespaces provide the ability to limit the extent of influence over Spaces, Workbooks, and Sheets. In situations where you want to differentiate between Flatfile experiences, you can configure your system to react solely when the event aligns with the designated namespaces.
 
 In your Flatfile listener, when you’re monitoring for specific events, you can set your system to only respond if the event matches the assigned namespaces.
 
