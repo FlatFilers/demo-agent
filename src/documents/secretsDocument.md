@@ -8,7 +8,7 @@ These values are established within the user interface but are accessed through 
 
 ## Things you can do here
 
-Go to the Secrets tab of this space and check out the Secret that has been populated. This secret can then be accessed in your Listener configuration and used to interact with external resources requiring credentials.
+In the Developer Settings section, go to the Secrets tab of this space and check out the Secret that has been populated. This Secret can be accessed in your Listener and used to interact with external resources requiring credentials.
 
 ## Making this Space
 
