@@ -33,6 +33,6 @@ The `space:namespace-demo` was triggered on the creation of this demo, while ano
 
 ## Further documentation
 
-Read more about narrowing the scope of Spaces, Workbooks, and Sheets [here](LINK).
+Read more about narrowing the scope of Spaces, Workbooks, and Sheets [here](https://flatfile.com/docs/guides/namespaces).
 
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
