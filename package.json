@@ -12,7 +12,7 @@
     "url": "https://github.com/FlatFilers/demo-agent/issues"
   },
   "dependencies": {
-    "@flatfile/api": "^1.5.25",
+    "@flatfile/api": "^1.5.33",
     "@flatfile/listener": "^0.3.14",
     "@flatfile/plugin-automap": "^0.0.3",
     "@flatfile/plugin-connect-via-merge": "^0.0.1",
