@@ -78,7 +78,7 @@ export default function flatfileEventListener(listener: Client) {
 
           await api.documents.create(spaceId, {
             title: "Ephemeral Documents",
-            body: `# Ephemeral Documents\n\nEphemeral Documents are stand-alone pages that provide a more focused, guided experience for your end users. The main differences between ephemeral Documents and normal Documents are that ephemeral documents are full-screen takeovers, and they do not appear in the sidebar.\n\n[Click here](/space/${spaceId}/document/${ephemeralDocument.data.id}) to see an example of an ephemeral Document.\n\nCreate ephemeral documents using the \`treatments\` parameter when creating a Document, and give your document a treatment of "ephemeral".\n\n[Learn more about creating ephemeral Documents in our guides](https://flatfile.com/docs/guides/documents#document-treatments).`,
+            body: `# Ephemeral Documents\n\nEphemeral Documents are stand-alone pages that provide a more focused, guided experience for your end users. The main differences between ephemeral Documents and normal Documents are that ephemeral documents are full-screen takeovers, and they do not appear in the sidebar.\n\n[Click here](/space/${spaceId}/document/${ephemeralDocument.data.id}) to see an example of an ephemeral Document.\n\nCreate ephemeral documents using the \`treatments\` parameter when creating a Document, and give your document a treatment of "ephemeral".\n\n\`\`\`ts\nconst ephemeralDoc = await api.documents.create(spaceId, {\n  title: \"Ephemeral Documents\",\n  body: bodyText,\n  treatments: [\"ephemeral\"],\n});\n\`\`\`\n\n[Learn more about creating ephemeral Documents in our guides](https://flatfile.com/docs/guides/documents#document-treatments).`,
           });
 
           const workbookId = workbookResponse.data.id;
@@ -89,7 +89,7 @@ export default function flatfileEventListener(listener: Client) {
           if (sheetId && workbookId) {
             await api.documents.create(spaceId, {
               title: "Embedded Sheets in Documents",
-              body: `# Embedding Sheets in Documents\n\nYou can embed Sheets directly into Documents to allow your users to view and edit Sheet data live:\n\n<embed type='embedded-sheet' workbookId='${workbookId}' sheetId='${sheetId}' name='${sheetName}' defaultExpanded="true">\n\n[Learn more about embedding Sheets into Documents in our guides](https://flatfile.com/docs/guides/documents#embedding-sheets-in-documents).`,
+              body: `# Embedding Sheets in Documents\n\nYou can embed Sheets directly into Documents to allow your users to view and edit Sheet data live:\n\n\`\`\`ts\nconst doc = await api.documents.create(spaceId, {\n  title: \"Embedding Sheets in Documents\",\n  body: \`\n    # Embedding Sheets in Documents\n    \n    You can embed Sheets directly into Documents to allow your users to view and edit Sheet data live:\n    \n    <embed type='embedded-sheet' name='Contacts' defaultExpanded='true' sheetId='your_sheet_id' workbookId='your_workbook_id'>\n  \`,\n});\n\`\`\`\n\n\n<embed type='embedded-sheet' workbookId='${workbookId}' sheetId='${sheetId}' name='${sheetName}' defaultExpanded="true">\n\n[Learn more about embedding Sheets into Documents in our guides](https://flatfile.com/docs/guides/documents#embedding-sheets-in-documents).`,
             });
           }
 
