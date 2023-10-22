@@ -65,6 +65,6 @@ export default function flatfileEventListener(listener: Client) {
 
 ## Further documentation
 
-Read more about how to customize the look and feel of Flatfile to match your brand [here](https://flatfile.com/docs/guides/theming).
+Read more about how to customize the look and feel of Flatfile to match your brand <a href="https://flatfile.com/docs/guides/theming" target="_blank">here</a>
 
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)

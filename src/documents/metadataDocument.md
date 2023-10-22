@@ -76,6 +76,5 @@ Like this example, Flatfile uses some values in the Metadata object to support y
 
 ## Further documentation
 
-Read more about contextualizing your data with descriptive information [here](https://flatfile.com/docs/guides/metadata).
-
+Read more about contextualizing your data with descriptive information <a href="https://flatfile.com/docs/guides/metadata" target="_blank">here</a>.
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)

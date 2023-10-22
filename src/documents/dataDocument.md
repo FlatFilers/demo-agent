@@ -50,6 +50,5 @@ export default function flatfileEventListener(listener: Client) {
 
 ## Further documentation
 
-Read more about how to process data with data hooks [here](https://flatfile.com/docs/guides/handling-data).
-
+Read more about how to process data with data hooks <a href="https://flatfile.com/docs/guides/handling-data" target="_blank">here</a>.
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)

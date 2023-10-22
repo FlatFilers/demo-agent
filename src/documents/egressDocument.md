@@ -67,6 +67,6 @@ After that, you can send the data wherever you like.
 
 ## Further documentation
 
-Read more about getting your data out of Flatfile [here](https://flatfile.com/docs/guides/egress).
+Read more about getting your data out of Flatfile <a href="https://flatfile.com/docs/guides/egress" target="_blank">here</a>.
 
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)

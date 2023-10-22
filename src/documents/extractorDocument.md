@@ -41,6 +41,5 @@ export default function flatfileEventListener(listener: Client) {
 
 ## Further documentation
 
-Read more about extractor plugins [here](https://flatfile.com/docs/plugins/extractors/).
-
+Read more about extractor plugins <a href="https://flatfile.com/docs/plugins/extractors" target="_blank">here</a>.
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)

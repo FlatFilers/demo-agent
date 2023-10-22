@@ -66,6 +66,5 @@ export default function flatfileEventListener(listener: Client) {
 
 ## Further documentation
 
-Read more about configuring what your guests see in their sidebar [here](https://flatfile.com/docs/guides/guest_sidebar).
-
+Read more about configuring what your guests see in their sidebar <a href="https://flatfile.com/docs/guides/guest_sidebar" target="_blank">here</a>.
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
