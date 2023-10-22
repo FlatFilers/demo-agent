@@ -90,6 +90,6 @@ export default function flatfileEventListener(listener: Client) {
 
 ## Further documentation
 
-Read more about customizing your Space text [here](https://flatfile.com/docs/guides/localization).
+Read more about customizing your Space text <a href="https://flatfile.com/docs/guides/localization" target="_blank">here</a>.
 
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)

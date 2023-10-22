@@ -113,6 +113,5 @@ With the above code running on our Agent, we simply create a new space taking ca
 
 ## Further documentation
 
-Read more about dynamically building your Spaces [here](https://flatfile.com/docs/guides/dynamic-configurations).
-
+Read more about dynamically building your Spaces <a href="https://flatfile.com/docs/guides/dynamic-configurations" target="_blank">here</a>.
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)

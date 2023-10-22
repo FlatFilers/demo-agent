@@ -99,6 +99,6 @@ export default function flatfileEventListener(listener: Client) {
 
 ## Further documentation
 
-Read more about how to configure actions based on user input [here](https://flatfile.com/docs/guides/actions).
+Read more about how to configure actions based on user input <a href="https://flatfile.com/docs/guides/actions" target="_blank">here</a>.
 
 ## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
