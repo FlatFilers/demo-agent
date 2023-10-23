@@ -13,6 +13,11 @@ Source code of the demo agent supporting Flatfile UI demos.
 2. Run `npm run build`
 3. Make a pull request
 
+## Editing Documents
+
+1. Add/update the file under src/documents
+2. Run `npm run build`
+
 ## Issues && Bugs
 
 Please add issues or report bugs [here](https://github.com/FlatFilers/demo-agent/issues).
