@@ -42,4 +42,4 @@ export default function flatfileEventListener(listener: Client) {
 ## Further documentation
 
 Read more about extractor plugins <a href="https://flatfile.com/docs/plugins/extractors" target="_blank">here</a>.
-## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our <a href="https://platform.flatfile.com/getting-started" target="_blank">other demos</a>

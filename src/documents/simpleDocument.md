@@ -36,4 +36,4 @@ The Workbook currently configured in this Space contains two Sheets: **Contacts*
 2. You can manually add records to each Sheet directly in the UI.
 3. You can also manually adjust cells & records individually, or in bulk.
 
-## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our <a href="https://platform.flatfile.com/getting-started" target="_blank">other demos</a>
