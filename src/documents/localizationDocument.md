@@ -92,4 +92,4 @@ export default function flatfileEventListener(listener: Client) {
 
 Read more about customizing your Space text <a href="https://flatfile.com/docs/guides/localization" target="_blank">here</a>.
 
-## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our <a href="https://platform.flatfile.com/getting-started" target="_blank">other demos</a>

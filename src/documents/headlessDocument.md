@@ -105,4 +105,4 @@ Here's a look at the code that was used to create it:
 ## Further documentation
 
 Read more about configuring a completely automated data import experience <a href="https://flatfile.com/docs/guides/use-cases/headless" target="_blank">here</a>.
-## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our <a href="https://platform.flatfile.com/getting-started" target="_blank">other demos</a>

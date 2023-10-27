@@ -60,4 +60,4 @@ export default function flatfileEventListener(listener: Client) {
 ## Further documentation
 
 Read more about securely storing use credentials in your configuration <a href="https://flatfile.com/docs/guides/secrets" target="_blank">here</a>.
-## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our <a href="https://platform.flatfile.com/getting-started" target="_blank">other demos</a>

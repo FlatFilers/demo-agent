@@ -23,4 +23,4 @@ export default function (listener: FlatfileListener) {
 
 Read more about how to make connections via Merge.dev <a href="https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/connect-alpha/README.md" target="_blank">here</a>.
 
-## Learn more about Flatfile by trying our [other demos](https://platform.flatfile.com/getting-started)
+## Learn more about Flatfile by trying our <a href="https://platform.flatfile.com/getting-started" target="_blank">other demos</a>
