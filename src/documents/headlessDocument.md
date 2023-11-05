@@ -12,7 +12,7 @@ In a Headless use case, you a user would only use the UI if an automation needed
 
 This Space has been configured to automatically automatically process and show where your custom code may egress, but you'll need to mimic ingress.
 
-You can do that by importing [this inventory file](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/headless/inventory.xlsx).
+You can do that by importing <a href="https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/headless/inventory.xlsx" target="_blank">this inventory file</a>
 
 Watch all of the processing happen without further human intervention!
 
