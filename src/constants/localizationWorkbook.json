@@ -60,16 +60,5 @@
         }
       ]
     }
-  ],
-  "actions": [
-    {
-      "operation": "job:submit",
-      "mode": "foreground",
-      "label": "mySubmitAction.label",
-      "type": "string",
-      "description": "mySubmitAction.description",
-      "primary": true,
-      "tooltip": "mySubmitAction.tooltip"
-    }
   ]
 }

@@ -1,7 +1,6 @@
 import api from "@flatfile/api";
 import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import baseWorkbook from "../constants/localizationWorkbook.json";
-import { localizationDocument } from "../constants/documents.json";
 
 export default function flatfileEventListener(listener: Client) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
@@ -60,20 +59,5 @@ export default function flatfileEventListener(listener: Client) {
         }
       }
     );
-  });
-  listener.filter({ job: "job:submit" }, (configure) => {
-    configure.on("job:ready", async ({ context: { jobId } }) => {
-      await api.jobs.complete(jobId, {
-        outcome: {
-          heading: "mySubmitAction.outcome.heading",
-          message: "mySubmitAction.outcome.message",
-          next: {
-            type: "url",
-            url: "https://google.com",
-            label: "mySubmitAction.outcome.label",
-          },
-        },
-      });
-    });
   });
 }
