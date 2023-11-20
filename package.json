@@ -24,6 +24,7 @@
     "@flatfile/plugin-xml-extractor": "^0.3.0",
     "@flatfile/plugin-zip-extractor": "^0.3.1",
     "@types/node-fetch": "^2.6.4",
+    "axios": "^1.6.2",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
