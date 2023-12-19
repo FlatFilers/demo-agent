@@ -12,7 +12,7 @@ In a Headless use case, you a user would only use the UI if an automation needed
 
 This Space has been configured to automatically automatically process and show where your custom code may egress, but you'll need to mimic ingress.
 
-You can do that by importing [this inventory file](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/headless/inventory.xlsx).
+You can do that by importing [this inventory file](https://github.com/FlatFilers/flatfile-docs-kitchen-sink/blob/main/typescript/headless/inventory.csv).
 
 Watch all of the processing happen without further human intervention!
 
@@ -58,14 +58,13 @@ Here's a look at the code that was used to create it:
     );
   });
 
-  // We expect Excel data, and use our plugin to extract it.
-  listener.use(ExcelExtractor({ rawNumbers: true }));
+
   // Use automap to map the data into our Workbook
   listener.use(
     automap({
       accuracy: "confident",
       defaultTargetSheet: "Inventory",
-      matchFilename: /^.*inventory\.xlsx$/,
+      matchFilename: /^.*inventory\.csv$/,
       onFailure: console.error,
     })
   );
@@ -88,21 +87,21 @@ Here's a look at the code that was used to create it:
     })
   );
 
-  // Listen for our workbook:map event to be completed forwarding data
-  listener.filter({ job: "workbook:map" }, (configure) => {
-    configure.on("job:completed", async (event: FlatfileEvent) => {
-
+  // Listen for our commit:completed event - an event specifically designed to signal the end of all processing tasks
+  // To enable this event, be sure to include a settings parameter in your Sheet that includes trackChanges: true
+  // This will disable actions on both Sheets and Workbooks until any pending commits have been completed
+  listener.on("commit:completed", async (event: FlatfileEvent) => {
       // Get our data as a CSV
       const { data } = await api.workbooks.get(event.context.workbookId);
       const orderSheet = data.sheets[1].id;
       const csv = await api.sheets.getRecordsAsCsv(orderSheet);
 
       // Custom egress code here
-    });
   });
 ```
 
 ## Further documentation
 
 Read more about configuring a completely automated data import experience <a href="https://flatfile.com/docs/guides/use-cases/headless" target="_blank">here</a>.
+
 ## Learn more about Flatfile by trying our <a href="https://platform.flatfile.com/getting-started" target="_blank">other demos</a>
