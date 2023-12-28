@@ -1,6 +1,7 @@
 # Demo Agent
 
 Source code of the demo agent supporting Flatfile UI demos.
+Please note these demos are being reworked to fit the new proudct flows.
 
 ## Getting Started
 
