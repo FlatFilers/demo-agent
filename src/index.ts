@@ -36,25 +36,24 @@ export default function (listener: Client) {
   listener.namespace(["space:theming-demo"], theming)
   listener.namespace(["space:connect-demo"], connect)
   // Temp workaround until we solve for new namespace pattern
-  listener.on("**", async (event) => {
+  // If namespace is not space:demo but label is, then run demo
+  listener.on("space:created", async (event) => {
     const { context: { spaceId }, namespace } = event
     const { data: { labels }} = await api.spaces.get(spaceId)
-    if (namespace[0] === 'space:custom-app') {
-      if (labels!.includes("actions-demo")) { actions(listener) }
-      if (labels!.includes("data-demo")) { data(listener) }
-      if (labels!.includes("documents-demo")) { documents(listener) }
-      if (labels!.includes("dynamic-demo")) { dynamic(listener) }
-      if (labels!.includes("egress-demo")) { egress(listener) }
-      if (labels!.includes("extractor-demo")) { extractor(listener) }
-      if (labels!.includes("headless-demo")) { headless(listener) }
-      if (labels!.includes("localization-demo")) { localization(listener) }
-      if (labels!.includes("metadata-demo")) { metadata(listener) }
-      if (labels!.includes("namespace-demo")) { namespaceListener(listener) }
-      if (labels!.includes("secrets-demo")) { secrets(listener) }
-      if (labels!.includes("sidebar-demo")) { sidebar(listener) }
-      if (labels!.includes("simple-demo")) { simple(listener) }
-      if (labels!.includes("theming-demo")) { theming(listener) }
-      if (labels!.includes("connect-demo")) { connect(listener) }
-    }
+    if (!namespace!.includes('space:actions-demo') && labels!.includes("actions-demo")) { actions(listener) }
+    if (!namespace!.includes('space:data-demo') && labels!.includes("data-demo")) { data(listener) }
+    if (!namespace!.includes('space:documents-demo') && labels!.includes("documents-demo")) { documents(listener) }
+    if (!namespace!.includes('space:dynamic-demo') && labels!.includes("dynamic-demo")) { dynamic(listener) }
+    if (!namespace!.includes('space:egress-demo') && (labels!.includes("egress-demo"))) { egress(listener) }
+    if (!namespace!.includes('space:extractor-demo') && labels!.includes("extractor-demo")) { extractor(listener) }
+    if (!namespace!.includes('space:headless-demo') && labels!.includes("headless-demo")) { headless(listener) }
+    if (!namespace!.includes('space:localization-demo') && labels!.includes("localization-demo")) { localization(listener) }
+    if (!namespace!.includes('space:metadata-demo') && labels!.includes("metadata-demo")) { metadata(listener) }
+    if (!namespace!.includes('space:namespace-demo') && labels!.includes("namespace-demo")) { namespaceListener(listener) }
+    if (!namespace!.includes('space:secrets-demo') && labels!.includes("secrets-demo")) { secrets(listener) }
+    if (!namespace!.includes('space:sidebar-demo') && labels!.includes("sidebar-demo")) { sidebar(listener) }
+    if (!namespace!.includes('space:simple-demo') && labels!.includes("simple-demo")) { simple(listener) }
+    if (!namespace!.includes('space:theming-demo') && labels!.includes("theming-demo")) { theming(listener) }
+    if (!namespace!.includes('space:connect-demo') && labels!.includes("connect-demo")) { connect(listener) }
   })
 }
