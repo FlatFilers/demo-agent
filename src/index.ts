@@ -37,7 +37,7 @@ export default function (listener: Client) {
   listener.namespace(["space:connect-demo"], connect)
   // Temp workaround until we solve for new namespace pattern
   // If namespace is not space:demo but label is, then run demo
-  listener.on("space:created", async (event) => {
+  listener.on("**", async (event) => {
     const { context: { spaceId }, namespace } = event
     const { data: { labels }} = await api.spaces.get(spaceId)
     if (!namespace!.includes('space:actions-demo') && labels!.includes("actions-demo")) { actions(listener) }
