@@ -1,5 +1,5 @@
 import api from '@flatfile/api'
-import type { Client, FlatfileEvent, FlatfileListener } from '@flatfile/listener'
+import type { FlatfileEvent, FlatfileListener } from '@flatfile/listener'
 import {
   documentsDocument1,
   documentsDocument2,
@@ -8,7 +8,7 @@ import {
 } from '../constants/documents.json'
 import simpleWorkbook from '../constants/workbook.json'
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.filter({ job: 'space:configure' }, (configure: FlatfileListener) => {
     configure.on('job:ready', async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
       try {

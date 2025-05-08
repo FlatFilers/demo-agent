@@ -19,9 +19,9 @@ Here's a look at the code that was used to create it:
 
 ```jsx
 import api from "@flatfile/api";
-import { Client, FlatfileEvent } from "@flatfile/listener";
+import { FlatfileEvent } from "@flatfile/listener";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.on(
     "space:created",
     async ({ context: { spaceId, environmentId } }: FlatfileEvent) => {

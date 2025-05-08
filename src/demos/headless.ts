@@ -1,5 +1,5 @@
 import api from '@flatfile/api'
-import type { Client, FlatfileEvent, FlatfileListener } from '@flatfile/listener'
+import type { FlatfileEvent, FlatfileListener } from '@flatfile/listener'
 import { automap } from '@flatfile/plugin-automap'
 import { recordHook } from '@flatfile/plugin-record-hook'
 import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor'
@@ -8,7 +8,7 @@ import workbook from '../constants/headlessWorkbook.json'
 // import nodemailer from "nodemailer";
 // import { promisify } from "util";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.filter({ job: 'space:configure' }, (configure: FlatfileListener) => {
     configure.on('job:ready', async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
       try {

@@ -1,5 +1,5 @@
 import api from '@flatfile/api'
-import type { Client, FlatfileEvent, FlatfileListener } from '@flatfile/listener'
+import type { FlatfileEvent, FlatfileListener } from '@flatfile/listener'
 
 import { JSONExtractor } from '@flatfile/plugin-json-extractor'
 import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor'
@@ -8,7 +8,7 @@ import { ZipExtractor } from '@flatfile/plugin-zip-extractor'
 import { extractorDocument } from '../constants/documents.json'
 import movies from '../constants/movies.json'
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.filter({ job: 'space:configure' }, (configure: FlatfileListener) => {
     configure.on('job:ready', async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
       try {

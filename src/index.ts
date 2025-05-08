@@ -1,4 +1,4 @@
-import type { Client } from '@flatfile/listener'
+import type { FlatfileListener } from '@flatfile/listener'
 import actions from './demos/actions'
 import connect from './demos/connect'
 import data from './demos/data'
@@ -15,7 +15,7 @@ import sidebar from './demos/sidebar'
 import simple from './demos/simple'
 import theming from './demos/theming'
 
-export default function (listener: Client) {
+export default function (listener: FlatfileListener) {
   listener.namespace(['space:actions-demo'], actions)
   listener.namespace(['space:data-demo'], data)
   listener.namespace(['space:documents-demo'], documents)

@@ -20,9 +20,9 @@ Here's a look at the code that was used to create it:
 
 ```jsx
 import api from "@flatfile/api";
-import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
+import { FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
     configure.on(
       "job:ready",

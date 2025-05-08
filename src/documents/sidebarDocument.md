@@ -18,11 +18,11 @@ Here's a look at the code that was used to create it:
 
 ```jsx
 import api from "@flatfile/api";
-import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
+import { FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import { sidebarDocument } from "../constants/documents.json";
 import simpleWorkbook from "../constants/workbook.json";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
     configure.on(
       "job:ready",
