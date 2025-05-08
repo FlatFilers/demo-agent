@@ -1,9 +1,10 @@
-import api from "@flatfile/api";
-import { FlatfileEvent, FlatfileListener } from "@flatfile/listener";
-import mergePlugin from "@flatfile/plugin-connect-via-merge";
-import { configureSpace } from "@flatfile/plugin-space-configure";
-import { connectDocument } from "../constants/documents.json";
-import simpleWorkbook from "../constants/workbook.json";
+import api from '@flatfile/api'
+import type { FlatfileEvent, FlatfileListener } from '@flatfile/listener'
+import { mergePlugin } from '@flatfile/plugin-connect-via-merge'
+import type { TickFunction } from '@flatfile/plugin-job-handler'
+import { configureSpace } from '@flatfile/plugin-space-configure'
+import { connectDocument } from '../constants/documents.json'
+import simpleWorkbook from '../constants/workbook.json'
 
 export default function flatfileEventListener(listener: FlatfileListener) {
   listener.use(
@@ -12,19 +13,19 @@ export default function flatfileEventListener(listener: FlatfileListener) {
         workbooks: [
           //@ts-ignore
           {
-            ...{ Labels: ["Primary", "Connect-Demo"] },
+            ...{ Labels: ['Primary', 'Connect-Demo'] },
             ...simpleWorkbook,
           },
         ],
       },
-      async (event: FlatfileEvent, workbookIds: [], tick: any) => {
-        const { spaceId } = event.context;
+      async (event: FlatfileEvent, workbookIds: [], tick: TickFunction) => {
+        const { spaceId } = event.context
         const { data } = await api.documents.create(spaceId, {
-          title: "About this Connect via Merge.dev Demo",
+          title: 'About this Connect via Merge.dev Demo',
           body: connectDocument,
-        });
-        await tick(80, "Document created");
-        const documentId = data.id;
+        })
+        await tick(80, 'Document created')
+        const documentId = data.id
         const spaceUpdateParams = {
           metadata: {
             sidebarConfig: {
@@ -33,12 +34,12 @@ export default function flatfileEventListener(listener: FlatfileListener) {
               },
             },
           },
-        };
-        await api.spaces.update(spaceId, spaceUpdateParams);
-        await tick(90, "Space updated");
-      }
-    )
-  );
+        }
+        await api.spaces.update(spaceId, spaceUpdateParams)
+        await tick(90, 'Space updated')
+      },
+    ),
+  )
 
-  listener.use(mergePlugin());
+  listener.use(mergePlugin())
 }

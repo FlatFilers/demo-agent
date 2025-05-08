@@ -46,8 +46,8 @@ export default function flatfileEventListener(listener: Client) {
             message: `Job "Send Workbook To ACME" completed.`,
           },
         });
-      } catch (error: any) {
-        console.error("Error:", error.stack);
+      } catch (error) {
+        console.error("Error:", (error as unknown as Error).stack);
 
         await api.jobs.fail(jobId, {
           outcome: {

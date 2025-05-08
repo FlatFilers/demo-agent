@@ -55,7 +55,7 @@ export default function flatfileEventListener(listener: Client) {
               message: "Job completed.",
             },
           });
-        } catch (error: any) {
+        } catch (error) {
 
           await api.jobs.fail(jobId, {
             outcome: {
@@ -83,8 +83,8 @@ export default function flatfileEventListener(listener: Client) {
             message: `Job "Custom Action" completed.`,
           },
         });
-      } catch (error: any) {
-        console.error("Error:", error.stack);
+      } catch (error) {
+        console.error("Error:", (error as unknown as Error).stack);
 
         await api.jobs.fail(jobId, {
           outcome: {

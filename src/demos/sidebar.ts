@@ -1,65 +1,62 @@
-import api from "@flatfile/api";
-import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
-import { sidebarDocument } from "../constants/documents.json";
-import simpleWorkbook from "../constants/workbook.json";
+import api from '@flatfile/api'
+import type { Client, FlatfileEvent, FlatfileListener } from '@flatfile/listener'
+import { sidebarDocument } from '../constants/documents.json'
+import simpleWorkbook from '../constants/workbook.json'
 
 export default function flatfileEventListener(listener: Client) {
-  listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
-    configure.on(
-      "job:ready",
-      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
-        try {
-          await api.jobs.ack(jobId, {
-            info: "Job started.",
-            progress: 10,
-          });
+  listener.filter({ job: 'space:configure' }, (configure: FlatfileListener) => {
+    configure.on('job:ready', async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
+      try {
+        await api.jobs.ack(jobId, {
+          info: 'Job started.',
+          progress: 10,
+        })
 
-          const { data } = await api.documents.create(spaceId, {
-            title: "About this Sidebar Demo",
-            body: sidebarDocument,
-          });
+        const { data } = await api.documents.create(spaceId, {
+          title: 'About this Sidebar Demo',
+          body: sidebarDocument,
+        })
 
-          const documentId = data.id;
-          const spaceUpdateParams = {
-            metadata: {
-              sidebarConfig: {
-                defaultPage: {
-                  documentId,
-                },
-                showSidebar: false,
+        const documentId = data.id
+        const spaceUpdateParams = {
+          metadata: {
+            sidebarConfig: {
+              defaultPage: {
+                documentId,
               },
+              showSidebar: false,
             },
-          };
-
-          await api.spaces.update(spaceId, spaceUpdateParams);
-
-          const sidebarWorkbook = {
-            ...{ Labels: ["Primary", "Sidebar-Demo"] },
-            ...simpleWorkbook,
-          };
-
-          // @ts-ignore
-          await api.workbooks.create({
-            spaceId,
-            environmentId,
-            ...sidebarWorkbook,
-          });
-
-          await api.jobs.complete(jobId, {
-            outcome: {
-              message: "Job completed.",
-            },
-          });
-        } catch (error: any) {
-          console.error("Error: ", error.stack);
-
-          await api.jobs.fail(jobId, {
-            outcome: {
-              message: "Job error.",
-            },
-          });
+          },
         }
+
+        await api.spaces.update(spaceId, spaceUpdateParams)
+
+        const sidebarWorkbook = {
+          ...{ Labels: ['Primary', 'Sidebar-Demo'] },
+          ...simpleWorkbook,
+        }
+
+        // @ts-ignore
+        await api.workbooks.create({
+          spaceId,
+          environmentId,
+          ...sidebarWorkbook,
+        })
+
+        await api.jobs.complete(jobId, {
+          outcome: {
+            message: 'Job completed.',
+          },
+        })
+      } catch (error) {
+        console.error('Error: ', (error as unknown as Error).stack)
+
+        await api.jobs.fail(jobId, {
+          outcome: {
+            message: 'Job error.',
+          },
+        })
       }
-    );
-  });
+    })
+  })
 }
