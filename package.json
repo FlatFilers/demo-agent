@@ -11,30 +11,35 @@
   "bugs": {
     "url": "https://github.com/FlatFilers/demo-agent/issues"
   },
+  "engines": {
+    "node": ">= 18"
+  },
   "dependencies": {
-    "@flatfile/api": "^1.5.33",
-    "@flatfile/listener": "^0.3.14",
-    "@flatfile/plugin-automap": "^0.0.3",
-    "@flatfile/plugin-connect-via-merge": "^0.0.1",
-    "@flatfile/plugin-delimiter-extractor": "^0.4.0",
-    "@flatfile/plugin-json-extractor": "^0.4.2",
-    "@flatfile/plugin-record-hook": "^1.0.1",
-    "@flatfile/plugin-space-configure": "^0.1.4",
-    "@flatfile/plugin-xlsx-extractor": "^1.5.0",
-    "@flatfile/plugin-xml-extractor": "^0.3.0",
-    "@flatfile/plugin-zip-extractor": "^0.3.1",
-    "@types/node-fetch": "^2.6.4",
-    "node-fetch": "^3.3.2"
+    "@flatfile/api": "^1.17.2",
+    "@flatfile/listener": "^1.1.2",
+    "@flatfile/plugin-automap": "^0.8.1",
+    "@flatfile/plugin-connect-via-merge": "^0.6.2",
+    "@flatfile/plugin-delimiter-extractor": "^2.5.1",
+    "@flatfile/plugin-json-extractor": "^0.11.0",
+    "@flatfile/plugin-record-hook": "^2.0.2",
+    "@flatfile/plugin-space-configure": "^0.10.1",
+    "@flatfile/plugin-xlsx-extractor": "^4.0.2",
+    "@flatfile/plugin-xml-extractor": "^0.7.1",
+    "@flatfile/plugin-zip-extractor": "^0.8.1"
   },
   "devDependencies": {
-    "@types/node": "^20.5.1",
-    "@vercel/ncc": "^0.36.1",
-    "typescript": "^5.1.6"
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.15.17",
+    "@vercel/ncc": "^0.38.3",
+    "typescript": "^5.8.3"
   },
   "scripts": {
     "documents": "node ./scripts/documents.js",
     "bundle": "node ./scripts/bundle.js",
     "build": "npm run documents && npm run bundle",
-    "deploy": "npx flatfile@latest deploy"
+    "deploy": "npx flatfile@latest deploy",
+    "develop": "npx flatfile@latest develop",
+    "check": "biome check && tsc --noEmit",
+    "fix": "biome check --write"
   }
 }

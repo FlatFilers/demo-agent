@@ -18,7 +18,7 @@ import another from "other-demo";
 
 import { Client } from "@flatfile/listener";
 
-export default function (listener: Client) {
+export default function (listener: FlatfileListener) {
   listener.namespace(["space:namespace-demo"], namespace);
   listener.namespace(["space:another-demo"], another);
 }

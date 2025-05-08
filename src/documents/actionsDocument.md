@@ -20,9 +20,9 @@ Here's a look at the code that was used to create it:
 
 ```jsx
 import api from "@flatfile/api";
-import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
+import { FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
     configure.on(
       "job:ready",
@@ -55,7 +55,7 @@ export default function flatfileEventListener(listener: Client) {
               message: "Job completed.",
             },
           });
-        } catch (error: any) {
+        } catch (error) {
 
           await api.jobs.fail(jobId, {
             outcome: {
@@ -83,8 +83,8 @@ export default function flatfileEventListener(listener: Client) {
             message: `Job "Custom Action" completed.`,
           },
         });
-      } catch (error: any) {
-        console.error("Error:", error.stack);
+      } catch (error) {
+        console.error("Error:", (error as unknown as Error).stack);
 
         await api.jobs.fail(jobId, {
           outcome: {

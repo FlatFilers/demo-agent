@@ -1,0 +1,21 @@
+id,sku,name,description,price,cost,categoryId,inventoryCount,status,weight,dimensions,dateAdded
+CAT001,SKU001,Electronics,Electronic devices and accessories,249.99,149.99,,150,active,0.5,15x10x5 cm,2023-03-15
+CAT002,SKU002,Computers,Desktop and laptop computers,899.50,539.70,CAT001,75,active,2.5,40x30x15 cm,2023-04-01
+CAT003,SKU003,Smartphones,Mobile phones and accessories,699.00,419.40,CAT001,120,active,0.2,15x7x1 cm,2023-05-20
+CAT004,SKU004,Audio,Headphones and speakers,149.95,89.97,CAT001,90,out of stock,0.3,20x15x8 cm,2023-06-10
+CAT005,SKU005,Clothing,Apparel and fashion items,79.99,39.99,,200,active,0.4,30x20x5 cm,2023-02-11
+CAT006,SKU006,Men's Clothing,Clothing for men,59.50,29.75,CAT005,180,active,0.6,35x25x3 cm,2023-07-01
+CAT007,SKU007,Women's Clothing,Clothing for women,65.75,32.88,CAT005,160,active,0.5,33x22x4 cm,2023-07-15
+CAT008,SKU008,Children's Clothing,Clothing for children,39.99,19.99,CAT005,110,discontinued,0.3,25x18x2 cm,2023-01-05
+CAT009,SKU009,Home & Kitchen,Household items and kitchen appliances,199.00,119.40,,95,active,1.2,50x40x30 cm,2023-08-01
+CAT010,SKU010,Furniture,Home and office furniture,450.00,270.00,CAT009,40,active,15.0,120x60x75 cm,2023-08-10
+CAT011,SKU011,Kitchen Appliances,Small and large kitchen appliances,120.99,72.59,CAT009,65,out of stock,3.0,30x25x20 cm,2023-09-05
+CAT012,SKU012,Bedding,Bed sheets, pillows, and duvets,89.00,44.50,CAT009,80,active,2.2,45x35x10 cm,2023-09-20
+CAT013,SKU013,Books,Books and publications,29.95,14.98,,300,active,0.8,20x15x3 cm,2023-03-01
+CAT014,SKU014,Fiction,Fiction books,19.99,9.99,CAT013,150,active,0.7,22x14x2 cm,2023-10-10
+CAT015,SKU015,Non-Fiction,Non-fiction books,24.50,12.25,CAT013,120,active,0.9,23x16x2.5 cm,2023-10-25
+CAT016,SKU016,Textbooks,Educational textbooks,75.00,37.50,CAT013,50,discontinued,1.1,28x21x4 cm,2022-12-15
+CAT017,SKU017,Sports & Outdoors,Sporting goods and outdoor equipment,159.99,95.99,,110,active,1.5,60x30x20 cm,2023-05-01
+CAT018,SKU018,Fitness,Fitness equipment and accessories,89.90,53.94,CAT017,85,active,2.0,40x20x15 cm,2023-11-01
+CAT019,SKU019,Camping,Camping gear and equipment,129.75,77.85,CAT017,60,out of stock,3.5,50x35x25 cm,2023-11-15
+CAT020,SKU020,Team Sports,Equipment for team sports,99.00,59.40,CAT017,70,active,1.8,30x30x30 cm,2023-06-22 
