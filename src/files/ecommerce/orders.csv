@@ -1,0 +1,31 @@
+id,customerId,orderDate,status,subtotal,shippingCost,taxAmount,totalAmount,paymentMethod,shippingAddress,billingAddress,notes
+ORD00001,CUST001,2023-03-10,delivered,349.99,9.99,28.00,387.98,credit_card,"123 Main St, Apt 4B, New York, NY 10001, United States","123 Main St, Apt 4B, New York, NY 10001, United States",
+ORD00002,CUST003,2023-03-05,delivered,1199.99,0.00,96.00,1295.99,paypal,"789 Oak Dr, Chicago, IL 60601, United States","789 Oak Dr, Chicago, IL 60601, United States",Express shipping
+ORD00003,CUST008,2023-03-08,shipped,59.99,5.99,6.00,71.98,credit_card,"135 Willow St, Apt 7D, Miami, FL 33101, United States","135 Willow St, Apt 7D, Miami, FL 33101, United States",Gift wrapped
+ORD00004,CUST015,2023-03-07,delivered,229.98,12.99,19.00,261.97,paypal,"159 Cherry Ln, Minneapolis, MN 55401, United States","159 Cherry Ln, Minneapolis, MN 55401, United States",
+ORD00005,CUST022,2023-03-12,processing,999.99,45.99,209.00,1254.98,bank_transfer,"15 Rue de Rivoli, Paris, 75001, France","15 Rue de Rivoli, Paris, 75001, France",International shipping
+ORD00006,CUST007,2023-03-09,delivered,29.99,4.99,2.80,37.78,credit_card,"246 Birch Ln, Denver, CO 80201, United States","246 Birch Ln, Denver, CO 80201, United States",
+ORD00007,CUST012,2023-03-15,processing,749.99,0.00,60.00,809.99,credit_card,"357 Redwood Ave, Apt 22B, Las Vegas, NV 89101, United States","357 Redwood Ave, Apt 22B, Las Vegas, NV 89101, United States",
+ORD00008,CUST018,2023-03-11,shipped,159.99,8.99,13.52,182.50,paypal,"753 Cypress St, Unit 9, San Diego, CA 92101, United States","753 Cypress St, Unit 9, San Diego, CA 92101, United States",
+ORD00009,CUST025,2023-03-13,processing,699.99,35.99,73.60,809.58,credit_card,"33 George St, Sydney, NSW 2000, Australia","33 George St, Sydney, NSW 2000, Australia",International shipping
+ORD00010,CUST010,2023-03-10,delivered,89.99,7.99,8.00,105.98,credit_card,"753 Spruce Dr, Unit 12, Portland, OR 97201, United States","753 Spruce Dr, Unit 12, Portland, OR 97201, United States",Gift wrapped
+ORD00011,CUST002,2023-03-14,shipped,249.99,0.00,20.00,269.99,credit_card,"456 Park Ave, Boston, MA 02108, United States","456 Park Ave, Boston, MA 02108, United States",
+ORD00012,CUST029,2023-03-16,processing,129.99,25.99,31.20,187.18,paypal,"12 Via del Corso, Rome, 00186, Italy","12 Via del Corso, Rome, 00186, Italy",International shipping
+ORD00013,CUST014,2023-03-12,shipped,79.98,6.99,7.00,93.97,credit_card,"753 Sequoia Blvd, Suite 5, New Orleans, LA 70112, United States","753 Sequoia Blvd, Suite 5, New Orleans, LA 70112, United States",
+ORD00014,CUST020,2023-03-15,processing,549.99,14.99,45.20,610.18,bank_transfer,"357 Juniper Blvd, Apt 11E, Columbus, OH 43201, United States","357 Juniper Blvd, Apt 11E, Columbus, OH 43201, United States",
+ORD00015,CUST005,2023-03-09,delivered,199.99,9.99,17.00,226.98,credit_card,"654 Maple Ave, Seattle, WA 98101, United States","654 Maple Ave, Seattle, WA 98101, United States",
+ORD00016,CUST016,2023-03-17,pending,349.99,0.00,28.00,377.99,crypto,"357 Magnolia Dr, Apt 3A, Philadelphia, PA 19101, United States","357 Magnolia Dr, Apt 3A, Philadelphia, PA 19101, United States",
+ORD00017,CUST023,2023-03-16,shipped,449.98,30.99,96.19,577.16,credit_card,"25 Friedrichstraße, Berlin, 10117, Germany","25 Friedrichstraße, Berlin, 10117, Germany",International shipping
+ORD00018,CUST009,2023-03-14,delivered,24.99,3.99,2.32,31.30,paypal,"864 Elm Rd, Phoenix, AZ 85001, United States","864 Elm Rd, Phoenix, AZ 85001, United States",
+ORD00019,CUST026,2023-03-15,shipped,199.99,27.99,22.80,250.78,credit_card,"22 Flinders St, Melbourne, VIC 3000, Australia","22 Flinders St, Melbourne, VIC 3000, Australia",International shipping
+ORD00020,CUST004,2023-03-11,delivered,69.99,6.99,6.20,83.18,credit_card,"321 Pine St, Suite 10, San Francisco, CA 94101, United States","321 Pine St, Suite 10, San Francisco, CA 94101, United States",
+ORD00021,CUST001,2023-03-17,pending,1298.98,15.99,105.20,1420.17,credit_card,"123 Main St, Apt 4B, New York, NY 10001, United States","123 Main St, Apt 4B, New York, NY 10001, United States",
+ORD00022,CUST017,2023-03-10,delivered,39.99,4.99,3.60,48.58,paypal,"951 Dogwood Rd, Detroit, MI 48201, United States","951 Dogwood Rd, Detroit, MI 48201, United States",
+ORD00023,CUST028,2023-03-14,shipped,599.99,32.99,63.30,696.28,credit_card,"5-1 Ginza, Tokyo, 104-0061, Japan","5-1 Ginza, Tokyo, 104-0061, Japan",International shipping
+ORD00024,CUST021,2023-03-16,processing,119.98,22.99,28.60,171.57,bank_transfer,"8 Victoria St, London, SW1H 0EX, United Kingdom","8 Victoria St, London, SW1H 0EX, United Kingdom",International shipping
+ORD00025,CUST013,2023-03-15,pending,89.99,7.99,7.84,105.82,credit_card,"951 Walnut St, Nashville, TN 37201, United States","951 Walnut St, Nashville, TN 37201, United States",Gift wrapped
+ORD00026,CUST006,2023-03-12,delivered,219.99,9.99,18.40,248.38,credit_card,"987 Cedar Blvd, Apt 15C, Austin, TX 78701, United States","987 Cedar Blvd, Apt 15C, Austin, TX 78701, United States",
+ORD00027,CUST024,2023-03-13,shipped,149.99,12.99,8.10,171.08,paypal,"45 Queen St W, Toronto, ON M5H 2N2, Canada","45 Queen St W, Toronto, ON M5H 2N2, Canada",
+ORD00028,CUST011,2023-03-15,delivered,239.98,0.00,19.20,259.18,crypto,"159 Aspen Ct, Atlanta, GA 30301, United States","159 Aspen Ct, Atlanta, GA 30301, United States",
+ORD00029,CUST027,2023-03-14,processing,699.99,25.99,152.40,878.38,credit_card,"10 Gran Vía, Madrid, 28013, Spain","10 Gran Vía, Madrid, 28013, Spain",International shipping
+ORD00030,CUST019,2023-03-16,pending,59.98,5.99,5.28,71.25,paypal,"159 Fir Ave, Charlotte, NC 28201, United States","159 Fir Ave, Charlotte, NC 28201, United States", 

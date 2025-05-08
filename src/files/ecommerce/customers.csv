@@ -1,0 +1,31 @@
+id,email,firstName,lastName,phone,address1,address2,city,state,postalCode,country,registrationDate,lastLoginDate
+CUST001,john.doe@example.com,John,Doe,555-123-4567,123 Main St,Apt 4B,New York,NY,10001,United States,2022-10-15,2023-03-18
+CUST002,jane.smith@example.com,Jane,Smith,555-234-5678,456 Park Ave,,Boston,MA,02108,United States,2022-09-20,2023-03-15
+CUST003,michael.johnson@example.com,Michael,Johnson,555-345-6789,789 Oak Dr,,Chicago,IL,60601,United States,2022-11-05,2023-03-17
+CUST004,sarah.williams@example.com,Sarah,Williams,555-456-7890,321 Pine St,Suite 10,San Francisco,CA,94101,United States,2022-08-12,2023-03-12
+CUST005,david.brown@example.com,David,Brown,555-567-8901,654 Maple Ave,,Seattle,WA,98101,United States,2022-12-03,2023-03-14
+CUST006,emily.jones@example.com,Emily,Jones,555-678-9012,987 Cedar Blvd,Apt 15C,Austin,TX,78701,United States,2023-01-25,2023-03-16
+CUST007,james.miller@example.com,James,Miller,555-789-0123,246 Birch Ln,,Denver,CO,80201,United States,2022-10-30,2023-03-10
+CUST008,olivia.davis@example.com,Olivia,Davis,555-890-1234,135 Willow St,Apt 7D,Miami,FL,33101,United States,2022-09-15,2023-03-13
+CUST009,william.garcia@example.com,William,Garcia,555-901-2345,864 Elm Rd,,Phoenix,AZ,85001,United States,2023-02-08,2023-03-18
+CUST010,sophia.rodriguez@example.com,Sophia,Rodriguez,555-012-3456,753 Spruce Dr,Unit 12,Portland,OR,97201,United States,2022-11-20,2023-03-11
+CUST011,alexander.wilson@example.com,Alexander,Wilson,555-123-4567,159 Aspen Ct,,Atlanta,GA,30301,United States,2022-08-25,2023-03-15
+CUST012,ava.martinez@example.com,Ava,Martinez,555-234-5678,357 Redwood Ave,Apt 22B,Las Vegas,NV,89101,United States,2023-01-10,2023-03-17
+CUST013,benjamin.anderson@example.com,Benjamin,Anderson,555-345-6789,951 Walnut St,,Nashville,TN,37201,United States,2022-12-15,2023-03-16
+CUST014,mia.taylor@example.com,Mia,Taylor,555-456-7890,753 Sequoia Blvd,Suite 5,New Orleans,LA,70112,United States,2022-10-05,2023-03-14
+CUST015,jacob.thomas@example.com,Jacob,Thomas,555-567-8901,159 Cherry Ln,,Minneapolis,MN,55401,United States,2022-09-28,2023-03-10
+CUST016,emma.hernandez@example.com,Emma,Hernandez,555-678-9012,357 Magnolia Dr,Apt 3A,Philadelphia,PA,19101,United States,2023-02-20,2023-03-18
+CUST017,ethan.moore@example.com,Ethan,Moore,555-789-0123,951 Dogwood Rd,,Detroit,MI,48201,United States,2022-11-15,2023-03-13
+CUST018,isabella.martin@example.com,Isabella,Martin,555-890-1234,753 Cypress St,Unit 9,San Diego,CA,92101,United States,2022-08-30,2023-03-12
+CUST019,matthew.jackson@example.com,Matthew,Jackson,555-901-2345,159 Fir Ave,,Charlotte,NC,28201,United States,2023-01-15,2023-03-16
+CUST020,amelia.thompson@example.com,Amelia,Thompson,555-012-3456,357 Juniper Blvd,Apt 11E,Columbus,OH,43201,United States,2022-12-20,2023-03-15
+CUST021,lucas.lee@example.com,Lucas,Lee,+44-20-1234-5678,8 Victoria St,,London,,SW1H 0EX,United Kingdom,2022-10-10,2023-03-17
+CUST022,charlotte.nguyen@example.com,Charlotte,Nguyen,+33-1-2345-6789,15 Rue de Rivoli,,Paris,,75001,France,2022-09-05,2023-03-11
+CUST023,henry.kim@example.com,Henry,Kim,+49-30-1234-5678,25 Friedrichstraße,,Berlin,,10117,Germany,2023-02-15,2023-03-18
+CUST024,grace.wong@example.com,Grace,Wong,+1-416-123-4567,45 Queen St W,,Toronto,ON,M5H 2N2,Canada,2022-11-25,2023-03-14
+CUST025,samuel.patel@example.com,Samuel,Patel,+61-2-1234-5678,33 George St,,Sydney,NSW,2000,Australia,2022-08-15,2023-03-12
+CUST026,zoey.singh@example.com,Zoey,Singh,+61-3-2345-6789,22 Flinders St,,Melbourne,VIC,3000,Australia,2023-01-05,2023-03-16
+CUST027,daniel.gonzalez@example.com,Daniel,Gonzalez,+34-91-234-5678,10 Gran Vía,,Madrid,,28013,Spain,2022-12-10,2023-03-13
+CUST028,lily.gupta@example.com,Lily,Gupta,+81-3-1234-5678,5-1 Ginza,,Tokyo,,104-0061,Japan,2022-10-20,2023-03-15
+CUST029,liam.rossi@example.com,Liam,Rossi,+39-06-1234-5678,12 Via del Corso,,Rome,,00186,Italy,2022-09-10,2023-03-17
+CUST030,chloe.li@example.com,Chloe,Li,+86-10-1234-5678,8 Wangfujing St,,Beijing,,100006,China,2023-02-25,2023-03-18 

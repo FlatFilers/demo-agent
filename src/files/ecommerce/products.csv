@@ -1,0 +1,31 @@
+id,sku,name,description,price,cost,categoryId,inventoryCount,status,imageUrl,weight,dimensions,dateAdded
+P001,LPTR-DEL-5400,Dell Latitude 5400,"14-inch business laptop with Intel Core i5, 8GB RAM, 256GB SSD",899.99,650.00,CAT002,45,active,https://example.com/images/dell-latitude-5400.jpg,1.7,"32.5 x 23.1 x 1.9 cm",2023-01-15
+P002,IPAD-PRO-11,Apple iPad Pro 11,"11-inch iPad Pro with M1 chip, 128GB storage, Space Gray",799.00,580.00,CAT001,78,active,https://example.com/images/ipad-pro-11.jpg,0.47,"24.7 x 17.9 x 0.6 cm",2023-02-10
+P003,SMPH-SAM-S22,Samsung Galaxy S22,"6.1-inch smartphone with 128GB storage, 8GB RAM",749.99,550.00,CAT003,102,active,https://example.com/images/samsung-s22.jpg,0.168,"14.6 x 7.1 x 0.8 cm",2023-01-20
+P004,SONY-WH1000XM5,Sony WH-1000XM5,"Wireless noise-canceling headphones with 30-hour battery life",349.99,240.00,CAT004,65,active,https://example.com/images/sony-wh1000xm5.jpg,0.25,"19.3 x 7.8 x 17.5 cm",2023-03-05
+P005,MENS-JCKT-BLK,Premium Men's Jacket,"Waterproof men's jacket with insulated lining, black, sizes S-XXL",129.99,70.50,CAT006,120,active,https://example.com/images/mens-jacket-black.jpg,0.75,"Varies by size",2023-01-10
+P006,WMNS-DRESS-RED,Women's Summer Dress,"Floral pattern summer dress, lightweight cotton, sizes XS-XL",59.99,28.75,CAT007,85,active,https://example.com/images/womens-dress-red.jpg,0.3,"Varies by size",2023-02-15
+P007,KIDS-SHOE-BLUE,Children's Running Shoes,"Breathable running shoes for children, blue, sizes 1-6",39.99,18.50,CAT008,150,active,https://example.com/images/kids-shoes-blue.jpg,0.4,"Varies by size",2023-01-25
+P008,SOFA-SECT-GRAY,Sectional Sofa,"L-shaped sectional sofa, gray fabric, 4 seats",999.99,650.00,CAT010,12,active,https://example.com/images/sectional-sofa-gray.jpg,85,"260 x 175 x 85 cm",2023-02-01
+P009,COFFEE-MAKER-SS,Stainless Steel Coffee Maker,"Programmable coffee maker, 12-cup capacity",69.99,32.00,CAT011,95,active,https://example.com/images/coffee-maker-ss.jpg,2.3,"25 x 18 x 35 cm",2023-01-05
+P010,BEDSHEET-KING-WHT,King Size Bed Sheets,"100% Egyptian cotton king size sheets, white",89.99,45.00,CAT012,75,active,https://example.com/images/king-sheets-white.jpg,1.1,"Package: 35 x 28 x 5 cm",2023-03-10
+P011,BOOK-FICTION-MYSTERY,The Silent Witness,"Mystery novel by Jane Blackwood, hardcover",24.99,11.25,CAT014,200,active,https://example.com/images/silent-witness-book.jpg,0.45,"23 x 15 x 3 cm",2023-01-18
+P012,BOOK-NONFIC-HISTORY,World History Encyclopedia,"Comprehensive world history reference, hardcover",49.99,22.50,CAT015,65,active,https://example.com/images/world-history-book.jpg,1.8,"30 x 25 x 5 cm",2023-02-12
+P013,BOOK-TEXT-PHYSICS,Physics: Principles and Applications,"College-level physics textbook, hardcover",129.99,80.00,CAT016,40,active,https://example.com/images/physics-textbook.jpg,2.2,"28 x 22 x 4 cm",2023-01-08
+P014,YOGA-MAT-PURPLE,Premium Yoga Mat,"Non-slip yoga mat, 6mm thickness, purple",29.99,14.00,CAT018,110,active,https://example.com/images/yoga-mat-purple.jpg,1.1,"173 x 61 x 0.6 cm",2023-02-18
+P015,TENT-4P-GREEN,4-Person Camping Tent,"Waterproof tent with vestibule, fits 4 people",199.99,120.00,CAT019,35,active,https://example.com/images/4-person-tent.jpg,4.5,"Packed: 60 x 25 x 25 cm",2023-03-15
+P016,LAPTOP-MAC-AIR,Apple MacBook Air,"13.6-inch MacBook Air with M2 chip, 256GB SSD",1199.99,950.00,CAT002,62,active,https://example.com/images/macbook-air-m2.jpg,1.24,"30.4 x 21.5 x 1.13 cm",2023-01-12
+P017,PHONE-PIXEL-7,Google Pixel 7,"6.3-inch smartphone, 128GB storage, 8GB RAM",599.99,420.00,CAT003,85,active,https://example.com/images/google-pixel-7.jpg,0.197,"15.6 x 7.3 x 0.9 cm",2023-02-20
+P018,SPEAKERS-SONOS-ONE,Sonos One Speaker,"Smart speaker with voice control, black",219.99,150.00,CAT004,48,active,https://example.com/images/sonos-one.jpg,1.85,"16.1 x 11.9 x 11.9 cm",2023-03-02
+P019,DESK-OAK-LSHAPE,L-Shaped Oak Desk,"Modern L-shaped office desk with oak finish",349.99,210.00,CAT010,18,active,https://example.com/images/l-shaped-oak-desk.jpg,45,"160 x 150 x 75 cm",2023-01-30
+P020,BLENDER-PRO-SILVER,Professional Blender,"High-power blender with multiple speed settings",159.99,85.00,CAT011,55,active,https://example.com/images/pro-blender-silver.jpg,5.2,"20 x 20 x 45 cm",2023-02-25
+P021,SMART-TV-55,55-inch Smart TV,"4K Ultra HD Smart TV with HDR",549.99,375.00,CAT001,28,active,https://example.com/images/smart-tv-55.jpg,15.3,"123 x 71 x 7 cm",2023-03-18
+P022,GAMING-CHAIR-RED,Gaming Chair,"Ergonomic gaming chair with lumbar support, red and black",249.99,145.00,CAT010,32,active,https://example.com/images/gaming-chair-red.jpg,22,"67 x 67 x 125 cm",2023-02-05
+P023,TREADMILL-FOLD,Folding Treadmill,"Motorized treadmill with folding design",699.99,425.00,CAT018,15,active,https://example.com/images/folding-treadmill.jpg,34,"168 x 85 x 135 cm",2023-01-22
+P024,BASKETBALL-OFF,Official Basketball,"Official size and weight basketball",29.99,12.00,CAT020,95,active,https://example.com/images/official-basketball.jpg,0.6,"24 cm diameter",2023-02-28
+P025,WMNS-BOOTS-BROWN,Women's Leather Boots,"Genuine leather ankle boots, brown, sizes 5-10",149.99,80.00,CAT007,60,active,https://example.com/images/womens-boots-brown.jpg,1.2,"Varies by size",2023-03-12
+P026,LPTR-ASUS-ZEN,ASUS ZenBook,"14-inch ultrabook with Intel Core i7, 16GB RAM, 512GB SSD",1099.99,850.00,CAT002,25,active,https://example.com/images/asus-zenbook.jpg,1.25,"31.9 x 22.1 x 1.7 cm",2023-01-28
+P027,TABLET-SAMSUNG-S8,Samsung Galaxy Tab S8,"11-inch tablet with 256GB storage",699.99,480.00,CAT001,38,active,https://example.com/images/galaxy-tab-s8.jpg,0.5,"25.3 x 16.5 x 0.7 cm",2023-02-08
+P028,PRINTER-LASER-BW,Laser Printer,"Monochrome laser printer with duplex printing",199.99,130.00,CAT001,42,active,https://example.com/images/laser-printer.jpg,8.3,"36.5 x 39.2 x 25.1 cm",2023-03-08
+P029,HDPN-AIRPODS-PRO,Apple AirPods Pro,"Wireless earbuds with active noise cancellation",249.99,180.00,CAT004,70,active,https://example.com/images/airpods-pro.jpg,0.06,"Case: 6 x 5.4 x 2.4 cm",2023-01-16
+P030,MENS-SWTR-NAVY,Men's Wool Sweater,"100% merino wool sweater, navy blue, sizes M-XL",89.99,48.00,CAT006,55,active,https://example.com/images/mens-sweater-navy.jpg,0.5,"Varies by size",2023-02-22 
