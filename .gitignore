@@ -4,3 +4,4 @@ node_modules
 # dotenv environment variables file
 .env*
 !.env.example
+**/.claude/settings.local.json

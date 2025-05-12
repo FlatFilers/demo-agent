@@ -4,7 +4,7 @@ import connect from './demos/connect'
 import data from './demos/data'
 import documents from './demos/documents'
 import dynamic from './demos/dynamic'
-import ecommerce from './demos/ecommerce'
+import ecommerce from './demos/industry'
 import egress from './demos/egress'
 import extractor from './demos/extractor'
 import headless from './demos/headless'
@@ -15,6 +15,8 @@ import secrets from './demos/secrets'
 import sidebar from './demos/sidebar'
 import simple from './demos/simple'
 import theming from './demos/theming'
+import { industryDemos } from './demos/industryConfig'
+import industryListener from './demos/industry'
 
 export default function (listener: FlatfileListener) {
   listener.namespace(['space:actions-demo'], actions)
@@ -32,5 +34,7 @@ export default function (listener: FlatfileListener) {
   listener.namespace(['space:simple-demo'], simple)
   listener.namespace(['space:theming-demo'], theming)
   listener.namespace(['space:connect-demo'], connect)
-  listener.namespace(['space:ecommerce-demo'], ecommerce)
+  for (const industry of industryDemos) {
+    listener.namespace([`space:${industry.slug}-demo`], industryListener(industry))
+  }
 }

@@ -138,6 +138,9 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: "Date when product was added to inventory",
           },
         ],
+        metadata: {
+          idPrefix: "P",
+        },
       },
       {
         name: "Categories",
@@ -175,6 +178,9 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: "Category description",
           },
         ],
+        metadata: {
+          idPrefix: "CAT",
+        },
       },
       {
         name: "Customers",
@@ -285,6 +291,9 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: "Date of customer's last login",
           },
         ],
+        metadata: {
+          idPrefix: "CUST",
+        },
       },
       {
         name: "Orders",
@@ -445,6 +454,9 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: "Additional order notes",
           },
         ],
+        metadata: {
+          idPrefix: "ORD",
+        },
       },
       {
         name: "Order Items",
@@ -531,6 +543,9 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: "Amount of discount applied to this item",
           },
         ],
+        metadata: {
+          idPrefix: "OI",
+        },
       },
     ],
     actions: [
