@@ -4,6 +4,7 @@ import connect from './demos/connect'
 import data from './demos/data'
 import documents from './demos/documents'
 import dynamic from './demos/dynamic'
+import ecommerce from './demos/ecommerce'
 import egress from './demos/egress'
 import extractor from './demos/extractor'
 import headless from './demos/headless'
@@ -31,4 +32,5 @@ export default function (listener: FlatfileListener) {
   listener.namespace(['space:simple-demo'], simple)
   listener.namespace(['space:theming-demo'], theming)
   listener.namespace(['space:connect-demo'], connect)
+  listener.namespace(['space:ecommerce-demo'], ecommerce)
 }
