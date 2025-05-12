@@ -16,6 +16,7 @@ export type IndustryDemo = {
   name: string
   slug: string
   workbook: Flatfile.CreateWorkbookConfig[]
+  // biome-ignore lint/suspicious/noExplicitAny: just don't care here
   theme: any
   documents: Flatfile.DocumentConfig[]
   files: string[]
