@@ -213,15 +213,15 @@ export const documents: Flatfile.DocumentConfig[] = [
 
 ### 7. Update Industry Config
 
-Add your industry to the `industryDemos` array in `src/demos/industryConfig.ts`:
+Add your industry to the `industryConfig` array in `src/demos/industryConfig.ts`:
 
 ```typescript
 import { documents as yourIndustryDocuments } from '../constants/your-industry/documents'
 import { theme as yourIndustryTheme } from '../constants/your-industry/theme'
 import { workbooks as yourIndustryWorkbooks } from '../constants/your-industry/workbooks'
 
-// Add to the industryDemos array
-export const industryDemos: IndustryDemo[] = [
+// Add to the industryConfig array
+export const industryConfig: IndustryDemo[] = [
   // Existing industries...
   {
     name: "Your Industry Name",
@@ -258,6 +258,6 @@ export const industryDemos: IndustryDemo[] = [
 - [ ] Theme created with appropriate industry colors
 - [ ] Documents created with helpful information
 - [ ] Sample data files prepared and tested
-- [ ] Industry added to industryDemos config
+- [ ] Industry added to industryConfig config
 
 The standard industry demo pattern includes field validation (especially for dates and IDs with specific prefixes), automapping configuration, and export functionality. Follow the existing industry implementations as templates for your new industry demo.

@@ -2,12 +2,12 @@ import type { Flatfile } from '@flatfile/api'
 import { documents as ecommerceDocuments } from '../constants/ecommerce/documents'
 import { theme as ecommerceTheme } from '../constants/ecommerce/theme'
 import { workbooks as ecommerceWorkbooks } from '../constants/ecommerce/workbooks'
-import { documents as realEstateDocuments } from '../constants/realestate/documents'
-import { theme as realEstateTheme } from '../constants/realestate/theme'
-import { workbooks as realEstateWorkbooks } from '../constants/realestate/workbooks'
 import { documents as healthcareDocuments } from '../constants/healthcare/documents'
 import { theme as healthcareTheme } from '../constants/healthcare/theme'
 import { workbooks as healthcareWorkbooks } from '../constants/healthcare/workbooks'
+import { documents as realEstateDocuments } from '../constants/realestate/documents'
+import { theme as realEstateTheme } from '../constants/realestate/theme'
+import { workbooks as realEstateWorkbooks } from '../constants/realestate/workbooks'
 
 export type IndustryDemo = {
   name: string
@@ -22,7 +22,7 @@ export type IndustryDemo = {
   }
 }
 
-export const industryDemos: IndustryDemo[] = [
+export const industryConfig: IndustryDemo[] = [
   {
     name: 'Ecommerce',
     slug: 'ecommerce',
