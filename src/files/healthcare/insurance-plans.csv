@@ -1,0 +1,11 @@
+planId,insuranceProvider,planName,planType,coverageStartDate,coverageEndDate,deductible,copay,coversPrescriptions
+INS507,Blue Cross Blue Shield,Premium PPO,ppo,2023-01-01,2023-12-31,1500,25,true
+INS312,Aetna,Standard HMO,hmo,2023-01-01,2023-12-31,2000,30,true
+INS645,UnitedHealthcare,Select EPO,epo,2023-01-01,2023-12-31,1000,20,true
+INS743,Cigna,Health Savings POS,pos,2023-01-01,2023-12-31,3000,0,true
+INS829,Humana,High Deductible Plan,hdhp,2023-01-01,2023-12-31,5000,0,false
+INS156,Kaiser Permanente,Basic HMO,hmo,2023-01-01,2023-12-31,1800,35,true
+INS267,Anthem,Gold PPO,ppo,2023-01-01,2023-12-31,750,15,true
+INS378,Medicare,Part D,ppo,2023-01-01,2023-12-31,0,10,true
+INS489,CVS Caremark,Prescription Plan,ppo,2023-01-01,2023-12-31,0,15,true
+INS590,Express Scripts,Premium Rx,ppo,2023-01-01,2023-12-31,0,10,true

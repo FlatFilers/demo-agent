@@ -1,0 +1,11 @@
+facilityId,name,type,address,city,state,zipCode,phone
+FAC001,Central Medical Center,hospital,123 Main Street,Springfield,IL,62701,555-100-2000
+FAC002,Westside Family Clinic,clinic,456 Oak Avenue,Springfield,IL,62702,555-200-3000
+FAC003,MediCare Pharmacy,pharmacy,789 Elm Boulevard,Springfield,IL,62703,555-300-4000
+FAC004,Advanced Diagnostic Lab,lab,101 Pine Street,Springfield,IL,62704,555-400-5000
+FAC005,Clear View Imaging,imaging,202 Cedar Road,Springfield,IL,62705,555-500-6000
+FAC006,Riverside Hospital,hospital,303 River Drive,Riverside,IL,62706,555-600-7000
+FAC007,Community Health Clinic,clinic,404 Park Avenue,Riverside,IL,62707,555-700-8000
+FAC008,QuickCare Pharmacy,pharmacy,505 Maple Lane,Riverside,IL,62708,555-800-9000
+FAC009,Precision Testing Lab,lab,606 Birch Street,Riverside,IL,62709,555-900-0100
+FAC010,Highland Medical Center,hospital,707 Highland Drive,Highland,IL,62710,555-010-0200

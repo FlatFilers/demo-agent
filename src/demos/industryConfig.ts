@@ -5,6 +5,9 @@ import { workbooks as ecommerceWorkbooks } from '../constants/ecommerce/workbook
 import { documents as realEstateDocuments } from '../constants/realestate/documents'
 import { theme as realEstateTheme } from '../constants/realestate/theme'
 import { workbooks as realEstateWorkbooks } from '../constants/realestate/workbooks'
+import { documents as healthcareDocuments } from '../constants/healthcare/documents'
+import { theme as healthcareTheme } from '../constants/healthcare/theme'
+import { workbooks as healthcareWorkbooks } from '../constants/healthcare/workbooks'
 
 export type IndustryDemo = {
   name: string
@@ -54,6 +57,25 @@ export const industryDemos: IndustryDemo[] = [
     automap: {
       sheetSlug: 'property-types',
       matchFilename: /^.*property-types\.csv$/,
+    },
+  },
+  {
+    name: 'Healthcare',
+    slug: 'healthcare',
+    workbook: healthcareWorkbooks,
+    theme: healthcareTheme,
+    documents: healthcareDocuments,
+    files: [
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/healthcare/patients.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/healthcare/providers.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/healthcare/facilities.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/healthcare/medications.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/healthcare/prescriptions.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/healthcare/insurance-plans.csv',
+    ],
+    automap: {
+      sheetSlug: 'insurance-plans',
+      matchFilename: /^.*insurance-plans\.csv$/,
     },
   },
 ]

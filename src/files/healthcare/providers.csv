@@ -1,0 +1,11 @@
+providerId,firstName,lastName,specialization,licenseNumber,facilityId,email,phone
+DR101,Richard,Johnson,Internal Medicine,MD12345,FAC001,rjohnson@healthcare.com,555-111-2222
+DR102,Patricia,Garcia,Cardiology,MD23456,FAC001,pgarcia@healthcare.com,555-222-3333
+DR103,William,Chen,Pediatrics,MD34567,FAC002,wchen@healthcare.com,555-333-4444
+DR104,Barbara,Smith,Dermatology,MD45678,FAC003,bsmith@healthcare.com,555-444-5555
+DR105,David,Rodriguez,Neurology,MD56789,FAC001,drodriguez@healthcare.com,555-555-6666
+DR106,Susan,Kim,Obstetrics/Gynecology,MD67890,FAC002,skim@healthcare.com,555-666-7777
+DR107,Robert,Brown,Psychiatry,MD78901,FAC004,rbrown@healthcare.com,555-777-8888
+DR108,Linda,Wilson,Ophthalmology,MD89012,FAC003,lwilson@healthcare.com,555-888-9999
+DR109,James,Taylor,Orthopedics,MD90123,FAC001,jtaylor@healthcare.com,555-999-0000
+DR110,Maria,Martinez,Family Medicine,MD01234,FAC002,mmartinez@healthcare.com,555-000-1111
