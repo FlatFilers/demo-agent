@@ -7,7 +7,6 @@ export const guidances: Flatfile.GuidanceApiCreateData[] = [
       target: 'sidebar:files_tab',
       type: 'popout',
       trigger: 'hover',
-      role: 'admin',
     },
   },
   {
@@ -16,7 +15,6 @@ export const guidances: Flatfile.GuidanceApiCreateData[] = [
       target: 'sheet:manage_columns',
       type: 'popout',
       trigger: 'hover',
-      role: 'admin',
     },
   },
 ]

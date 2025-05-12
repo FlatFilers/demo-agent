@@ -15,7 +15,7 @@
     "node": ">= 18"
   },
   "dependencies": {
-    "@flatfile/api": "^1.17.2",
+    "@flatfile/api": "^1.17.3",
     "@flatfile/listener": "^1.1.2",
     "@flatfile/plugin-automap": "^0.8.1",
     "@flatfile/plugin-connect-via-merge": "^0.6.2",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@dotenvx/dotenvx": "^1.43.0",
+    "@dotenvx/dotenvx": "^1.44.0",
     "@types/node": "^22.15.17",
     "@vercel/ncc": "^0.38.3",
     "flatfile": "latest",

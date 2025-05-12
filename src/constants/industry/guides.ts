@@ -15,7 +15,6 @@ export const guides: Omit<Flatfile.GuideCreateRequest, 'environmentId'>[] = [
         content: 'Drag and drop your files here...',
       },
     ],
-    versions: [],
   },
   {
     slug: 'manage-columns-guide',
@@ -32,6 +31,5 @@ export const guides: Omit<Flatfile.GuideCreateRequest, 'environmentId'>[] = [
           'This button provides you with options to show/hide columns in your sheet. Before you can used this, you will need to map data to your sheet.',
       },
     ],
-    versions: [],
   },
 ]
