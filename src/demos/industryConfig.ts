@@ -2,6 +2,9 @@ import type { Flatfile } from '@flatfile/api'
 import { documents as ecommerceDocuments } from '../constants/ecommerce/documents'
 import { theme as ecommerceTheme } from '../constants/ecommerce/theme'
 import { workbooks as ecommerceWorkbooks } from '../constants/ecommerce/workbooks'
+import { documents as financeDocuments } from '../constants/finance/documents'
+import { theme as financeTheme } from '../constants/finance/theme'
+import { workbooks as financeWorkbooks } from '../constants/finance/workbooks'
 import { documents as healthcareDocuments } from '../constants/healthcare/documents'
 import { theme as healthcareTheme } from '../constants/healthcare/theme'
 import { workbooks as healthcareWorkbooks } from '../constants/healthcare/workbooks'
@@ -76,6 +79,24 @@ export const industryConfig: IndustryDemo[] = [
     automap: {
       sheetSlug: 'insurance-plans',
       matchFilename: /^.*insurance-plans\.csv$/,
+    },
+  },
+  {
+    name: 'Finance',
+    slug: 'finance',
+    workbook: financeWorkbooks,
+    theme: financeTheme,
+    documents: financeDocuments,
+    files: [
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/finance/customers.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/finance/accounts.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/finance/transactions.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/finance/loans.csv',
+      'https://github.com/FlatFilers/demo-agent/raw/refs/heads/main/src/files/finance/investments.csv',
+    ],
+    automap: {
+      sheetSlug: 'customers',
+      matchFilename: /^.*customers\.csv$/,
     },
   },
 ]

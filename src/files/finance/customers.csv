@@ -1,0 +1,11 @@
+customer_id,first_name,last_name,email,phone,address,city,state,zip,country,date_of_birth,ssn,customer_type,credit_score,onboarding_date
+C10001,John,Smith,john.smith@example.com,555-123-4567,"123 Main St",Chicago,IL,60601,USA,1975-08-12,XXX-XX-1234,individual,745,2022-03-15
+C10002,Sarah,Johnson,sarah.j@example.com,555-234-5678,"456 Oak Ave",New York,NY,10001,USA,1982-05-21,XXX-XX-2345,individual,680,2021-11-03
+C10003,Michael,Brown,mbrown@example.com,555-345-6789,"789 Pine Blvd",San Francisco,CA,94107,USA,1968-11-30,XXX-XX-3456,individual,790,2022-01-22
+C10004,Lisa,Anderson,lisa.anderson@example.com,555-456-7890,"101 Cedar St",Boston,MA,02108,USA,1990-02-14,XXX-XX-4567,individual,710,2022-04-05
+C10005,David,Williams,d.williams@example.com,555-567-8901,"202 Maple Dr",Austin,TX,78701,USA,1979-06-25,XXX-XX-5678,individual,620,2021-09-18
+C10006,Acme Corp,,,555-678-9012,"300 Corporate Pkwy",Seattle,WA,98101,USA,,,business,,2022-02-11
+C10007,Global Enterprises,,,555-789-0123,"400 Industry Ave",Miami,FL,33101,USA,,,business,,2021-10-30
+C10008,Tech Solutions,,,555-890-1234,"500 Innovation Blvd",Denver,CO,80202,USA,,,business,,2022-05-01
+C10009,Jennifer,Taylor,jtaylor@example.com,555-901-2345,"600 Willow Ln",Phoenix,AZ,85001,USA,1985-09-08,XXX-XX-6789,individual,715,2022-03-27
+C10010,Robert,Martinez,rmartinez@example.com,555-012-3456,"700 Birch St",Portland,OR,97201,USA,1972-12-01,XXX-XX-7890,individual,760,2021-12-14
