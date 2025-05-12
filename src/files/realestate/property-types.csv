@@ -1,0 +1,21 @@
+id,name,description
+PT001,Single-Family Home,Standalone residential structure designed for one family
+PT002,Condominium,Individual unit within a multi-unit building with shared common areas
+PT003,Townhouse,Multi-floor home that shares one or two walls with adjacent properties
+PT004,Multi-Family,Residential building with multiple separate housing units
+PT005,Commercial Office,Property designed for business and professional use
+PT006,Retail Space,Commercial property for retail businesses and storefronts
+PT007,Industrial,Warehouse or manufacturing facility for industrial operations
+PT008,Vacant Land,Undeveloped property with no structures
+PT009,Apartment Building,Multi-unit residential rental property
+PT010,Mixed-Use,Property combining residential and commercial spaces
+PT011,Residential Lot,Land zoned for residential construction
+PT012,Commercial Lot,Land zoned for commercial development
+PT013,Ranch,Large residential property used for agricultural purposes
+PT014,Luxury Home,High-end residential property with premium features
+PT015,Vacation Property,Secondary home used seasonally or for recreation
+PT016,Duplex,Two-unit residential building with separate entrances
+PT017,Mobile Home,Manufactured housing that can be moved from one location to another
+PT018,Hotel/Motel,Commercial property providing temporary accommodation
+PT019,Farm,Agricultural property with residential component
+PT020,Storage Facility,Commercial property for storing goods and materials
