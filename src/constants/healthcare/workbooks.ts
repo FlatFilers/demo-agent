@@ -20,6 +20,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               {
                 type: 'unique',
               },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'PT',
+                },
+              },
             ],
           },
           {
@@ -208,9 +215,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             },
           },
         ],
-        metadata: {
-          idPrefix: 'PT',
-        },
       },
       {
         name: 'Providers',
@@ -227,6 +231,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'DR',
+                },
               },
             ],
           },
@@ -366,9 +377,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Date when provider started practice',
           },
         ],
-        metadata: {
-          idPrefix: 'DR',
-        },
       },
       {
         name: 'Medical Facilities',
@@ -385,6 +393,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'FAC',
+                },
               },
             ],
           },
@@ -525,9 +540,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Facility operating hours',
           },
         ],
-        metadata: {
-          idPrefix: 'FAC',
-        },
       },
       {
         name: 'Medications',
@@ -544,6 +556,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'MED',
+                },
               },
             ],
           },
@@ -673,9 +692,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             },
           },
         ],
-        metadata: {
-          idPrefix: 'MED',
-        },
       },
       {
         name: 'Prescriptions',
@@ -692,6 +708,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'RX',
+                },
               },
             ],
           },
@@ -866,9 +889,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Additional notes about the prescription',
           },
         ],
-        metadata: {
-          idPrefix: 'RX',
-        },
       },
       {
         name: 'Insurance Plans',
@@ -885,6 +905,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'INS',
+                },
               },
             ],
           },
@@ -1019,9 +1046,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Additional notes about the insurance plan',
           },
         ],
-        metadata: {
-          idPrefix: 'INS',
-        },
       },
     ],
     actions: [

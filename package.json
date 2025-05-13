@@ -24,6 +24,7 @@
     "@flatfile/plugin-json-extractor": "^0.11.0",
     "@flatfile/plugin-record-hook": "^2.0.2",
     "@flatfile/plugin-space-configure": "^0.10.1",
+    "@flatfile/plugin-stored-constraints": "^1.0.1",
     "@flatfile/plugin-xlsx-extractor": "^4.0.2",
     "@flatfile/plugin-xml-extractor": "^0.7.1",
     "@flatfile/plugin-zip-extractor": "^0.8.1"

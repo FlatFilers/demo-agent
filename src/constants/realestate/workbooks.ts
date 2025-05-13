@@ -20,6 +20,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               {
                 type: 'unique',
               },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'PROP',
+                },
+              },
             ],
           },
           {
@@ -236,9 +243,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Date when property was listed',
           },
         ],
-        metadata: {
-          idPrefix: 'PROP',
-        },
       },
       {
         name: 'Property Types',
@@ -255,6 +259,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'PT',
+                },
               },
             ],
           },
@@ -276,9 +287,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Description of the property type',
           },
         ],
-        metadata: {
-          idPrefix: 'PT',
-        },
       },
       {
         name: 'Agents',
@@ -295,6 +303,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'AG',
+                },
               },
             ],
           },
@@ -390,9 +405,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: "Agent's areas of specialization",
           },
         ],
-        metadata: {
-          idPrefix: 'AG',
-        },
       },
       {
         name: 'Clients',
@@ -409,6 +421,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'CLT',
+                },
               },
             ],
           },
@@ -543,9 +562,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Date when client was registered',
           },
         ],
-        metadata: {
-          idPrefix: 'CLT',
-        },
       },
       {
         name: 'Transactions',
@@ -562,6 +578,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'TXN',
+                },
               },
             ],
           },
@@ -709,9 +732,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Additional transaction notes',
           },
         ],
-        metadata: {
-          idPrefix: 'TXN',
-        },
       },
     ],
     actions: [

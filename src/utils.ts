@@ -2,6 +2,26 @@ import api, { type Flatfile } from '@flatfile/api'
 
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
+export const addStoredConstraints = async (
+  spaceId: string,
+  constraints: Omit<Flatfile.ConstraintCreate, 'appId'>[],
+) => {
+  const { data: space } = await api.spaces.get(spaceId)
+  if (!space.appId) {
+    console.error('Space does not have an appId')
+    return
+  }
+  const { data: existingConstraints } = await api.apps.getConstraints(space.appId)
+  for (const constraint of constraints) {
+    const existingConstraint = existingConstraints.find((c) => c.validator === constraint.validator)
+    if (existingConstraint) {
+      await api.apps.updateConstraint(space.appId, existingConstraint.id, { ...constraint })
+    } else {
+      await api.apps.createConstraint(space.appId, { ...constraint, appId: space.appId })
+    }
+  }
+}
+
 export const setDefaultPage = async ({ spaceId, documentTitle }: { spaceId: string; documentTitle: string }) => {
   const { data } = await api.documents.list(spaceId)
   const document = data.find((document) => document.title === documentTitle)

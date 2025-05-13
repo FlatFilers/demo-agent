@@ -20,6 +20,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               {
                 type: 'unique',
               },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'P',
+                },
+              },
             ],
           },
           {
@@ -138,9 +145,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Date when product was added to inventory',
           },
         ],
-        metadata: {
-          idPrefix: 'P',
-        },
       },
       {
         name: 'Categories',
@@ -157,6 +161,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'CAT',
+                },
               },
             ],
           },
@@ -178,9 +189,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Category description',
           },
         ],
-        metadata: {
-          idPrefix: 'CAT',
-        },
       },
       {
         name: 'Customers',
@@ -197,6 +205,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'CUST',
+                },
               },
             ],
           },
@@ -291,9 +306,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: "Date of customer's last login",
           },
         ],
-        metadata: {
-          idPrefix: 'CUST',
-        },
       },
       {
         name: 'Orders',
@@ -310,6 +322,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'ORD',
+                },
               },
             ],
           },
@@ -454,9 +473,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Additional order notes',
           },
         ],
-        metadata: {
-          idPrefix: 'ORD',
-        },
       },
       {
         name: 'Order Items',
@@ -473,6 +489,13 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
               },
               {
                 type: 'unique',
+              },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'OI',
+                },
               },
             ],
           },
@@ -543,9 +566,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Amount of discount applied to this item',
           },
         ],
-        metadata: {
-          idPrefix: 'OI',
-        },
       },
     ],
     actions: [
