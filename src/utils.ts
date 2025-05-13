@@ -5,9 +5,11 @@ export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve
 export const setDefaultPage = async ({ spaceId, documentTitle }: { spaceId: string; documentTitle: string }) => {
   const { data } = await api.documents.list(spaceId)
   const document = data.find((document) => document.title === documentTitle)
+  const { data: space } = await api.spaces.get(spaceId)
   await api.spaces.update(spaceId, {
     environmentId: document?.environmentId,
     metadata: {
+      ...space.metadata,
       sidebarConfig: {
         defaultPage: { documentId: document?.id },
       },
