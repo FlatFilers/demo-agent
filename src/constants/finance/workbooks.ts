@@ -13,7 +13,17 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             type: 'string',
             label: 'Customer ID',
             description: 'Unique identifier for customer',
-            constraints: [{ type: 'required' }, { type: 'unique' }],
+            constraints: [
+              { type: 'required' },
+              { type: 'unique' },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'C',
+                },
+              },
+            ],
           },
           {
             key: 'first_name',
@@ -114,9 +124,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             constraints: [{ type: 'required' }],
           },
         ],
-        metadata: {
-          idPrefix: 'C', // Used in validation
-        },
       },
       {
         name: 'Accounts',
@@ -127,7 +134,17 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             type: 'string',
             label: 'Account ID',
             description: 'Unique identifier for account',
-            constraints: [{ type: 'required' }, { type: 'unique' }],
+            constraints: [
+              { type: 'required' },
+              { type: 'unique' },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'ACC',
+                },
+              },
+            ],
           },
           {
             key: 'customer_id',
@@ -230,9 +247,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             },
           },
         ],
-        metadata: {
-          idPrefix: 'ACC', // Used in validation
-        },
       },
       {
         name: 'Transactions',
@@ -243,7 +257,17 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             type: 'string',
             label: 'Transaction ID',
             description: 'Unique identifier for transaction',
-            constraints: [{ type: 'required' }, { type: 'unique' }],
+            constraints: [
+              { type: 'required' },
+              { type: 'unique' },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'TX',
+                },
+              },
+            ],
           },
           {
             key: 'account_id',
@@ -343,9 +367,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Transaction reference number',
           },
         ],
-        metadata: {
-          idPrefix: 'TX', // Used in validation
-        },
       },
       {
         name: 'Loans',
@@ -356,7 +377,17 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             type: 'string',
             label: 'Loan ID',
             description: 'Unique identifier for loan',
-            constraints: [{ type: 'required' }, { type: 'unique' }],
+            constraints: [
+              { type: 'required' },
+              { type: 'unique' },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'LN',
+                },
+              },
+            ],
           },
           {
             key: 'customer_id',
@@ -482,9 +513,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             constraints: [{ type: 'required' }],
           },
         ],
-        metadata: {
-          idPrefix: 'LN', // Used in validation
-        },
       },
       {
         name: 'Investments',
@@ -495,7 +523,17 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             type: 'string',
             label: 'Investment ID',
             description: 'Unique identifier for investment',
-            constraints: [{ type: 'required' }, { type: 'unique' }],
+            constraints: [
+              { type: 'required' },
+              { type: 'unique' },
+              {
+                type: 'stored',
+                validator: 'id-format-validator',
+                config: {
+                  idPrefix: 'INV',
+                },
+              },
+            ],
           },
           {
             key: 'account_id',
@@ -589,9 +627,6 @@ export const workbooks: Flatfile.CreateWorkbookConfig[] = [
             description: 'Investment sector/category',
           },
         ],
-        metadata: {
-          idPrefix: 'INV', // Used in validation
-        },
       },
     ],
     actions: [
