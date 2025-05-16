@@ -5,7 +5,5 @@ export const theme = {
   },
   sidebar: {
     logo: 'https://avatars.githubusercontent.com/u/40679954?s=96&v=4',
-    backgroundColor: '#000000',
-    textColor: '#FFFFFF',
   },
 }
