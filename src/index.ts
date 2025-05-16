@@ -7,6 +7,8 @@ import dynamic from './demos/dynamic'
 import egress from './demos/egress'
 import extractor from './demos/extractor'
 import headless from './demos/headless'
+import industryListener from './demos/industry'
+import { industryConfig } from './demos/industryConfig'
 import localization from './demos/localization'
 import metadata from './demos/metadata'
 import namespaceListener from './demos/namespace'
@@ -31,4 +33,7 @@ export default function (listener: FlatfileListener) {
   listener.namespace(['space:simple-demo'], simple)
   listener.namespace(['space:theming-demo'], theming)
   listener.namespace(['space:connect-demo'], connect)
+  for (const industry of industryConfig) {
+    listener.namespace([`space:${industry.slug}-demo`], industryListener(industry))
+  }
 }

@@ -1,0 +1,16 @@
+patientId,firstName,lastName,dateOfBirth,gender,email,phone,insuranceId,primaryProviderId
+PT1001,John,Smith,1978-05-12,M,john.smith@email.com,555-123-4567,INS507,DR101
+PT1002,Emily,Johnson,1985-09-23,F,emily.j@email.com,555-234-5678,INS312,DR102
+PT1003,Michael,Williams,1965-11-30,M,mwilliams@email.com,555-345-6789,INS507,DR103
+PT1004,Sarah,Brown,1992-02-15,F,sarahb@email.com,555-456-7890,INS645,DR104
+PT1005,David,Miller,1973-07-21,M,dmiller@email.com,555-567-8901,INS312,DR101
+PT1006,Jennifer,Davis,1988-12-03,F,jdavis@email.com,555-678-9012,INS507,DR105
+PT1007,Robert,Garcia,1956-04-18,M,rgarcia@email.com,555-789-0123,INS743,DR102
+PT1008,Lisa,Martinez,1995-10-25,F,lmartinez@email.com,555-890-1234,INS312,DR104
+PT1009,Thomas,Anderson,1970-01-08,M,tanderson@email.com,555-901-2345,INS645,DR103
+PT1010,Amanda,Taylor,1982-06-30,F,ataylor@email.com,555-012-3456,INS743,DR105
+PT1011,James,Wilson,1968-03-17,M,jwilson@email.com,555-234-5678,INS507,DR101
+PT1012,Jessica,Moore,1990-08-04,F,jmoore@email.com,555-345-6789,INS312,DR102
+PT1013,Christopher,Lee,1975-12-22,M,clee@email.com,555-456-7890,INS645,DR103
+PT1014,Elizabeth,White,1987-05-19,F,ewhite@email.com,555-567-8901,INS743,DR104
+PT1015,Daniel,Harris,1963-09-11,M,dharris@email.com,555-678-9012,INS507,DR105

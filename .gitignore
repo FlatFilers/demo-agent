@@ -1,6 +1,8 @@
+.DS_Store
 node_modules
 .flatfile
 
 # dotenv environment variables file
 .env*
 !.env.example
+**/.claude/settings.local.json
