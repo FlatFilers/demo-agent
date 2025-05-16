@@ -1,0 +1,11 @@
+loan_id,customer_id,loan_type,amount,currency,interest_rate,term_months,start_date,maturity_date,payment_frequency,monthly_payment,remaining_balance,status
+LN40001,C10001,mortgage,350000.00,USD,3.25,360,2022-04-01,2052-04-01,monthly,1523.22,345678.45,active
+LN40002,C10002,personal,15000.00,USD,8.99,60,2022-01-15,2027-01-15,monthly,310.45,13456.78,active
+LN40003,C10003,auto,28000.00,USD,4.50,72,2022-03-10,2028-03-10,monthly,442.62,26789.34,active
+LN40004,C10005,personal,8000.00,USD,10.25,36,2021-10-05,2024-10-05,monthly,258.33,5432.10,active
+LN40005,C10006,business,150000.00,USD,5.75,120,2022-02-20,2032-02-20,monthly,1650.78,147890.50,active
+LN40006,C10007,equipment,75000.00,USD,6.25,84,2021-11-15,2028-11-15,monthly,1079.55,68542.25,active
+LN40007,C10008,line_of_credit,50000.00,USD,7.50,0,2022-05-10,,as_needed,0.00,12500.00,active
+LN40008,C10009,auto,22000.00,USD,4.75,60,2022-04-05,2027-04-05,monthly,414.22,21345.67,active
+LN40009,C10010,mortgage,275000.00,USD,3.50,360,2022-01-10,2052-01-10,monthly,1234.56,272345.67,active
+LN40010,C10003,home_equity,50000.00,USD,4.25,180,2022-04-20,2037-04-20,monthly,379.11,49876.54,active

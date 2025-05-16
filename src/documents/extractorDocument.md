@@ -24,14 +24,14 @@ This Space has been configured to use several extractor plugins.
 Here's a look at the code that was used to create it:
 
 ```jsx
-import { Client, FlatfileListener } from "@flatfile/listener";
+import { FlatfileListener } from "@flatfile/listener";
 
 import { JSONExtractor } from "@flatfile/plugin-json-extractor";
 import { ExcelExtractor } from "@flatfile/plugin-xlsx-extractor";
 import { XMLExtractor } from "@flatfile/plugin-xml-extractor";
 import { ZipExtractor } from "@flatfile/plugin-zip-extractor";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.use(JSONExtractor());
   listener.use(ExcelExtractor());
   listener.use(XMLExtractor());

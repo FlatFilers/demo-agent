@@ -11,30 +11,53 @@
   "bugs": {
     "url": "https://github.com/FlatFilers/demo-agent/issues"
   },
+  "engines": {
+    "node": ">= 18"
+  },
   "dependencies": {
-    "@flatfile/api": "^1.5.33",
-    "@flatfile/listener": "^0.3.14",
-    "@flatfile/plugin-automap": "^0.0.3",
-    "@flatfile/plugin-connect-via-merge": "^0.0.1",
-    "@flatfile/plugin-delimiter-extractor": "^0.4.0",
-    "@flatfile/plugin-json-extractor": "^0.4.2",
-    "@flatfile/plugin-record-hook": "^1.0.1",
-    "@flatfile/plugin-space-configure": "^0.1.4",
-    "@flatfile/plugin-xlsx-extractor": "^1.5.0",
-    "@flatfile/plugin-xml-extractor": "^0.3.0",
-    "@flatfile/plugin-zip-extractor": "^0.3.1",
-    "@types/node-fetch": "^2.6.4",
-    "node-fetch": "^3.3.2"
+    "@flatfile/api": "^1.17.3",
+    "@flatfile/listener": "^1.1.2",
+    "@flatfile/plugin-automap": "^0.8.1",
+    "@flatfile/plugin-connect-via-merge": "^0.6.2",
+    "@flatfile/plugin-delimiter-extractor": "^2.5.1",
+    "@flatfile/plugin-export-delimited-zip": "^0.1.1",
+    "@flatfile/plugin-json-extractor": "^0.11.0",
+    "@flatfile/plugin-record-hook": "^2.0.2",
+    "@flatfile/plugin-space-configure": "^0.10.1",
+    "@flatfile/plugin-stored-constraints": "^1.0.1",
+    "@flatfile/plugin-xlsx-extractor": "^4.0.2",
+    "@flatfile/plugin-xml-extractor": "^0.7.1",
+    "@flatfile/plugin-zip-extractor": "^0.8.1"
   },
   "devDependencies": {
-    "@types/node": "^20.5.1",
-    "@vercel/ncc": "^0.36.1",
-    "typescript": "^5.1.6"
+    "@biomejs/biome": "^1.9.4",
+    "@dotenvx/dotenvx": "^1.44.0",
+    "@types/node": "^22.15.17",
+    "@vercel/ncc": "^0.38.3",
+    "flatfile": "latest",
+    "typescript": "^5.8.3"
   },
   "scripts": {
     "documents": "node ./scripts/documents.js",
     "bundle": "node ./scripts/bundle.js",
     "build": "npm run documents && npm run bundle",
-    "deploy": "npx flatfile@latest deploy"
+    "dev": "node --enable-source-maps --inspect node_modules/.bin/flatfile develop",
+    "dev:local": "dotenvx run --env-file=.env.local -- npm run dev",
+    "dev:staging": "dotenvx run --env-file=.env.staging -- npm run dev",
+    "dev:prod": "dotenvx run --env-file=.env.prod -- npm run dev",
+    "deploy": "flatfile deploy",
+    "deploy:local": "dotenvx run --env-file=.env.local -- npm run deploy",
+    "deploy:staging": "dotenvx run --env-file=.env.staging -- npm run deploy",
+    "deploy:prod": "dotenvx run --env-file=.env.prod -- npm run deploy",
+    "list": "flatfile list",
+    "list:local": "dotenvx run --env-file=.env.local -- npm run list",
+    "list:staging": "dotenvx run --env-file=.env.staging -- npm run list",
+    "list:prod": "dotenvx run --env-file=.env.prod -- npm run list",
+    "delete": "flatfile delete",
+    "delete:local": "dotenvx run --env-file=.env.local -- npm run delete",
+    "delete:staging": "dotenvx run --env-file=.env.staging -- npm run delete",
+    "delete:prod": "dotenvx run --env-file=.env.prod -- npm run delete",
+    "check": "biome check && tsc --noEmit",
+    "fix": "biome check --write"
   }
 }

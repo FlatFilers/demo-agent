@@ -21,7 +21,7 @@ Here's a look at the code that was used to create it:
 import { Client } from "@flatfile/listener";
 import { recordHook, FlatfileRecord } from "@flatfile/plugin-record-hook";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.use(
     recordHook("contacts", (record: FlatfileRecord) => {
       record.compute(

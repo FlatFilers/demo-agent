@@ -1,98 +1,95 @@
-import api from "@flatfile/api";
-import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
-import workbook from "../constants/headlessWorkbook.json";
-import { headlessDocument } from "../constants/documents.json";
-import { ExcelExtractor } from "@flatfile/plugin-xlsx-extractor";
-import { automap } from "@flatfile/plugin-automap";
-import { recordHook } from "@flatfile/plugin-record-hook";
+import api from '@flatfile/api'
+import type { FlatfileEvent, FlatfileListener } from '@flatfile/listener'
+import { automap } from '@flatfile/plugin-automap'
+import { recordHook } from '@flatfile/plugin-record-hook'
+import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor'
+import { headlessDocument } from '../constants/documents.json'
+import workbook from '../constants/headlessWorkbook.json'
 // import nodemailer from "nodemailer";
 // import { promisify } from "util";
 
-export default function flatfileEventListener(listener: Client) {
-  listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
-    configure.on(
-      "job:ready",
-      async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
-        try {
-          await api.jobs.ack(jobId, {
-            info: "Job started.",
-            progress: 10,
-          });
+export default function flatfileEventListener(listener: FlatfileListener) {
+  listener.filter({ job: 'space:configure' }, (configure: FlatfileListener) => {
+    configure.on('job:ready', async ({ context: { spaceId, environmentId, jobId } }: FlatfileEvent) => {
+      try {
+        await api.jobs.ack(jobId, {
+          info: 'Job started.',
+          progress: 10,
+        })
 
-          const { data } = await api.documents.create(spaceId, {
-            title: "About this Headless Demo",
-            body: headlessDocument,
-          });
+        const { data } = await api.documents.create(spaceId, {
+          title: 'About this Headless Demo',
+          body: headlessDocument,
+        })
 
-          const documentId = data.id;
-          const spaceUpdateParams = {
-            metadata: {
-              sidebarConfig: {
-                defaultPage: {
-                  documentId,
-                },
+        const documentId = data.id
+        const spaceUpdateParams = {
+          metadata: {
+            sidebarConfig: {
+              defaultPage: {
+                documentId,
               },
             },
-          };
-
-          await api.spaces.update(spaceId, spaceUpdateParams);
-
-          const headlessWorkbook = {
-            ...{ Labels: ["Primary", "Headless-Demo"] },
-            ...workbook,
-          };
-
-          // @ts-ignore
-          await api.workbooks.create({
-            spaceId,
-            environmentId,
-            ...headlessWorkbook,
-          });
-
-          await api.jobs.complete(jobId, {
-            outcome: {
-              message: "Job completed.",
-            },
-          });
-        } catch (error: any) {
-          console.error("Error: ", error.stack);
-
-          await api.jobs.fail(jobId, {
-            outcome: {
-              message: "Job error.",
-            },
-          });
+          },
         }
-      }
-    );
-  });
 
-  listener.use(ExcelExtractor({ rawNumbers: true }));
+        await api.spaces.update(spaceId, spaceUpdateParams)
+
+        const headlessWorkbook = {
+          ...{ Labels: ['Primary', 'Headless-Demo'] },
+          ...workbook,
+        }
+
+        // @ts-ignore
+        await api.workbooks.create({
+          spaceId,
+          environmentId,
+          ...headlessWorkbook,
+        })
+
+        await api.jobs.complete(jobId, {
+          outcome: {
+            message: 'Job completed.',
+          },
+        })
+      } catch (error) {
+        console.error('Error: ', (error as unknown as Error).stack)
+
+        await api.jobs.fail(jobId, {
+          outcome: {
+            message: 'Job error.',
+          },
+        })
+      }
+    })
+  })
+
+  listener.use(ExcelExtractor({ rawNumbers: true }))
   listener.use(
     automap({
-      accuracy: "confident",
-      defaultTargetSheet: "Inventory",
+      accuracy: 'confident',
+      defaultTargetSheet: 'Inventory',
       matchFilename: /^.*inventory\.xlsx$/,
       onFailure: console.error,
-    })
-  );
+    }),
+  )
 
   listener.use(
-    recordHook("inventory", async (record, event) => {
-      const author = record.get("author");
+    recordHook('inventory', async (record, event) => {
+      const author = record.get('author')
       function validateNameFormat(name: string) {
-        const pattern: RegExp = /^\s*[\p{L}'-]+\s*,\s*[\p{L}'-]+\s*$/u;
-        return pattern.test(name);
+        const pattern: RegExp = /^\s*[\p{L}'-]+\s*,\s*[\p{L}'-]+\s*$/u
+        return pattern.test(name)
       }
 
       if (!validateNameFormat(author as string)) {
-        const nameSplit = (author as string).split(" ");
-        record.set("author", `${nameSplit[1]}, ${nameSplit[0]}`);
-        record.addComment("author", "Author name was updated for vendor");
-        return record;
+        const nameSplit = (author as string).split(' ')
+        record.set('author', `${nameSplit[1]}, ${nameSplit[0]}`)
+        record.addComment('author', 'Author name was updated for vendor')
+        return record
       }
-    })
-  );
+    }),
+  )
 
   // listener.filter({ job: "workbook:map" }, (configure) => {
   //   configure.on("job:completed", async (event: FlatfileEvent) => {
@@ -164,8 +161,8 @@ export default function flatfileEventListener(listener: Client) {
   //           message: `Job "Custom Action" completed.`,
   //         },
   //       });
-  //     } catch (error: any) {
-  //       console.error("Error:", error.stack);
+  //     } catch (error) {
+  //       console.error("Error:", (error as unknown as Error).stack);
 
   //       await api.jobs.fail(jobId, {
   //         outcome: {

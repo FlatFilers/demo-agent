@@ -33,9 +33,9 @@ Here's a look at the code that was used to create it:
 
 ```jsx
 import api from "@flatfile/api";
-import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
+import { FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
   listener.filter({ job: "space:configure" }, (configure: FlatfileListener) => {
     configure.on(
       "job:ready",
@@ -73,8 +73,8 @@ export default function flatfileEventListener(listener: Client) {
           });
 
           await api.jobs.complete(jobId, {});
-        } catch (error: any) {
-          console.error("Error: ", error.stack);
+        } catch (error) {
+          console.error("Error: ", (error as unknown as Error).stack);
 
           await api.jobs.fail(jobId, {
             outcome: {

@@ -1,0 +1,21 @@
+transaction_id,account_id,transaction_type,amount,currency,transaction_date,description,category,merchant_name,status,reference_number
+TX30001,ACC20001,debit,85.75,USD,2023-01-05,Grocery Store Purchase,groceries,Whole Foods,completed,REF123456
+TX30002,ACC20001,credit,2500.00,USD,2023-01-15,Direct Deposit - Payroll,income,ACME Corp,completed,REF234567
+TX30003,ACC20001,debit,1200.00,USD,2023-01-20,Rent Payment,housing,Apartment Rentals Inc,completed,REF345678
+TX30004,ACC20002,credit,500.00,USD,2023-01-10,Transfer from Checking,transfer,Internal Transfer,completed,REF456789
+TX30005,ACC20003,debit,45.99,USD,2023-01-07,Online Shopping,shopping,Amazon,completed,REF567890
+TX30006,ACC20003,debit,120.50,USD,2023-01-12,Utility Bill,utilities,City Power & Water,completed,REF678901
+TX30007,ACC20004,debit,250.00,USD,2023-01-18,Credit Card Payment,debt_payment,Chase Bank,completed,REF789012
+TX30008,ACC20005,debit,65.00,USD,2023-01-08,Restaurant,dining,Coastal Grill,completed,REF890123
+TX30009,ACC20005,credit,3200.00,USD,2023-01-15,Direct Deposit - Payroll,income,Tech Solutions Inc,completed,REF901234
+TX30010,ACC20006,credit,1000.00,USD,2023-01-20,Transfer from Checking,transfer,Internal Transfer,completed,REF012345
+TX30011,ACC20007,debit,5000.00,USD,2023-01-25,Stock Purchase,investment,Fidelity Investments,completed,REF123450
+TX30012,ACC20008,debit,42.75,USD,2023-01-09,Gasoline,transportation,Shell Gas Station,completed,REF234501
+TX30013,ACC20008,credit,1800.00,USD,2023-01-15,Direct Deposit - Payroll,income,Boston Medical,completed,REF345012
+TX30014,ACC20009,debit,35.99,USD,2023-01-11,Streaming Service,entertainment,Netflix,completed,REF450123
+TX30015,ACC20009,debit,150.00,USD,2023-01-17,Car Insurance,insurance,AllState Insurance,completed,REF501234
+TX30016,ACC20011,credit,12500.00,USD,2023-01-05,Client Payment,income,Client ABC Corp,completed,REF012345
+TX30017,ACC20011,debit,3500.00,USD,2023-01-15,Supplier Payment,business_expense,Office Supplies Inc,completed,REF123456
+TX30018,ACC20013,credit,28500.00,USD,2023-01-10,Service Revenue,income,Various Clients,completed,REF234567
+TX30019,ACC20013,debit,10000.00,USD,2023-01-20,Equipment Purchase,business_expense,Industrial Supplies Co,completed,REF345678
+TX30020,ACC20014,debit,2500.00,USD,2023-01-15,Software Subscription,business_expense,SaaS Provider Inc,completed,REF456789

@@ -1,0 +1,21 @@
+medicationId,name,genericName,drugClass,dosageForm,strength,manufacturer,requiresPrescription
+MED001,Lipitor,Atorvastatin,Statin,tablet,10mg,Pfizer,true
+MED002,Norvasc,Amlodipine,Calcium Channel Blocker,tablet,5mg,Pfizer,true
+MED003,Proventil,Albuterol,Bronchodilator,inhaler,90mcg,Merck,true
+MED004,Synthroid,Levothyroxine,Hormone Replacement,tablet,50mcg,AbbVie,true
+MED005,Zoloft,Sertraline,SSRI,tablet,100mg,Pfizer,true
+MED006,Prilosec,Omeprazole,Proton Pump Inhibitor,capsule,20mg,AstraZeneca,false
+MED007,Amoxil,Amoxicillin,Antibiotic,capsule,500mg,GlaxoSmithKline,true
+MED008,Glucophage,Metformin,Antidiabetic,tablet,500mg,Bristol-Myers Squibb,true
+MED009,Motrin,Ibuprofen,NSAID,tablet,800mg,Johnson & Johnson,false
+MED010,Neurontin,Gabapentin,Anticonvulsant,capsule,300mg,Pfizer,true
+MED011,Claritin,Loratadine,Antihistamine,tablet,10mg,Bayer,false
+MED012,Xanax,Alprazolam,Benzodiazepine,tablet,1mg,Pfizer,true
+MED013,Plavix,Clopidogrel,Antiplatelet,tablet,75mg,Sanofi,true
+MED014,Nexium,Esomeprazole,Proton Pump Inhibitor,tablet,40mg,AstraZeneca,false
+MED015,Ventolin,Albuterol,Bronchodilator,inhaler,100mcg,GlaxoSmithKline,true
+MED016,Crestor,Rosuvastatin,Statin,tablet,20mg,AstraZeneca,true
+MED017,Tylenol,Acetaminophen,Analgesic,tablet,500mg,Johnson & Johnson,false
+MED018,Advair,Fluticasone-Salmeterol,Corticosteroid-LABA,inhaler,250/50mcg,GlaxoSmithKline,true
+MED019,Prozac,Fluoxetine,SSRI,capsule,20mg,Eli Lilly,true
+MED020,Coumadin,Warfarin,Anticoagulant,tablet,5mg,Bristol-Myers Squibb,true

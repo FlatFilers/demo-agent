@@ -18,11 +18,11 @@ Here's a look at the code that was used to create it:
 
 ```jsx
 import api from "@flatfile/api";
-import { Client, FlatfileEvent, FlatfileListener } from "@flatfile/listener";
+import { FlatfileEvent, FlatfileListener } from "@flatfile/listener";
 import simpleWorkbook from "../constants/workbook.json";
 import { egressDocument } from "../constants/documents.json";
 
-export default function flatfileEventListener(listener: Client) {
+export default function flatfileEventListener(listener: FlatfileListener) {
    listener.filter({ job: "workbook:submitAction" }, (configure) => {
     configure.on("job:ready", async (event: FlatfileEvent) => {
       const { jobId } = event.context;
@@ -46,8 +46,8 @@ export default function flatfileEventListener(listener: Client) {
             message: `Job "Send Workbook To ACME" completed.`,
           },
         });
-      } catch (error: any) {
-        console.error("Error:", error.stack);
+      } catch (error) {
+        console.error("Error:", (error as unknown as Error).stack);
 
         await api.jobs.fail(jobId, {
           outcome: {
