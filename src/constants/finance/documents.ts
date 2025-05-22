@@ -2,8 +2,8 @@ import type { Flatfile } from '@flatfile/api'
 
 export const documents: Flatfile.DocumentConfig[] = [
   {
-    title: 'Welcome to the Financial Services Data Platform',
-    body: `# Welcome to the Financial Services Data Platform
+    title: 'Welcome',
+    body: `# Welcome to the Financial Demo
 
 This demo showcases how Flatfile can streamline data import and management for financial services companies. Whether you're importing customer records, account information, transaction data, or investment details, Flatfile provides the tools to make your data onboarding efficient and error-free.
 
