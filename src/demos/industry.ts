@@ -18,11 +18,6 @@ export default function industryListener(industry: IndustryDemo) {
       configureSpace(
         {
           workbooks: industry.workbook,
-          space: {
-            metadata: {
-              theme: industry.theme,
-            },
-          },
           documents: industry.documents,
         },
         async (event: FlatfileEvent, workbookIds: string[], tick: TickFunction) => {
