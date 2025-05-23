@@ -1,23 +1,17 @@
 import type { Flatfile } from '@flatfile/api'
 import { documents as ecommerceDocuments } from '../constants/ecommerce/documents'
-import { theme as ecommerceTheme } from '../constants/ecommerce/theme'
 import { workbooks as ecommerceWorkbooks } from '../constants/ecommerce/workbooks'
 import { documents as financeDocuments } from '../constants/finance/documents'
-import { theme as financeTheme } from '../constants/finance/theme'
 import { workbooks as financeWorkbooks } from '../constants/finance/workbooks'
 import { documents as healthcareDocuments } from '../constants/healthcare/documents'
-import { theme as healthcareTheme } from '../constants/healthcare/theme'
 import { workbooks as healthcareWorkbooks } from '../constants/healthcare/workbooks'
 import { documents as realEstateDocuments } from '../constants/realestate/documents'
-import { theme as realEstateTheme } from '../constants/realestate/theme'
 import { workbooks as realEstateWorkbooks } from '../constants/realestate/workbooks'
 
 export type IndustryDemo = {
   name: string
   slug: string
   workbook: Flatfile.CreateWorkbookConfig[]
-  // biome-ignore lint/suspicious/noExplicitAny: just don't care here
-  theme: any
   documents: Flatfile.DocumentConfig[]
   files: string[]
   automap: {
@@ -31,7 +25,6 @@ export const industryConfig: IndustryDemo[] = [
     name: 'Ecommerce',
     slug: 'ecommerce',
     workbook: ecommerceWorkbooks,
-    theme: ecommerceTheme,
     documents: ecommerceDocuments,
     files: [
       'https://raw.githubusercontent.com/FlatFilers/demo-agent/refs/heads/main/src/files/ecommerce/categories.csv',
@@ -49,7 +42,6 @@ export const industryConfig: IndustryDemo[] = [
     name: 'Real Estate',
     slug: 'realestate',
     workbook: realEstateWorkbooks,
-    theme: realEstateTheme,
     documents: realEstateDocuments,
     files: [
       'https://raw.githubusercontent.com/FlatFilers/demo-agent/refs/heads/main/src/files/realestate/agents.csv',
@@ -67,7 +59,6 @@ export const industryConfig: IndustryDemo[] = [
     name: 'Healthcare',
     slug: 'healthcare',
     workbook: healthcareWorkbooks,
-    theme: healthcareTheme,
     documents: healthcareDocuments,
     files: [
       'https://raw.githubusercontent.com/FlatFilers/demo-agent/refs/heads/main/src/files/healthcare/patients.csv',
@@ -86,7 +77,6 @@ export const industryConfig: IndustryDemo[] = [
     name: 'Finance',
     slug: 'finance',
     workbook: financeWorkbooks,
-    theme: financeTheme,
     documents: financeDocuments,
     files: [
       'https://raw.githubusercontent.com/FlatFilers/demo-agent/refs/heads/main/src/files/finance/customers.csv',
